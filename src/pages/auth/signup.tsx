@@ -1,13 +1,18 @@
+"use client";
 function SignUp() {
+  function handleGoogleSignUp() {
+    window.location.href = process.env.NEXT_PUBLIC_GOOGLE_URL;
+  }
+  function handleGithubSignUp() {
+    window.location.href = process.env.NEXT_PUBLIC_GITHUB_URL;
+  }
   return (
     <body className="text-center space-y-5">
       <h1 className="text-lg text-green-300">Sign up for Chatter</h1>
       <div className="flex flex-col">
-        <button>Sign up with Google</button>
+        <button onClick={handleGoogleSignUp}>Sign up with Google</button>
 
-        <button>Sign up with Github</button>
-
-        <button>Sign up with email</button>
+        <button onClick={handleGithubSignUp}>Sign up with Github</button>
       </div>
       <form className="flex flex-col">
         <label htmlFor="name">

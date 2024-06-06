@@ -16,7 +16,7 @@ function EchoItem() {
           <FaStar />
         </button>
         <button>
-          <FaBookmark />{" "}
+          <FaBookmark />
         </button>
       </div>
     </div>

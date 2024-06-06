@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/react": "^2.4.0",
+    "@tiptap/starter-kit": "^2.4.0",
     "axios": "^1.7.2",
     "next": "14.2.3",
     "prettier": "^3.3.0",
