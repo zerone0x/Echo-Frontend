@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/api/v1/";
+const BASE_URL = process.env.NEXT_PUBLIC_CHATTER_URL;
 
 const client = axios.create({
   baseURL: BASE_URL,

@@ -1,6 +1,8 @@
 import { FaBookmark, FaReply, FaStar } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 
+// TODO format data into variable
+// then map to display
 function EchoItem() {
   return (
     <div>

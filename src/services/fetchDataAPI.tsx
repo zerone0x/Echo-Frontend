@@ -13,6 +13,14 @@ export const authUserLogin = async (email, password) => {
   return response.user.email;
 };
 
+export const authUserSignUp = async (email, password, name) => {
+  const response = await client.post("auth/register", {
+    email: email,
+    password: password,
+    name: name,
+  });
+  return response.user.name;
+};
 // export const authUserGoogle = async () => {
 //   const { data } = await client.get('auth/google')
 //   return data.results
