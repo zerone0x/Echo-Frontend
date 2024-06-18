@@ -1,12 +1,13 @@
 import { FaBookmark, FaReply, FaStar } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
+import { IoIosMore } from "react-icons/io";
 
 // TODO format data into variable
 // then map to display
-function EchoItem() {
+function EchoItem({ content }) {
   return (
     <div>
-      <span>test</span>
+      <span>{content}</span>
       <div>
         <button>
           <FaReply />
@@ -19,6 +20,9 @@ function EchoItem() {
         </button>
         <button>
           <FaBookmark />
+        </button>
+        <button>
+          <IoIosMore />
         </button>
       </div>
     </div>
