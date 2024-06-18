@@ -1,5 +1,5 @@
 function page() {
-  return <p>page</p>;
+  return <p>favourites</p>;
 }
 
 export default page;

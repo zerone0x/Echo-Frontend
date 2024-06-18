@@ -1,5 +1,5 @@
 function page() {
-  return <p>page</p>;
+  return <p>notification</p>;
 }
 
 export default page;

@@ -20,7 +20,7 @@ function SignUp() {
 
   return (
     <body className="text-center space-y-5">
-      <h1 className="text-lg text-green-300">Sign up for Chatter</h1>
+      <h1 className="text-lg text-green-300">Sign up for Echo</h1>
       <div className="flex flex-col">
         <button onClick={handleGoogleSignUp}>Sign up with Google</button>
 
@@ -55,7 +55,7 @@ function SignUp() {
           />
         </label>
         <button type="submit" disabled={isLoading}>
-          Create a Chatter account
+          Create a Echo account
         </button>
       </form>
       {isError && (
