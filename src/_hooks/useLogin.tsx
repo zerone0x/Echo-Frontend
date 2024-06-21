@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import { authUserLogin } from "@/services/fetchDataAPI";
+import { authUserLogin } from "@/_services/fetchDataAPI";
 
 const useLogin = () => {
   return useMutation(({ email, password }) => authUserLogin(email, password));

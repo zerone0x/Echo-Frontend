@@ -1,6 +1,6 @@
 "use client";
 import ThirdAuth from "@/_components/thirdAuth";
-import useLogin from "@/hooks/useLogin";
+import useLogin from "@/_hooks/useLogin";
 import React, { useState } from "react";
 
 function login() {

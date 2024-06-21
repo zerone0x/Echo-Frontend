@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_Echo_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_ECHO_URL;
 
 const client = axios.create({
   baseURL: BASE_URL,

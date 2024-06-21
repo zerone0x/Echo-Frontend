@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReactQueryProvider from "@/utils/ReactQueryProvider";
+import ReactQueryProvider from "@/_utils/ReactQueryProvider";
 import Publish from "@/_components/Publish";
 import Sidebar from "@/_components/Sidebar";
 import SearchBar from "@/_components/SearchBar";
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex h-screen">
+      <body className="bg-[#BEFAF8] flex h-screen justify-between flex-1">
         <div>
           <SearchBar />
           <Publish />
@@ -30,3 +30,11 @@ export default function RootLayout({
     </html>
   );
 }
+// - #445566
+// - #FFFEF8
+// - #FEDCO
+// - #BEFAF8
+// - #F3FFF9
+// - #FAF8F1
+// - #CC3355
+// - | #EF7F31

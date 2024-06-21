@@ -1,7 +1,7 @@
 "use client";
 import EchoItem from "@/_components/EchoItem";
 import Sidebar from "@/_components/Sidebar";
-import { GetAllFeeds } from "@/services/fetchDataAPI";
+import { GetAllFeeds } from "@/_services/fetchDataAPI";
 import { useQuery } from "react-query";
 export default function Home() {
   const {
@@ -15,7 +15,6 @@ export default function Home() {
   if (isError) return <div>Error: {error}</div>;
   return (
     <div>
-      <Sidebar />
       <main>
         {feeds &&
           feeds.map((feed, index) => (

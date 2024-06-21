@@ -32,6 +32,7 @@ function Publish() {
   };
   return (
     <div>
+      <span>USERName</span>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <input
           className="w-full h-10"
@@ -54,7 +55,9 @@ function Publish() {
         </div>
         {showPick && <Picker onEmojiClick={AppendEmoji} />}
         {errors.content && <span>{errors.content.message}</span>}
-        <button type="submit">Echo!</button>
+        <button type="submit" className="">
+          Echo!
+        </button>
       </form>
     </div>
   );
