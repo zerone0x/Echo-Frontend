@@ -1,7 +1,7 @@
 "use client";
 import useRegister from "@/_hooks/useRegister";
 import React, { useState } from "react";
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from "next/navigation";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,14 +11,17 @@ function SignUp() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    mutate({ email, password, name }, {
-      onSuccess: (response) => {
-        router.push('/home'); // Correctly redirect using router
+    mutate(
+      { email, password, name },
+      {
+        onSuccess: (response) => {
+          router.push("/home"); // Correctly redirect using router
+        },
+        onError: (error) => {
+          console.error("Register failed:", error);
+        },
       },
-      onError: (error) => {
-        console.error('Register failed:', error);
-      }
-    });
+    );
   };
   function handleGoogleSignUp() {
     window.location.href = process.env.NEXT_PUBLIC_GOOGLE_URL;

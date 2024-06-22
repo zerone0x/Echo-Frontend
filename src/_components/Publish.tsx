@@ -4,8 +4,15 @@ import Picker from "emoji-picker-react";
 import { useState } from "react";
 import { MdEmojiEmotions } from "react-icons/md";
 import { GoPaperclip } from "react-icons/go";
+import { useAuth } from "@/_data/getLogin";
+import Image from "next/image";
+import { useQuery } from "react-query";
+import { showCurrUser } from "@/_services/fetchDataAPI";
 
 function Publish() {
+  const { authData, setAuthData } = useAuth();
+  const ProfileImage = authData?.ProfileImage;
+  const UserName = authData?.name;
   const {
     register,
     handleSubmit,
@@ -15,6 +22,15 @@ function Publish() {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
+  const {
+    data: CurrUserData,
+    error,
+    isLoading,
+    isError,
+  } = useQuery(["currUser"], () => showCurrUser());
+
+  if (isLoading) return <p>loading...</p>;
+  if (isError) return <div>Error: {error}</div>;
 
   const AppendEmoji = (event, emojiObject) => {
     const newText = content + event.emoji;
@@ -32,7 +48,14 @@ function Publish() {
   };
   return (
     <div>
-      <span>USERName</span>
+      {/* <span>{CurrUserData.name}</span> */}
+      {/* <span>{UserName}</span> */}
+      {/* <Image
+            src={`${process.env.NEXT_PUBLIC_ROOT_URL}${ProfileImage}`}
+            alt="user profile"
+            width={50}
+            height={50}
+          /> */}
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <input
           className="w-full h-10"

@@ -45,3 +45,8 @@ export const GetFeedById = async (feedId: string) => {
   const { data } = await client.get(`feeds/${feedId}`);
   return data.results;
 };
+
+export const showCurrUser = async () => {
+  const {data} = await client.get(`users/showMe`)
+  return data.results;
+}
