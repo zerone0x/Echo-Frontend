@@ -17,15 +17,17 @@ export default async function Home() {
 
   // if (isLoading) return <Loading />;
   // if (isError) return <div>Error: {error}</div>;
-  console.log('starting');
-  const feeds = await GetAllFeeds()
+  console.log("starting");
+  const feeds = await GetAllFeeds();
   return (
     <div>
       <main>
         <Link href="/auth/login">Login</Link>
         <Link href="/auth/signup">Register</Link>
         {feeds &&
-          feeds.map((feed:object, index:number) => <EchoItem feed={feed} key={index} />)}
+          feeds.map((feed: object, index: number) => (
+            <EchoItem feed={feed} key={index} />
+          ))}
       </main>
     </div>
   );
