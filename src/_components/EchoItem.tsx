@@ -4,13 +4,33 @@ import { IoIosMore } from "react-icons/io";
 import Image from "next/image";
 import { FormatTime } from "@/_utils/FormatData";
 
-// TODO format data into variable
-// then map to display
 function EchoItem({ feed }) {
   const name = feed?.user?.name;
   const content = feed?.content;
   const createdAt = feed?.createdAt;
   const ProfileImage = feed?.user?.ProfileImage;
+  const reactItem = [
+    {
+      name: "Like",
+      icon: <FaStar />,
+    },
+    {
+      name: "Repost",
+      icon: <BiRepost />,
+    },
+    {
+      name: "Favorite",
+      icon: <FaStar />,
+    },
+    {
+      name: "Bookmark",
+      icon: <FaBookmark />,
+    },
+    {
+      name: "More",
+      icon: <IoIosMore />,
+    },
+  ];
   return (
     feed && (
       <div>
@@ -28,21 +48,9 @@ function EchoItem({ feed }) {
         </div>
         <span>{content}</span>
         <div>
-          <button>
-            <FaReply />
-          </button>
-          <button>
-            <BiRepost />
-          </button>
-          <button>
-            <FaStar />
-          </button>
-          <button>
-            <FaBookmark />
-          </button>
-          <button>
-            <IoIosMore />
-          </button>
+          {reactItem.map((item, index) => (
+            <button key={index}> {item.icon} </button>
+          ))}
         </div>
       </div>
     )
