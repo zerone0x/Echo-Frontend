@@ -4,6 +4,7 @@ import { FaHome, FaStar } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import { IoBookmarkSharp, IoEarth } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
+import logo from "../../public/logo.png";
 // https://react-icons.github.io/react-icons/search/#q=
 
 const navLinks = [
@@ -43,11 +44,17 @@ function Sidebar() {
     <nav className="text-4xl flex flex-col">
       <ul>
         <li>
-          <Image src="/echo.png" alt="Echo Logo" width={70} height={70} />
+          <Image
+            src={logo}
+            quality={100}
+            alt="The Echo App Logo"
+            width={70}
+            height={70}
+          />
         </li>
         {navLinks.map((link, index) => (
-          <li>
-            <Link href={link.href} key={index}>
+          <li key={`${link.name}-${index}`}>
+            <Link href={link.href}>
               <div className="flex items-center">
                 {link.icon}
                 <span>{link.name}</span>

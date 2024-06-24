@@ -4,6 +4,9 @@ import Sidebar from "@/_components/Sidebar";
 import { GetAllFeeds } from "@/_services/fetchDataAPI";
 import Link from "next/link";
 import { useQuery } from "react-query";
+import Loading from "../loading";
+import { Metadata } from "next";
+
 export default function Home() {
   const {
     data: feeds,
@@ -12,7 +15,7 @@ export default function Home() {
     isError,
   } = useQuery(["AllFeeds"], () => GetAllFeeds());
 
-  if (isLoading) return <p>loading...</p>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>Error: {error}</div>;
   return (
     <div>

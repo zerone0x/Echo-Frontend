@@ -1,9 +1,10 @@
 "use client"; // Ensure this directive is placed correctly
 import { useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, redirect } from "next/navigation";
 import ThirdAuth from "@/_components/thirdAuth";
 import useLogin from "@/_hooks/useLogin";
 import { AuthProvider } from "@/_data/getLogin";
+import { Metadata } from "next";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ function Login() {
       { email, password },
       {
         onSuccess: (response) => {
-          router.push("/home");
+          redirect("/home");
         },
         onError: (error) => {
           console.error("Login failed:", error);

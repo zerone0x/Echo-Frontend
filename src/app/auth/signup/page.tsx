@@ -2,6 +2,8 @@
 import useRegister from "@/_hooks/useRegister";
 import React, { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { Metadata } from "next";
+
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +33,7 @@ function SignUp() {
   }
 
   return (
-    <body className="bg-rainbow-gradient text-center space-y-5">
+    <div className="bg-rainbow-gradient text-center space-y-5">
       <h1 className="text-lg text-green-300">Sign up for Echo</h1>
       <div className="flex flex-col">
         <button onClick={handleGoogleSignUp}>Sign up with Google</button>
@@ -73,7 +75,7 @@ function SignUp() {
       {isError && (
         <p className="text-red-500">{error?.message || "An error occurred"}</p>
       )}
-    </body>
+    </div>
   );
 }
 

@@ -1,4 +1,3 @@
-"use client";
 import type { Metadata } from "next";
 import "./globals.css";
 import ReactQueryProvider from "@/_utils/ReactQueryProvider";
@@ -6,11 +5,21 @@ import Publish from "@/_components/Publish";
 import Sidebar from "@/_components/Sidebar";
 import SearchBar from "@/_components/SearchBar";
 import { AuthProvider } from "@/_data/getLogin";
+import { Roboto } from "next/font/google";
+import LeftBar from "@/_components/LeftBar";
+const lato = Roboto({
+  subsets: ["latin"],
+  weight: "400",
+});
 
-// export const metadata: Metadata = {
-//   title: "Echo",
-//   description: "Share your posts to friends",
-// };
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Echo",
+    default: "Echo",
+  },
+  description:
+    "Use Echo social app to express your thoughts and connect with others",
+};
 
 export default function RootLayout({
   children,
@@ -19,17 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#BEFAF8] flex h-screen justify-between flex-1">
-        <AuthProvider>
+      <body
+        className={`${lato.className} bg-[#BEFAF8] flex h-screen justify-between flex-1`}
+      >
         <ReactQueryProvider>
-          <div>
-            <SearchBar />
-            <Publish />
-          </div>
-            <main>{children}</main>
+          <LeftBar />
+          <main>{children}</main>
           <Sidebar />
-          </ReactQueryProvider>
-        </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

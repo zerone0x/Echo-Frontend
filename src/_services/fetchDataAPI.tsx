@@ -47,6 +47,6 @@ export const GetFeedById = async (feedId: string) => {
 };
 
 export const showCurrUser = async () => {
-  const {data} = await client.get(`users/showMe`)
+  const { data } = await client.get(`users/showMe`);
   return data.results;
-}
+};

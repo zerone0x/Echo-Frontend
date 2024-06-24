@@ -8,6 +8,7 @@ import { useAuth } from "@/_data/getLogin";
 import Image from "next/image";
 import { useQuery } from "react-query";
 import { showCurrUser } from "@/_services/fetchDataAPI";
+import Loading from "@/app/loading";
 
 function Publish() {
   const { authData, setAuthData } = useAuth();
@@ -22,15 +23,15 @@ function Publish() {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
-  const {
-    data: CurrUserData,
-    error,
-    isLoading,
-    isError,
-  } = useQuery(["currUser"], () => showCurrUser());
+  // const {
+  //   data: CurrUserData,
+  //   error,
+  //   isLoading,
+  //   isError,
+  // } = useQuery(["currUser"], () => showCurrUser());
 
-  if (isLoading) return <p>loading...</p>;
-  if (isError) return <div>Error: {error}</div>;
+  // if (isLoading) return <Loading/>;
+  // if (isError) return <div>Error: {error}</div>;
 
   const AppendEmoji = (event, emojiObject) => {
     const newText = content + event.emoji;
