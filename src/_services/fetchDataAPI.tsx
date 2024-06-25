@@ -50,3 +50,8 @@ export const showCurrUser = async () => {
   const { data } = await client.get(`users/showMe`);
   return data.results;
 };
+
+export const getAllUsers = async () => {
+  const { data } = await client.get(`users/`);
+  return data.results;
+};
