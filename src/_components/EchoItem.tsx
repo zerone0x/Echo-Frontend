@@ -9,6 +9,7 @@ function EchoItem({ feed }) {
   const content = feed?.content;
   const createdAt = feed?.createdAt;
   const ProfileImage = feed?.user?.ProfileImage;
+
   const reactItem = [
     {
       name: "Like",

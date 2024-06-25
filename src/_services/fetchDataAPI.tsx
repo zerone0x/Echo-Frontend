@@ -1,3 +1,4 @@
+import NotFound from "@/app/not-found";
 import client from "./client";
 
 export const authUserRegister = async () => {
@@ -43,6 +44,11 @@ export const DeleteFeed = async (feedId: string) => {
 
 export const GetFeedById = async (feedId: string) => {
   const { data } = await client.get(`feeds/${feedId}`);
+  const error = data?.error;
+  if (error) {
+    console.log(data.error);
+    NotFound();
+  }
   return data.results;
 };
 
