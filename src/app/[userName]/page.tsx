@@ -1,10 +1,16 @@
-import EchoItem from "@/_components/EchoItem";
-import { GetFeedById } from "@/_services/fetchDataAPI";
+import FeedList from "@/_components/FeedList";
+import { getFeedByUsername, getUserByName } from "@/_services/fetchDataAPI";
 
 async function page({ params }) {
-  console.log(params.username);
-  const feed = await GetFeedById(params.username);
-  return <EchoItem feed={feed} />;
+  const [user, feeds] = await Promise.all([
+    getUserByName(params.username),
+    getFeedByUsername(params.username),
+  ]);
+  return (
+    <>
+      <FeedList feeds={feeds} />
+    </>
+  );
 }
 
 export default page;

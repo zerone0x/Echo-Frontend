@@ -1,9 +1,6 @@
-import { GetAllFeeds } from "@/_services/fetchDataAPI";
 import EchoItem from "./EchoItem";
 
-async function FeedList() {
-  const feeds = await GetAllFeeds();
-  if (!feeds.length) return null;
+function FeedList({ feeds }) {
   return (
     <div>
       {feeds &&

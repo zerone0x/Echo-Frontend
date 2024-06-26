@@ -4,16 +4,19 @@ import Picker from "emoji-picker-react";
 import { useState } from "react";
 import { MdEmojiEmotions } from "react-icons/md";
 import { GoPaperclip } from "react-icons/go";
-import { useAuth } from "@/_data/getLogin";
+// import { useAuth } from "@/_data/getLogin";
 import Image from "next/image";
 import { useQuery } from "react-query";
 import { showCurrUser } from "@/_services/fetchDataAPI";
 import Loading from "@/app/loading";
 
-function Publish() {
-  const { authData, setAuthData } = useAuth();
-  const ProfileImage = authData?.ProfileImage;
-  const UserName = authData?.name;
+async function Publish() {
+  
+  
+  // const { authData, setAuthData } = useAuth();
+  // const ProfileImage = authData?.ProfileImage;
+  // const UserName = authData?.name;
+  
   const {
     register,
     handleSubmit,

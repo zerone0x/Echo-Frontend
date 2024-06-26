@@ -5,6 +5,10 @@ export function FormatTime(time: string): string {
   const inputTime = moment(time);
   const hoursDiff = now.diff(inputTime, "hours");
   const daysDiff = now.diff(inputTime, "days");
+  const minutesDiff = now.diff(inputTime, "minutes");
+  if (hoursDiff < 1) {
+    return `${minutesDiff} minutes ago`;
+  }
   if (hoursDiff < 24) {
     return `${hoursDiff} hours ago`;
   }

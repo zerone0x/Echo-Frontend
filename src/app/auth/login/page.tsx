@@ -5,6 +5,7 @@ import ThirdAuth from "@/_components/thirdAuth";
 import useLogin from "@/_hooks/useLogin";
 import { AuthProvider } from "@/_data/getLogin";
 import { Metadata } from "next";
+import SignInButton from "@/_components/SignInButton";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ function Login() {
     <AuthProvider>
       <div className="bg-rainbow-gradient text-center space-y-5">
         <h1 className="text-lg text-green-300">Come on in!</h1>
-        <ThirdAuth />
+        <SignInButton />
         <form className="flex flex-col" onSubmit={handleLogin}>
           <label htmlFor="email">
             Email

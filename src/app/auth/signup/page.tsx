@@ -3,6 +3,7 @@ import useRegister from "@/_hooks/useRegister";
 import React, { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Metadata } from "next";
+import SignInButton from "@/_components/SignInButton";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -25,21 +26,11 @@ function SignUp() {
       },
     );
   };
-  function handleGoogleSignUp() {
-    window.location.href = process.env.NEXT_PUBLIC_GOOGLE_URL;
-  }
-  function handleGithubSignUp() {
-    window.location.href = process.env.NEXT_PUBLIC_GITHUB_URL;
-  }
 
   return (
     <div className="bg-rainbow-gradient text-center space-y-5">
       <h1 className="text-lg text-green-300">Sign up for Echo</h1>
-      <div className="flex flex-col">
-        <button onClick={handleGoogleSignUp}>Sign up with Google</button>
-
-        <button onClick={handleGithubSignUp}>Sign up with Github</button>
-      </div>
+      <SignInButton />
       <form className="flex flex-col" onSubmit={handleRegister}>
         <label htmlFor="name">
           Your full name

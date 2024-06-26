@@ -8,7 +8,7 @@ import Loading from "../loading";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import Spinner from "@/_components/Spinner";
-import FeedList from "@/_components/FeedList";
+import AllFeedsList from "@/_components/AllFeedsList";
 import { unstable_noStore as noStore } from "next/cache";
 
 // revalidate to update feeds in time
@@ -36,7 +36,7 @@ export default function Home() {
       <Link href="/auth/login">Login</Link>
       <Link href="/auth/signup">Register</Link>
       <Suspense fallback={<Spinner />}>
-        <FeedList />
+        <AllFeedsList />
       </Suspense>
     </div>
   );

@@ -3,6 +3,6 @@ export default {
   images: {
     domains: ["localhost"],
   },
-  output: "export",
+  // output: "export",
 };
 // TODO change to remotepattern

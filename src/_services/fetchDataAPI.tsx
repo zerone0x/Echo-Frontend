@@ -33,7 +33,6 @@ export const CreateFeed = async (content, user) => {
 
 export const GetAllFeeds = async () => {
   const { data } = await client.get("feeds");
-  console.log(data.results);
   return data.results;
 };
 
@@ -44,20 +43,30 @@ export const DeleteFeed = async (feedId: string) => {
 
 export const GetFeedById = async (feedId: string) => {
   const { data } = await client.get(`feeds/${feedId}`);
-  const error = data?.error;
-  if (error) {
-    console.log(data.error);
-    NotFound();
-  }
+  // console.log(data);
+  // const error = data?.error;
+  // if (error) {
+  //   NotFound();
+  // }
   return data.results;
 };
 
 export const showCurrUser = async () => {
-  const { data } = await client.get(`users/showMe`);
+  const { data } = await client.get('users/showMe');
   return data.results;
 };
 
 export const getAllUsers = async () => {
   const { data } = await client.get(`users/`);
+  return data.results;
+};
+
+export const getUserByName = async (username: string) => {
+  const { data } = await client.get(`/users/username/${username}`);
+  return data.results;
+};
+
+export const getFeedByUsername = async (username: string) => {
+  const { data } = await client.get(`feeds/user/${username}`);
   return data.results;
 };
