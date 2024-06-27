@@ -28,15 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${lato.className} bg-[#BEFAF8] flex h-screen justify-between flex-1`}
-      >
-        <ReactQueryProvider>
-          <LeftBar />
-          <main>{children}</main>
-          <Sidebar />
-        </ReactQueryProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
@@ -47,4 +39,4 @@ export default function RootLayout({
 // - #F3FFF9
 // - #FAF8F1
 // - #CC3355
-// - | #EF7F31
+// - #EF7F31

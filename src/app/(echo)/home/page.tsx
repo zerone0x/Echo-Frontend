@@ -4,7 +4,7 @@ import Sidebar from "@/_components/Sidebar";
 import { GetAllFeeds } from "@/_services/fetchDataAPI";
 import Link from "next/link";
 import { useQuery } from "react-query";
-import Loading from "../loading";
+import Loading from "../../loading";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import Spinner from "@/_components/Spinner";
@@ -33,8 +33,8 @@ export default function Home() {
   // noStore()
   return (
     <div>
-      <Link href="/auth/login">Login</Link>
-      <Link href="/auth/signup">Register</Link>
+      <Link href="/login">Login</Link>
+      <Link href="/signup">Register</Link>
       <Suspense fallback={<Spinner />}>
         <AllFeedsList />
       </Suspense>
