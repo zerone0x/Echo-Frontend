@@ -9,11 +9,10 @@ async function LeftBar() {
   console.log(CurrentUser);
   return (
     // <AuthProvider>
-      <div>
-        <SearchBar />
-        <Publish />
-      </div>
-
+    <div>
+      <SearchBar />
+      {/* <Publish /> */}
+    </div>
   );
 }
 

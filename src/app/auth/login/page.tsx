@@ -7,6 +7,10 @@ import { AuthProvider } from "@/_data/getLogin";
 import { Metadata } from "next";
 import SignInButton from "@/_components/SignInButton";
 
+// export const metadata: Metadata = {
+//   title: "Login",
+// };
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +19,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     mutate(
       { email, password },
       {
@@ -30,8 +35,10 @@ function Login() {
 
   return (
     <AuthProvider>
-      <div className="bg-rainbow-gradient text-center space-y-5">
-        <h1 className="text-lg text-green-300">Come on in!</h1>
+      {/* <div className="bg-rainbow-gradient text-center space-y-5">
+        <h1 className="text-lg text-green-300"></h1> */}
+      <div className="flex flex-col gap-10 mt-10 items-center">
+        <h2 className="text-3xl font-semibold">Come on in!</h2>
         <SignInButton />
         <form className="flex flex-col" onSubmit={handleLogin}>
           <label htmlFor="email">

@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Metadata } from "next";
 import SignInButton from "@/_components/SignInButton";
-
+// export const metadata: Metadata = {
+//   title: "Sign up",
+// };
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

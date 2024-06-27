@@ -7,16 +7,14 @@ import { GoPaperclip } from "react-icons/go";
 // import { useAuth } from "@/_data/getLogin";
 import Image from "next/image";
 import { useQuery } from "react-query";
-import { showCurrUser } from "@/_services/fetchDataAPI";
+// import { showCurrUser } from "@/_services/fetchDataAPI";
 import Loading from "@/app/loading";
 
 async function Publish() {
-  
-  
   // const { authData, setAuthData } = useAuth();
   // const ProfileImage = authData?.ProfileImage;
   // const UserName = authData?.name;
-  
+
   const {
     register,
     handleSubmit,
@@ -26,15 +24,6 @@ async function Publish() {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
-  // const {
-  //   data: CurrUserData,
-  //   error,
-  //   isLoading,
-  //   isError,
-  // } = useQuery(["currUser"], () => showCurrUser());
-
-  // if (isLoading) return <Loading/>;
-  // if (isError) return <div>Error: {error}</div>;
 
   const AppendEmoji = (event, emojiObject) => {
     const newText = content + event.emoji;
@@ -72,6 +61,7 @@ async function Publish() {
             setValue("content", e.target.value, { shouldValidate: true });
           }}
         />
+
         <div className="flex flex-row">
           <button onClick={togglePicker}>
             <MdEmojiEmotions />
