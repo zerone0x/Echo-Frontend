@@ -1,6 +1,17 @@
 /** @type {import('next').NextConfig} */
 export default {
   images: {
-    domains: ["localhost"],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        // port: '3001',
+      },
+      {
+        protocol: "http",
+        hostname: "authjs.dev",
+      },
+    ],
   },
+  // output: "export",
 };

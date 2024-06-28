@@ -1,26 +1,13 @@
-"use client";
-import EchoItem from "@/_components/EchoItem";
-import Sidebar from "@/_components/Sidebar";
-import { GetAllFeeds } from "@/_services/fetchDataAPI";
-import { useQuery } from "react-query";
-export default function Home() {
-  const {
-    data: feeds,
-    error,
-    isLoading,
-    isError,
-  } = useQuery(["AllFeeds"], () => GetAllFeeds());
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
-  if (isLoading) return <p>loading...</p>;
-  if (isError) return <div>Error: {error}</div>;
+export default async function App() {
+  // redirect('/home');
   return (
-    <div>
-      <main>
-        {feeds &&
-          feeds.map((feed, index) => (
-            <EchoItem content={feed.content} key={index} />
-          ))}
-      </main>
-    </div>
+    <>
+      <Link href="/login">Login</Link>
+      <Link href="/signup">Register</Link>
+      <Link href="/logOut">Log out</Link>
+    </>
   );
 }

@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReactQueryProvider from "@/_utils/ReactQueryProvider";
-import Publish from "@/_components/Publish";
-import Sidebar from "@/_components/Sidebar";
-import SearchBar from "@/_components/SearchBar";
+import ReactQueryProvider from "@/app/_utils/ReactQueryProvider";
+import Publish from "@/app/_components/Publish";
+import Sidebar from "@/app/_components/Sidebar";
+import SearchBar from "@/app/_components/SearchBar";
+import { AuthProvider } from "@/app/_data/getLogin";
+import { Roboto } from "next/font/google";
+import LeftBar from "@/app/_components/LeftBar";
+const lato = Roboto({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
-  title: "Echo",
-  description: "Share your posts to friends",
+  title: {
+    template: "%s | Echo",
+    default: "Echo",
+  },
+  description:
+    "Use Echo social app to express your thoughts and connect with others",
 };
 
 export default function RootLayout({
@@ -17,16 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#BEFAF8] flex h-screen justify-between flex-1">
-        <div>
-          <SearchBar />
-          <Publish />
-        </div>
-        <ReactQueryProvider>
-          <main>{children}</main>
-        </ReactQueryProvider>
-        <Sidebar />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
@@ -37,4 +39,4 @@ export default function RootLayout({
 // - #F3FFF9
 // - #FAF8F1
 // - #CC3355
-// - | #EF7F31
+// - #EF7F31
