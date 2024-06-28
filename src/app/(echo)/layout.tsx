@@ -1,7 +1,9 @@
-import LeftBar from "@/_components/LeftBar";
-import Sidebar from "@/_components/Sidebar";
-import ReactQueryProvider from "@/_utils/ReactQueryProvider";
-import { Roboto } from "next/font/google"; // 添加字体导入
+"use client";
+import LeftBar from "@/app/_components/LeftBar";
+import Sidebar from "@/app/_components/Sidebar";
+import ReactQueryProvider from "@/app/_utils/ReactQueryProvider";
+import { Roboto } from "next/font/google";
+import { AuthProvider } from "../_utils/getLogin";
 
 const lato = Roboto({
   subsets: ["latin"],
@@ -18,9 +20,11 @@ export default function EchoLayout({
       className={`${lato.className} bg-[#BEFAF8] flex h-screen justify-between`}
     >
       <ReactQueryProvider>
-        <LeftBar />
-        <main className="flex-1">{children}</main>
-        <Sidebar />
+        <AuthProvider>
+          <LeftBar />
+          <main className="flex-1">{children}</main>
+          <Sidebar />
+        </AuthProvider>
       </ReactQueryProvider>
     </div>
   );

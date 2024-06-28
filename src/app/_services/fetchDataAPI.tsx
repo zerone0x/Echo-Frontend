@@ -23,6 +23,11 @@ export const authUserSignUp = async (email, password, name) => {
   return data.results.user;
 };
 
+export const logOut = async () => {
+  const { data } = await client.get("auth/logout");
+  return data.results;
+};
+
 export const CreateFeed = async (content, user) => {
   const { data } = await client.post("feeds", {
     content: content,

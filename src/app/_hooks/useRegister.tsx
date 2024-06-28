@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import { authUserSignUp } from "@/_services/fetchDataAPI";
+import { authUserSignUp } from "@/app/_services/fetchDataAPI";
 
 const useRegister = () => {
   return useMutation(({ email, password, name }) =>

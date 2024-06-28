@@ -1,6 +1,6 @@
-import EchoItem from "@/_components/EchoItem";
-import Spinner from "@/_components/Spinner";
-import { GetAllFeeds, GetFeedById } from "@/_services/fetchDataAPI";
+import EchoItem from "@/app/_components/EchoItem";
+import Spinner from "@/app/_components/Spinner";
+import { GetAllFeeds, GetFeedById } from "@/app/_services/fetchDataAPI";
 import { Metadata } from "next";
 import { Suspense } from "react";
 

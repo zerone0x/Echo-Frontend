@@ -1,4 +1,4 @@
-import { authUserLogin } from "@/_services/fetchDataAPI";
+import { authUserLogin } from "@/app/_services/fetchDataAPI";
 
 export const handleLogin = async (e) => {
   console.log(e.target);

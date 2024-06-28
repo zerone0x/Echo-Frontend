@@ -1,9 +1,9 @@
 "use client";
-import useRegister from "@/_hooks/useRegister";
+import useRegister from "@/app/_hooks/useRegister";
 import React, { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Metadata } from "next";
-import SignInButton from "@/_components/SignInButton";
+import SignInButton from "@/app/_components/SignInButton";
 // export const metadata: Metadata = {
 //   title: "Sign up",
 // };

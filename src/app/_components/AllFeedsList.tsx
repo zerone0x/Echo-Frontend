@@ -1,4 +1,4 @@
-import { GetAllFeeds } from "@/_services/fetchDataAPI";
+import { GetAllFeeds } from "@/app/_services/fetchDataAPI";
 import FeedList from "./FeedList";
 
 async function AllFeedsList() {

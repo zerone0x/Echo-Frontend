@@ -1,15 +1,16 @@
 // "use client";
-import EchoItem from "@/_components/EchoItem";
-import Sidebar from "@/_components/Sidebar";
-import { GetAllFeeds } from "@/_services/fetchDataAPI";
+import EchoItem from "@/app/_components/EchoItem";
+import Sidebar from "@/app/_components/Sidebar";
+import { GetAllFeeds } from "@/app/_services/fetchDataAPI";
 import Link from "next/link";
 import { useQuery } from "react-query";
 import Loading from "../../loading";
 import { Metadata } from "next";
 import { Suspense } from "react";
-import Spinner from "@/_components/Spinner";
-import AllFeedsList from "@/_components/AllFeedsList";
+import Spinner from "@/app/_components/Spinner";
+import AllFeedsList from "@/app/_components/AllFeedsList";
 import { unstable_noStore as noStore } from "next/cache";
+import SignOutButton from "@/app/_components/SignOutButton";
 
 // revalidate to update feeds in time
 export const revalidate = 300;
@@ -35,6 +36,7 @@ export default function Home() {
     <div>
       <Link href="/login">Login</Link>
       <Link href="/signup">Register</Link>
+      <SignOutButton />
       <Suspense fallback={<Spinner />}>
         <AllFeedsList />
       </Suspense>

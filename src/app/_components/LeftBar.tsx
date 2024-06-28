@@ -1,6 +1,6 @@
 // "use client";
 // import { AuthProvider } from "@/_data/getLogin";
-import { showCurrUser } from "@/_services/fetchDataAPI";
+import { showCurrUser } from "@/app/_services/fetchDataAPI";
 import Publish from "./Publish";
 import SearchBar from "./SearchBar";
 

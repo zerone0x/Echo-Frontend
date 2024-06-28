@@ -2,7 +2,7 @@ import { FaBookmark, FaReply, FaStar } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { IoIosMore } from "react-icons/io";
 import Image from "next/image";
-import { FormatTime } from "@/_utils/FormatData";
+import { FormatTime } from "@/app/_utils/FormatData";
 import TextExpander from "./TextExpander";
 import Link from "next/link";
 
