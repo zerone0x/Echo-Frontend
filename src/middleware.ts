@@ -40,13 +40,11 @@ export async function middleware(request: NextRequest) {
     request.nextUrl.pathname !== "/signup" &&
     !verifiedToken
   ) {
-    NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
   return NextResponse.next();
 }
 
-// export const config = {
-//   matcher: [
-//     '/((?!_next/static|_next/image|favicon.ico).*)',
-//   ],
-// };
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+};
