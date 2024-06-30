@@ -1,5 +1,9 @@
 import { redirect } from "next/navigation";
-import { authUserLogin, authUserSignUp, loginWithGoogle } from "../_services/fetchDataAPI";
+import {
+  authUserLogin,
+  authUserSignUp,
+  loginWithGoogle,
+} from "../_services/fetchDataAPI";
 
 export async function loginUser(formData) {
   const email = formData.get("email");
@@ -25,14 +29,13 @@ export async function registerUser(formData) {
 }
 
 export async function googleLogin(formData) {
-  const user = await loginWithGoogle()
+  const user = await loginWithGoogle();
   if (user) {
     localStorage.setItem("username", user.name);
     localStorage.setItem("userId", user.userId);
     redirect("/home");
   }
 }
-
 
 export async function logOutUser() {
   localStorage.removeItem("username");

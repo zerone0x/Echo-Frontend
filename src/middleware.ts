@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   console.log(request);
   let token = request.cookies.get("token")?.value;
   console.log("Token from cookie:", token);
-  
+
   if (token) {
     if (token.startsWith("s:")) {
       token = token.slice(2);
@@ -20,18 +20,11 @@ export async function middleware(request: NextRequest) {
       console.log(err);
     }));
   console.log(verifiedToken);
-  if (
-    request.nextUrl.pathname !== "/" &&
-    request.nextUrl.pathname !== "/login" &&
-    request.nextUrl.pathname !== "/signup" &&
-    !verifiedToken
-  ) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+
   if (verifiedToken) {
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-user-id', verifiedToken.userId );
-    requestHeaders.set('x-user-name', verifiedToken.name);
+    requestHeaders.set("x-user-id", verifiedToken.userId);
+    requestHeaders.set("x-user-name", verifiedToken.name);
 
     const response = NextResponse.next({
       request: {
@@ -41,10 +34,15 @@ export async function middleware(request: NextRequest) {
 
     return response;
   }
-
+  if (
+    request.nextUrl.pathname !== "/" &&
+    request.nextUrl.pathname !== "/login" &&
+    request.nextUrl.pathname !== "/signup" &&
+    !verifiedToken
+  ) {
+    NextResponse.redirect(new URL("/", request.url));
+  }
   return NextResponse.next();
-
-
 }
 
 // export const config = {
@@ -52,5 +50,3 @@ export async function middleware(request: NextRequest) {
 //     '/((?!_next/static|_next/image|favicon.ico).*)',
 //   ],
 // };
-
-

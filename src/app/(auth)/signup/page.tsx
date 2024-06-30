@@ -9,7 +9,6 @@ import { registerUser } from "@/app/_utils/actions";
 //   title: "Sign up",
 // };
 function SignUp() {
-  
   return (
     <div className="bg-rainbow-gradient text-center space-y-5">
       <h1 className="text-lg text-green-300">Sign up for Echo</h1>
@@ -17,33 +16,18 @@ function SignUp() {
       <form className="flex flex-col" action={registerUser}>
         <label htmlFor="name">
           Your full name
-          <input
-            type="text"
-            id="name"
-          name="name"
-          />
+          <input type="text" id="name" name="name" />
         </label>
         <label htmlFor="email">
           Your email address
-          <input
-            type="email"
-            id="email"
-            name="email"
-          />
+          <input type="email" id="email" name="email" />
         </label>
         <label htmlFor="password">
           A secret password
-          <input
-            type="password"
-            id="password"
-            name="password"
-          />
+          <input type="password" id="password" name="password" />
         </label>
-        <button type="submit" >
-          Create a Echo account
-        </button>
+        <button type="submit">Create a Echo account</button>
       </form>
-      
     </div>
   );
 }

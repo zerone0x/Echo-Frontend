@@ -21,22 +21,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const headersList = headers()
-  const userId = headersList.get('x-user-id')
-  const userName= headersList.get('x-user-name')
-  console.log('########');
-  
-  console.log('User ID:', userId)
-  console.log('User Email:', userName)
-  // const {
-  //   data: feeds,
-  //   error,
-  //   isLoading,
-  //   isError,
-  // } = useQuery(["AllFeeds"], () => GetAllFeeds());
+  const headersList = headers();
+  const userId = headersList.get("x-user-id");
+  const userName = headersList.get("x-user-name");
+  console.log("########");
 
-  // if (isLoading) return <Loading />;
-  // if (isError) return <div>Error: {error}</div>;
+  console.log("User ID:", userId);
+  console.log("User Email:", userName);
 
   // it will not cache anything
   // noStore()
