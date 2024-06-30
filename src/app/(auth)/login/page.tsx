@@ -31,7 +31,10 @@ function Login() {
           Password
           <input type="password" id="password" name="password" required />
         </label>
-        <Button />
+        {/* <Button /> */}
+        <button type="submit" >
+        Let's go →
+        </button>
       </form>
     </div>
   );

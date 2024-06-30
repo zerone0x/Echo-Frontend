@@ -7,6 +7,7 @@ const client = axios.create({
   params: {
     language: "en-US",
   },
+  
 });
 
 export default client;

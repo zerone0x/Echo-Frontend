@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   console.log(request);
   let token = request.cookies.get("token")?.value;
   console.log("Token from cookie:", token);
-
+  
   if (token) {
     if (token.startsWith("s:")) {
       token = token.slice(2);
@@ -28,22 +28,29 @@ export async function middleware(request: NextRequest) {
   ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
-
   if (verifiedToken) {
-    const response = NextResponse.next();
-    response.headers.set("x-verified-token", JSON.stringify(verifiedToken));
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-user-id', verifiedToken.userId );
+    requestHeaders.set('x-user-name', verifiedToken.name);
+
+    const response = NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+
     return response;
   }
 
   return NextResponse.next();
-  // if(verifiedToken){
-  //   setAuthData(verifiedToken);
-  // }
 
-  // if (request.nextUrl.pathname.startsWith("/b")) {
-  // }
+
 }
 
 // export const config = {
-//   matcher: ['/home'],
+//   matcher: [
+//     '/((?!_next/static|_next/image|favicon.ico).*)',
+//   ],
 // };
+
+

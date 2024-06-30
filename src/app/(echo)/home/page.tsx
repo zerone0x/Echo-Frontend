@@ -11,6 +11,7 @@ import Spinner from "@/app/_components/Spinner";
 import AllFeedsList from "@/app/_components/AllFeedsList";
 import { unstable_noStore as noStore } from "next/cache";
 import SignOutButton from "@/app/_components/SignOutButton";
+import { headers } from "next/headers";
 
 // revalidate to update feeds in time
 export const revalidate = 300;
@@ -20,6 +21,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const headersList = headers()
+  const userId = headersList.get('x-user-id')
+  const userName= headersList.get('x-user-name')
+  console.log('########');
+  
+  console.log('User ID:', userId)
+  console.log('User Email:', userName)
   // const {
   //   data: feeds,
   //   error,
@@ -34,6 +42,7 @@ export default function Home() {
   // noStore()
   return (
     <div>
+      <h1>{userName}</h1>
       <Link href="/login">Login</Link>
       <Link href="/signup">Register</Link>
       <SignOutButton />
