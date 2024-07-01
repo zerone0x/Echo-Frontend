@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import {
+  CreateFeed,
   authUserLogin,
   authUserSignUp,
-  loginWithGoogle,
+  showCurrUser,
 } from "../_services/fetchDataAPI";
 
 export async function loginUser(formData) {
@@ -28,16 +29,18 @@ export async function registerUser(formData) {
   }
 }
 
-export async function googleLogin(formData) {
-  const user = await loginWithGoogle();
-  if (user) {
-    localStorage.setItem("username", user.name);
-    localStorage.setItem("userId", user.userId);
-    redirect("/home");
-  }
-}
+// export async function PublishFeed(formData) {
+//   const content = formData.get("content");
+
+//   if (authData) {
+//     const feed = await CreateFeed(content, authData.userId);
+//     if (feed) {
+//       redirect(`/${authData.name}/status/${feed._id}`);
+//     }
+//   }
+// }
 
 export async function logOutUser() {
-  localStorage.removeItem("username");
-  localStorage.removeItem("userId");
+  // localStorage.removeItem("username");
+  // localStorage.removeItem("userId");
 }

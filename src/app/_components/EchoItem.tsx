@@ -5,13 +5,15 @@ import Image from "next/image";
 import { FormatTime } from "@/app/_utils/FormatData";
 import TextExpander from "./TextExpander";
 import Link from "next/link";
+import UserCard from "./UserCard";
 
 function EchoItem({ feed }) {
-  const name = feed?.user?.name;
+  const user = feed?.user;
   const content = feed?.content;
   const createdAt = feed?.createdAt;
-  const ProfileImage = feed?.user?.ProfileImage;
-  const userName = feed?.user?.name;
+  const name = user?.name;
+  const ProfileImage = user?.ProfileImage;
+
   const reactItem = [
     {
       name: "Like",
@@ -36,28 +38,27 @@ function EchoItem({ feed }) {
   ];
   return (
     feed && (
-      <Link href={`/${userName}/status/${feed._id}`}>
-        <div>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              {ProfileImage && (
-                <Link href={`/${userName}`}>
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_ROOT_URL}${ProfileImage}`}
-                    alt="user profile"
-                    width={50}
-                    height={50}
-                  />
-                </Link>
-              )}
-              <span>{name}</span>
-            </div>
-            <span>{FormatTime(createdAt)}</span>
+      <Link href={`/${name}/status/${feed._id}`}>
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:bg-gray-100">
+          <div className="p-4 flex justify-between items-center">
+            {ProfileImage && (
+              <UserCard ProfileImage={ProfileImage} name={name} />
+            )}
+            <span className="text-sm text-gray-500">
+              {FormatTime(createdAt)}
+            </span>
           </div>
-          <TextExpander>{content}</TextExpander>
-          <div>
+          <div className="px-4 py-2">
+            <TextExpander>{content}</TextExpander>
+          </div>
+          <div className="px-4 py-2 flex space-x-2">
             {reactItem.map((item, index) => (
-              <button key={index}> {item.icon} </button>
+              <button
+                key={index}
+                className="text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                {item.icon}
+              </button>
             ))}
           </div>
         </div>

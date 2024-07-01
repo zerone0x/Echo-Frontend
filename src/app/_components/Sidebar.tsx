@@ -7,6 +7,7 @@ import { IoBookmarkSharp, IoEarth } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import logo from "../../../public/logo.png";
 import { usePathname } from "next/navigation";
+import SignOutButton from "./SignOutButton";
 // https://react-icons.github.io/react-icons/search/#q=
 
 const navLinks = [
@@ -72,6 +73,7 @@ function Sidebar() {
           </li>
         ))}
       </ul>
+      <SignOutButton />
     </nav>
   );
 }

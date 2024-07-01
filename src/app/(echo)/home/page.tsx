@@ -21,22 +21,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const headersList = headers();
-  const userId = headersList.get("x-user-id");
-  const userName = headersList.get("x-user-name");
-  console.log("########");
-
-  console.log("User ID:", userId);
-  console.log("User Email:", userName);
-
   // it will not cache anything
-  // noStore()
+  // noStore();
   return (
     <div>
-      <h1>{userName}</h1>
-      <Link href="/login">Login</Link>
-      <Link href="/signup">Register</Link>
-      <SignOutButton />
       <Suspense fallback={<Spinner />}>
         <AllFeedsList />
       </Suspense>

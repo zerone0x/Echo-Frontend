@@ -3,9 +3,8 @@ import type { NextRequest } from "next/server";
 import { verifyJwtToken } from "./app/_utils/auth";
 
 export async function middleware(request: NextRequest) {
-  console.log(request);
   let token = request.cookies.get("token")?.value;
-  console.log("Token from cookie:", token);
+  // console.log("Token from cookie:", token);
 
   if (token) {
     if (token.startsWith("s:")) {
