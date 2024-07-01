@@ -1,10 +1,23 @@
-import { GetAllFeeds } from "@/app/_services/fetchDataAPI";
-import FeedList from "./FeedList";
+"use client";
+import { useQuery } from "react-query";
+import EchoItem from "./EchoItem";
 
-async function AllFeedsList() {
-  const feeds = await GetAllFeeds();
-  if (!feeds.length) return null;
-  return <FeedList feeds={feeds} />;
+import { GetAllFeeds } from "../_services/fetchDataAPI";
+import Loading from "../loading";
+
+function AllFeedsList() {
+  const { data, error, isLoading } = useQuery("feeds", GetAllFeeds);
+
+  if (isLoading) return <Loading />;
+  if (error) return <div>Error loading feeds.</div>;
+
+  return (
+    <div>
+      {data.map((feed) => (
+        <EchoItem key={feed.id} feed={feed} />
+      ))}
+    </div>
+  );
 }
 
 export default AllFeedsList;

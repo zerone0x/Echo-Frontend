@@ -16,10 +16,6 @@ function EchoItem({ feed }) {
 
   const reactItem = [
     {
-      name: "Like",
-      icon: <FaStar />,
-    },
-    {
       name: "Repost",
       icon: <BiRepost />,
     },
@@ -41,9 +37,7 @@ function EchoItem({ feed }) {
       <Link href={`/${name}/status/${feed._id}`}>
         <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:bg-gray-100">
           <div className="p-4 flex justify-between items-center">
-            {ProfileImage && (
-              <UserCard user={user} />
-            )}
+           <UserCard user={user} />
             <span className="text-sm text-gray-500">
               {FormatTime(createdAt)}
             </span>

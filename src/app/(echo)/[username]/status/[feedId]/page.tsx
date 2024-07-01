@@ -1,3 +1,4 @@
+import BackBtn from "@/app/_components/BackBtn";
 import EchoItem from "@/app/_components/EchoItem";
 import Spinner from "@/app/_components/Spinner";
 import { GetAllFeeds, GetFeedById } from "@/app/_services/fetchDataAPI";
@@ -26,7 +27,7 @@ async function page({ params }) {
   return (
     <>
       <h3>Post</h3>
-      <button>Back</button>
+      <BackBtn />
       {feed && (
         <Suspense fallback={<Spinner />}>
           <EchoItem feed={feed} />

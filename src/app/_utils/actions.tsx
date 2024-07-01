@@ -5,14 +5,15 @@ import {
   authUserSignUp,
   showCurrUser,
 } from "../_services/fetchDataAPI";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export async function loginUser(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
   const user = await authUserLogin(email, password);
   if (user) {
-    localStorage.setItem("username", user.name);
-    localStorage.setItem("userId", user._id);
+    toast.success("Message posted successfully!");
     redirect("/home");
   }
 }
@@ -28,17 +29,6 @@ export async function registerUser(formData) {
     redirect("/home");
   }
 }
-
-// export async function PublishFeed(formData) {
-//   const content = formData.get("content");
-
-//   if (authData) {
-//     const feed = await CreateFeed(content, authData.userId);
-//     if (feed) {
-//       redirect(`/${authData.name}/status/${feed._id}`);
-//     }
-//   }
-// }
 
 export async function logOutUser() {
   // localStorage.removeItem("username");

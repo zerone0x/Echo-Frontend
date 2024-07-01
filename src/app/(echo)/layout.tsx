@@ -17,13 +17,13 @@ export default function EchoLayout({
 }) {
   return (
     <div className={` flex h-screen justify-between`}>
-      {/* <ReactQueryProvider> */}
-      <AuthProvider>
-        <LeftBar />
-        <main className="flex-1">{children}</main>
-        <Sidebar />
-      </AuthProvider>
-      {/* </ReactQueryProvider> */}
+      <ReactQueryProvider>
+        <AuthProvider>
+          <LeftBar />
+          <main className="flex-1">{children}</main>
+          <Sidebar />
+        </AuthProvider>
+      </ReactQueryProvider>
     </div>
   );
 }
