@@ -31,7 +31,7 @@ async function Publish() {
   };
   return (
     <div>
-      <UserCard ProfileImage={ProfileImage} name={username} />
+      <UserCard user={authData} />
       <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
         <input
           className="w-full h-10"

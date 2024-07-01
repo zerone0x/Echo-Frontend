@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function UserCard({ ProfileImage, name }) {
-  // const name = user?.name;
-  // const ProfileImage = user?.ProfileImage;
+function UserCard({ user }) {
+  const name = user?.name;
+  const ProfileImage = user?.ProfileImage;
   // console.log(user);
-  console.log("#######", ProfileImage);
 
   return (
     <div className="flex items-center space-x-3">

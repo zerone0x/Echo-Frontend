@@ -42,7 +42,7 @@ function EchoItem({ feed }) {
         <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:bg-gray-100">
           <div className="p-4 flex justify-between items-center">
             {ProfileImage && (
-              <UserCard ProfileImage={ProfileImage} name={name} />
+              <UserCard user={user} />
             )}
             <span className="text-sm text-gray-500">
               {FormatTime(createdAt)}
