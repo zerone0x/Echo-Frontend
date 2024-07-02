@@ -1,65 +1,33 @@
-import { FaBookmark, FaReply, FaStar } from "react-icons/fa";
-import { BiRepost } from "react-icons/bi";
-import { IoIosMore } from "react-icons/io";
-import Image from "next/image";
+"use client";
 import { FormatTime } from "@/app/_utils/FormatData";
 import TextExpander from "./TextExpander";
 import Link from "next/link";
+import UserCard from "./UserCard";
+import { useAuth } from "../_utils/getLogin";
+import Reaction from "./Reaction";
 
 function EchoItem({ feed }) {
-  const name = feed?.user?.name;
+  const user = feed?.user;
   const content = feed?.content;
   const createdAt = feed?.createdAt;
-  const ProfileImage = feed?.user?.ProfileImage;
-  const userName = feed?.user?.name;
-  const reactItem = [
-    {
-      name: "Like",
-      icon: <FaStar />,
-    },
-    {
-      name: "Repost",
-      icon: <BiRepost />,
-    },
-    {
-      name: "Favorite",
-      icon: <FaStar />,
-    },
-    {
-      name: "Bookmark",
-      icon: <FaBookmark />,
-    },
-    {
-      name: "More",
-      icon: <IoIosMore />,
-    },
-  ];
+  const name = user?.name;
+  const { authData, setAuthData, currentUserId } = useAuth();
+  const feedId = feed?.id;
+
   return (
     feed && (
-      <Link href={`/${userName}/status/${feed._id}`}>
-        <div>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              {ProfileImage && (
-                <Link href={`/${userName}`}>
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_ROOT_URL}${ProfileImage}`}
-                    alt="user profile"
-                    width={50}
-                    height={50}
-                  />
-                </Link>
-              )}
-              <span>{name}</span>
-            </div>
-            <span>{FormatTime(createdAt)}</span>
+      <Link href={`/${name}/status/${feedId}`}>
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:bg-gray-100">
+          <div className="p-4 flex justify-between items-center">
+            <UserCard user={user} />
+            <span className="text-sm text-gray-500">
+              {FormatTime(createdAt)}
+            </span>
           </div>
-          <TextExpander>{content}</TextExpander>
-          <div>
-            {reactItem.map((item, index) => (
-              <button key={index}> {item.icon} </button>
-            ))}
+          <div className="px-4 py-2">
+            <TextExpander>{content}</TextExpander>
           </div>
+          <Reaction feedId={feedId} />
         </div>
       </Link>
     )

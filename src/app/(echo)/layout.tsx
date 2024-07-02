@@ -16,9 +16,7 @@ export default function EchoLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={`${lato.className} bg-[#BEFAF8] flex h-screen justify-between`}
-    >
+    <div className={` flex h-screen justify-between`}>
       <ReactQueryProvider>
         <AuthProvider>
           <LeftBar />

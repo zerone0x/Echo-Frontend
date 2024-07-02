@@ -1,78 +1,96 @@
 "use client";
-import { useForm } from "react-hook-form";
-import Picker from "emoji-picker-react";
 import { useState } from "react";
 import { MdEmojiEmotions } from "react-icons/md";
 import { GoPaperclip } from "react-icons/go";
-// import { useAuth } from "@/_data/getLogin";
-import Image from "next/image";
-import { useQuery } from "react-query";
-// import { showCurrUser } from "@/_services/fetchDataAPI";
-import Loading from "@/app/loading";
+import { useAuth } from "../_utils/getLogin";
+import { CreateFeed } from "../_services/fetchDataAPI";
+import UserCard from "./UserCard";
+import EmojiPicker from "./EmojiPicker";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useQueryClient } from "react-query";
+import { useEffect, useRef } from "react";
 
-async function Publish() {
-  // const { authData, setAuthData } = useAuth();
-  // const ProfileImage = authData?.ProfileImage;
-  // const UserName = authData?.name;
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm();
-  const [chosenEmoji, setChosenEmoji] = useState(null);
+function Publish() {
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
+  const { authData } = useAuth();
+  const queryClient = useQueryClient();
+  const emojiPickerRef = useRef(null); // 用于引用 EmojiPicker 组件的 ref
 
-  const AppendEmoji = (event, emojiObject) => {
-    const newText = content + event.emoji;
-    setContent(newText);
-    setValue("content", newText);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userId = authData?.userId;
+    await CreateFeed(content, userId);
+    queryClient.invalidateQueries("feeds");
+    toast.success("Echo posted successfully!");
+    setContent("");
+    setShowPick(false);
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // 如果有 API 调用，可以在这里添加
-    // CreateFeed(data).then(...)
-  };
   const togglePicker = () => {
     setShowPick(!showPick);
   };
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target)
+      ) {
+        setShowPick(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [emojiPickerRef]);
+
   return (
     <div>
-      {/* <span>{CurrUserData.name}</span> */}
-      {/* <span>{UserName}</span> */}
-      {/* <Image
-            src={`${process.env.NEXT_PUBLIC_ROOT_URL}${ProfileImage}`}
-            alt="user profile"
-            width={50}
-            height={50}
-          /> */}
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-        <input
-          className="w-full h-10"
-          {...register("content", { required: "This field is required" })}
-          type="text"
+      <ToastContainer />
+      <UserCard user={authData} />
+      <form onSubmit={handleSubmit} className="flex flex-col items-center p-4">
+        <textarea
+          className="w-full h-16 px-4 py-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
           placeholder="What's on your mind?"
           value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-            setValue("content", e.target.value, { shouldValidate: true });
-          }}
+          onChange={(e) => setContent(e.target.value)}
+          onKeyDown={handleKeyDown}
+          rows={4}
         />
-
-        <div className="flex flex-row">
-          <button onClick={togglePicker}>
+        <div className="flex flex-row space-x-2 mt-3">
+          <button
+            type="button"
+            onClick={togglePicker}
+            className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-full"
+          >
             <MdEmojiEmotions />
           </button>
-          <button>
+          <button
+            type="button"
+            className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-full"
+          >
             <GoPaperclip />
           </button>
         </div>
-        {showPick && <Picker onEmojiClick={AppendEmoji} />}
-        {errors.content && <span>{errors.content.message}</span>}
-        <button type="submit" className="">
+        {showPick && (
+          <div ref={emojiPickerRef}>
+            <EmojiPicker content={content} setContent={setContent} />
+          </div>
+        )}
+        <button
+          type="submit"
+          className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        >
           Echo!
         </button>
       </form>
