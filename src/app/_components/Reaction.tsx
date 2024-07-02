@@ -3,7 +3,13 @@ import { useAuth } from "../_utils/getLogin";
 import { FaBookmark, FaStar } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { IoIosMore } from "react-icons/io";
-import { BookMarkFeed } from "../_services/fetchDataAPI";
+import {
+  BookMarkFeed,
+  DeleteFeedById,
+  LikeFeed,
+} from "../_services/fetchDataAPI";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Reaction({ feedId }) {
   const { currentUserId } = useAuth();
@@ -12,6 +18,24 @@ function Reaction({ feedId }) {
   async function bookmarkClick() {
     await BookMarkFeed(feedId, currentUserId);
     queryClient.invalidateQueries("bookmark");
+    toast.success("Echo bookmarked successfully!");
+  }
+
+  async function likeClick() {
+    await LikeFeed(feedId, currentUserId);
+    queryClient.invalidateQueries("likes");
+    toast.success("Echo liked successfully!");
+  }
+  async function delFeed() {
+    await DeleteFeedById(feedId);
+    // queryClient.invalidateQueries("feeds");
+    // queryClient.invalidateQueries("bookmark");
+    // queryClient.invalidateQueries("likes");
+    queryClient.invalidateQueries({
+      predicate: (query) =>
+        ["feeds", "bookmark", "likes"].includes(query.queryKey[0]),
+    });
+    toast.success("Echo deleted successfully!");
   }
 
   const reactItems = [
@@ -22,6 +46,7 @@ function Reaction({ feedId }) {
     {
       name: "Favorite",
       icon: <FaStar />,
+      action: likeClick,
     },
     {
       name: "Bookmark",
@@ -31,11 +56,13 @@ function Reaction({ feedId }) {
     {
       name: "More",
       icon: <IoIosMore />,
+      action: delFeed,
     },
   ];
 
   return (
     <div className="px-4 py-2 flex space-x-2 justify-start gap-10">
+      <ToastContainer />
       {reactItems.map((item) => (
         <button
           key={item.name}

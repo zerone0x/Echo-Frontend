@@ -3,7 +3,6 @@ import {
   CreateFeed,
   authUserLogin,
   authUserSignUp,
-  bookmarkFeeds,
   showCurrUser,
 } from "../_services/fetchDataAPI";
 import { ToastContainer, toast } from "react-toastify";
@@ -29,10 +28,6 @@ export async function registerUser(formData) {
     localStorage.setItem("userId", user._id);
     redirect("/home");
   }
-}
-
-export async function bookmarkAction(currentUserId, feedId) {
-  await bookmarkFeeds(currentUserId, feedId);
 }
 
 export async function logOutUser() {

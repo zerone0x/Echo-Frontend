@@ -2,10 +2,8 @@
 import EchoItem from "@/app/_components/EchoItem";
 import { getAllBookMark } from "@/app/_services/fetchDataAPI";
 import { useAuth } from "@/app/_utils/getLogin";
-
 import Head from "next/head";
 import { useQuery } from "react-query";
-import { BsDatabaseDash } from "react-icons/bs";
 import Loading from "@/app/loading";
 
 function BookmarkPage() {
@@ -32,7 +30,6 @@ function BookmarkPage() {
         <div>
           {data.map((item, index) => (
             <EchoItem key={item?.feed._id} feed={item?.feed} />
-            // <h1>{item.id}</h1>
           ))}
         </div>
       ) : (

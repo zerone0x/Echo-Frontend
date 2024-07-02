@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
     (await verifyJwtToken(token).catch((err) => {
       console.log(err);
     }));
-  console.log(verifiedToken);
+  // console.log(verifiedToken);
 
   if (verifiedToken) {
     const requestHeaders = new Headers(request.headers);
