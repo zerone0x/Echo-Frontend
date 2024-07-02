@@ -1,15 +1,16 @@
-"use server";
-import React from "react";
+"use client";
 import { AddFollow } from "@/app/_services/fetchDataAPI";
+import { useQueryClient } from "react-query";
 
 function FollowBtn({ username }) {
+  const queryClient = useQueryClient();
   const handleFollow = async () => {
     try {
       await AddFollow(username);
-      alert("Followed successfully!");
+      queryClient.invalidateQueries("following");
+      queryClient.invalidateQueries("followers");
     } catch (error) {
-      console.error("Failed to follow:", error);
-      alert("Failed to follow!");
+      console.log(error);
     }
   };
 
