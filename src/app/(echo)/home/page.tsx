@@ -1,5 +1,4 @@
 // "use client";
-import EchoItem from "@/app/_components/EchoItem";
 import Sidebar from "@/app/_components/Sidebar";
 import { GetAllFeeds } from "@/app/_services/fetchDataAPI";
 import Link from "next/link";

@@ -4,15 +4,18 @@ import getCurrentUser from "./getCurrentUser";
 const AuthContext = createContext<AuthContextType>({
   authData: {},
   setAuthData: () => {},
+  currentUserId: "",
 });
 
 interface AuthContextType {
   authData: any;
   setAuthData: (data: any) => void;
+  currentUserId: string;
 }
 
 export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({});
+  const currentUserId = authData._id;
   useEffect(() => {
     async function fetchUser() {
       const userData = await getCurrentUser();
@@ -22,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, []);
   return (
-    <AuthContext.Provider value={{ authData, setAuthData }}>
+    <AuthContext.Provider value={{ authData, setAuthData, currentUserId }}>
       {children}
     </AuthContext.Provider>
   );

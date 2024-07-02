@@ -9,17 +9,21 @@ import EmojiPicker from "./EmojiPicker";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQueryClient } from "react-query";
+import { useEffect, useRef } from "react";
+
 function Publish() {
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
   const { authData } = useAuth();
   const queryClient = useQueryClient();
+  const emojiPickerRef = useRef(null); // 用于引用 EmojiPicker 组件的 ref
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userId = authData?.userId;
     await CreateFeed(content, userId);
     queryClient.invalidateQueries("feeds");
-    toast.success("Message posted successfully!");
+    toast.success("Echo posted successfully!");
     setContent("");
     setShowPick(false);
   };
@@ -27,12 +31,28 @@ function Publish() {
   const togglePicker = () => {
     setShowPick(!showPick);
   };
+
   function handleKeyDown(e) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
   }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target)
+      ) {
+        setShowPick(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [emojiPickerRef]);
 
   return (
     <div>
@@ -62,7 +82,11 @@ function Publish() {
             <GoPaperclip />
           </button>
         </div>
-        {showPick && <EmojiPicker content={content} setContent={setContent} />}
+        {showPick && (
+          <div ref={emojiPickerRef}>
+            <EmojiPicker content={content} setContent={setContent} />
+          </div>
+        )}
         <button
           type="submit"
           className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"

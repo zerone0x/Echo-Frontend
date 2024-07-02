@@ -14,7 +14,7 @@ function AllFeedsList() {
   return (
     <div>
       {data.map((feed) => (
-        <EchoItem key={feed.id} feed={feed} />
+        <EchoItem key={feed.id} feed={feed} user={feed?.user} />
       ))}
     </div>
   );

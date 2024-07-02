@@ -23,7 +23,7 @@ export const logOut = async () => {
   return data.results;
 };
 
-export const CreateFeed = async (content, user) => {
+export const CreateFeed = async (content: string, user: string) => {
   const { data } = await client.post("feeds", {
     content: content,
     user: user,
@@ -45,6 +45,21 @@ export const GetFeedById = async (feedId: string) => {
   const { data } = await client.get(`feeds/${feedId}`);
   // console.log(data);
 
+  return data.results;
+};
+
+export const BookMarkFeed = async (feedId: string, user: string) => {
+  const { data } = await client.post(`bookmark/booked`, {
+    feedId: feedId,
+    user: user,
+  });
+  return data.results;
+};
+
+export const getAllBookMark = async (user: string) => {
+  const { data } = await client.get(`bookmark/getAllBookMark`, {
+    user: user,
+  });
   return data.results;
 };
 
