@@ -14,14 +14,6 @@ export async function generateMetadata({ params }) {
   return { title: `${feed?.user?.name}: "${feedContent}"` };
 }
 
-// export async function generateStaticParams() {
-//   const feeds = await GetAllFeeds();
-//   const paths = feeds.map((feed) => ({
-//     params: { feedId: String(feed.id) },
-//   }));
-//   return paths;
-// }
-
 async function page({ params }) {
   const feed = await GetFeedById(params.feedId);
   return (

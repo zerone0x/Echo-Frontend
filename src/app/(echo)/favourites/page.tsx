@@ -5,6 +5,9 @@ import { useAuth } from "@/app/_utils/getLogin";
 import Head from "next/head";
 import { useQuery } from "react-query";
 import Loading from "@/app/loading";
+import Header from "@/app/_components/Header";
+import { Suspense } from "react";
+import Spinner from "@/app/_components/Spinner";
 
 function FavoritePage() {
   const { currentUserId } = useAuth();
@@ -22,19 +25,18 @@ function FavoritePage() {
 
   return (
     <div>
-      <Head>
-        <title>Favorite</title>
-      </Head>
-      <h1>Favorite</h1>
-      {data && data.length > 0 ? (
-        <div>
-          {data.map((item, index) => (
-            <EchoItem key={item?.feed._id} feed={item?.feed} />
-          ))}
-        </div>
-      ) : (
-        <div>No favorited Echos available.</div>
-      )}
+      <Header title="Favorite" />
+      <Suspense fallback={<Spinner />}>
+        {data && data.length > 0 ? (
+          <div>
+            {data.map((item, index) => (
+              <EchoItem key={item?.feed._id} feed={item?.feed} />
+            ))}
+          </div>
+        ) : (
+          <div>No favorited Echos available.</div>
+        )}
+      </Suspense>
     </div>
   );
 }

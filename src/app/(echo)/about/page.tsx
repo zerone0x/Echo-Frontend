@@ -1,5 +1,11 @@
+import Header from "@/app/_components/Header";
+
 function page() {
-  return <p>about</p>;
+  return (
+    <>
+      <Header title="About" />
+    </>
+  );
 }
 
 export default page;

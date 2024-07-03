@@ -50,8 +50,9 @@ export const CreateFeed = async (content: string, user: string) => {
   return data.results;
 };
 
-export const GetAllFeeds = async () => {
-  const { data } = await client.get("feeds");
+export const GetAllFeeds = async (cursor: string | null) => {
+  const url = cursor ? `feeds?cursor=${cursor}` : "feeds";
+  const { data } = await client.get(url);
   return data.results;
 };
 

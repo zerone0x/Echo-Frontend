@@ -11,6 +11,7 @@ import AllFeedsList from "@/app/_components/AllFeedsList";
 import { unstable_noStore as noStore } from "next/cache";
 import SignOutButton from "@/app/_components/SignOutButton";
 import { headers } from "next/headers";
+import Header from "@/app/_components/Header";
 
 // revalidate to update feeds in time
 export const revalidate = 300;
@@ -24,9 +25,12 @@ export default function Home() {
   // noStore();
   return (
     <div>
-      <Suspense fallback={<Spinner />}>
-        <AllFeedsList />
-      </Suspense>
+      <Header title="Echo" />
+      <div className="overflow-auto flex-1 mt-16">
+        <Suspense fallback={<Spinner />}>
+          <AllFeedsList />
+        </Suspense>
+      </div>
     </div>
   );
 }

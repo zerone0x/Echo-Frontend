@@ -1,3 +1,4 @@
+import Header from "@/app/_components/Header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,7 +6,11 @@ export const metadata: Metadata = {
 };
 
 function page() {
-  return <p>notification</p>;
+  return (
+    <>
+      <Header title="Notification" />
+    </>
+  );
 }
 
 export default page;
