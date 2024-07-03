@@ -16,8 +16,8 @@ function EchoItem({ feed }) {
 
   return (
     feed && (
-      <Link href={`/${name}/status/${feedId}`}>
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <Link href={`/${name}/status/${feedId}`}>
           <div className="p-4 flex justify-between items-center">
             <UserCard user={user} />
             <span className="text-sm text-gray-500">
@@ -27,9 +27,9 @@ function EchoItem({ feed }) {
           <div className="px-4 py-2">
             <TextExpander>{content}</TextExpander>
           </div>
-          <Reaction feedId={feedId} />
-        </div>
-      </Link>
+        </Link>
+        <Reaction feedId={feedId} />
+      </div>
     )
   );
 }

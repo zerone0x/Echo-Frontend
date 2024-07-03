@@ -8,6 +8,7 @@ import Loading from "@/app/loading";
 import Header from "@/app/_components/Header";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
+import Content from "@/app/_components/Content";
 
 function FavoritePage() {
   const { currentUserId } = useAuth();
@@ -26,17 +27,19 @@ function FavoritePage() {
   return (
     <div>
       <Header title="Favorite" />
-      <Suspense fallback={<Spinner />}>
-        {data && data.length > 0 ? (
-          <div>
-            {data.map((item, index) => (
-              <EchoItem key={item?.feed._id} feed={item?.feed} />
-            ))}
-          </div>
-        ) : (
-          <div>No favorited Echos available.</div>
-        )}
-      </Suspense>
+      <Content>
+        <Suspense fallback={<Spinner />}>
+          {data && data.length > 0 ? (
+            <div>
+              {data.map((item, index) => (
+                <EchoItem key={item?.feed._id} feed={item?.feed} />
+              ))}
+            </div>
+          ) : (
+            <div>No favorited Echos available.</div>
+          )}
+        </Suspense>
+      </Content>
     </div>
   );
 }

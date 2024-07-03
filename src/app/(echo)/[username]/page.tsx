@@ -1,3 +1,5 @@
+import BackBtn from "@/app/_components/BackBtn";
+import Content from "@/app/_components/Content";
 import FeedList from "@/app/_components/FeedList";
 import FollowBtn from "@/app/_components/FollowBtn";
 import FollowDetail from "@/app/_components/FollowDetail";
@@ -14,10 +16,18 @@ async function page({ params }) {
 
   return (
     <div>
-      <UserCard user={user} />
-      <FollowDetail username={username} feedLen={feedLen} />
-      <FollowBtn username={username} />
-      <FeedList feeds={feeds} />
+      <header className="fixed top-0 w-4/6 md:w-3/5 lg:w-4/6 bg-blue-500 text-white p-4 z-10  ">
+        <BackBtn />
+      </header>
+      <Content>
+        <div className="flex flex-row  items-center gap-4">
+          <UserCard user={user} />
+          <FollowBtn username={username} />
+        </div>
+        <FollowDetail username={username} feedLen={feedLen} />
+
+        <FeedList feeds={feeds} />
+      </Content>
     </div>
   );
 }

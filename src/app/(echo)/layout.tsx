@@ -9,7 +9,6 @@ export default function EchoLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // console.log(children);
   return (
     <div className="flex h-screen">
       <ReactQueryProvider>

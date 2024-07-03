@@ -28,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.className} bg-[#BEFAF8] `}>{children}</body>
+      <body className={`${lato.className} bg-gray-200 ml-32 mr-32`}>
+        {children}
+      </body>
     </html>
   );
 }

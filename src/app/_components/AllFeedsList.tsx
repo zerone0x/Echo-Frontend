@@ -2,39 +2,22 @@
 import { useQuery } from "react-query";
 import { GetAllFeeds } from "../_services/fetchDataAPI";
 import React, { Fragment, useEffect } from "react";
-import { useInfiniteQuery } from "react-query";
-import { useInView } from "react-intersection-observer";
 import Loading from "../loading";
 import EchoItem from "./EchoItem";
 import SpinnerMini from "./SpinnerMini";
+import useInfiniteScroll from "./useInfiniteScroll";
 
 function AllFeedsList() {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useInfiniteQuery(
-      "feeds",
-      ({ pageParam = null }) => GetAllFeeds(pageParam),
-      {
-        getNextPageParam: (lastPage) => {
-          console.log("Last page data:", lastPage.cursor);
-          return lastPage.cursor;
-        },
-      },
-    );
+  const fetchData = ({ pageParam = null }) => GetAllFeeds(pageParam);
+  const getNextPageParam = (lastPage) => lastPage.cursor;
 
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView && hasNextPage) {
-      fetchNextPage();
-    }
-  }, [inView, hasNextPage, fetchNextPage]);
+  const { data, isFetchingNextPage, status, ref } = useInfiniteScroll(
+    fetchData,
+    getNextPageParam,
+  );
 
   if (status === "loading") return <Loading />;
   if (status === "error") return <div>Error loading feeds.</div>;
-  console.log(data);
 
   return (
     <div>

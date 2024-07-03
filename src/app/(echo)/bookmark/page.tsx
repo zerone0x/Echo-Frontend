@@ -8,6 +8,7 @@ import Loading from "@/app/loading";
 import Header from "@/app/_components/Header";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
+import Content from "@/app/_components/Content";
 
 function BookmarkPage() {
   const { currentUserId } = useAuth();
@@ -26,17 +27,19 @@ function BookmarkPage() {
   return (
     <div>
       <Header title="Bookmark" />
-      <Suspense fallback={<Spinner />}>
-        {data && data.length > 0 ? (
-          <div>
-            {data.map((item, index) => (
-              <EchoItem key={item?.feed._id} feed={item?.feed} />
-            ))}
-          </div>
-        ) : (
-          <div>No bookmarks available.</div>
-        )}
-      </Suspense>
+      <Content>
+        <Suspense fallback={<Spinner />}>
+          {data && data.length > 0 ? (
+            <div>
+              {data.map((item, index) => (
+                <EchoItem key={item?.feed._id} feed={item?.feed} />
+              ))}
+            </div>
+          ) : (
+            <div>No bookmarks available.</div>
+          )}
+        </Suspense>
+      </Content>
     </div>
   );
 }

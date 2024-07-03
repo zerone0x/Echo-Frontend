@@ -16,52 +16,63 @@ function Reaction({ feedId }) {
   const { currentUserId } = useAuth();
   const queryClient = useQueryClient();
 
-  async function bookmarkClick() {
+  async function bookmarkClick(event) {
+    // event.stopPropagation();
+    event.preventDefault();
     await BookMarkFeed(feedId, currentUserId);
     queryClient.invalidateQueries("bookmark");
-    toast.success("Echo bookmarked successfully!");
+    // toast.success("Echo bookmarked successfully!");
   }
 
-  async function likeClick() {
+  async function likeClick(event) {
+    event.stopPropagation();
+    event.preventDefault();
     await LikeFeed(feedId, currentUserId);
     queryClient.invalidateQueries("likes");
     toast.success("Echo liked successfully!");
   }
-  async function delFeed() {
+  async function delFeed(event) {
+    event.stopPropagation();
+    event.preventDefault();
     await DeleteFeedById(feedId);
-    // queryClient.invalidateQueries("feeds");
-    // queryClient.invalidateQueries("bookmark");
-    // queryClient.invalidateQueries("likes");
+    queryClient.invalidateQueries("feeds");
+    queryClient.invalidateQueries("bookmark");
+    queryClient.invalidateQueries("likes");
     queryClient.invalidateQueries({
       predicate: (query) =>
         ["feeds", "bookmark", "likes"].includes(query.queryKey[0]),
     });
-    toast.success("Echo deleted successfully!");
+    // toast.success("Echo deleted successfully!");
   }
 
   const reactItems = [
     {
       name: "Reply",
       icon: <LuReply />,
+      color: "text-green-500",
     },
     {
       name: "Repost",
       icon: <BiRepost />,
+      color: "text-green-500",
     },
     {
       name: "Favorite",
       icon: <FaStar />,
       action: likeClick,
+      color: "text-yellow-500",
     },
     {
       name: "Bookmark",
       icon: <FaBookmark />,
       action: bookmarkClick,
+      color: "text-red-500",
     },
     {
       name: "More",
       icon: <IoIosMore />,
       action: delFeed,
+      color: "text-yellow-500",
     },
   ];
 
@@ -71,11 +82,12 @@ function Reaction({ feedId }) {
       {reactItems.map((item) => (
         <button
           key={item.name}
-          className="text-gray-500 hover:text-gray-700 focus:outline-none"
-          onClick={() => item.action && item.action()} // TODO:check later
+          className={`text-gray-500 hover:text-gray-700 focus:outline-none`}
+          onClick={(e) => item.action && item.action(e)} // TODO:check later
           aria-label={item.name}
         >
-          {item.icon}
+          <span className={item.color}>{item.icon}</span>
+          {/* {item.icon} */}
         </button>
       ))}
     </div>

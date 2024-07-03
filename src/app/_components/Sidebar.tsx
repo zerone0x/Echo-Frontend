@@ -17,17 +17,17 @@ const navLinks = [
     icon: <FaHome />,
   },
   {
-    name: "Notifications",
+    name: "Notification",
     href: "/notification",
     icon: <IoIosNotifications />,
   },
+  // {
+  //   name: "Live feeds",
+  //   href: "/public",
+  //   icon: <IoEarth />,
+  // },
   {
-    name: "Live feeds",
-    href: "/public",
-    icon: <IoEarth />,
-  },
-  {
-    name: "Bookmarks",
+    name: "Bookmark",
     href: "/bookmark",
     icon: <IoBookmarkSharp />,
   },

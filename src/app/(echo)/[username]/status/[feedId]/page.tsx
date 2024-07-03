@@ -1,4 +1,5 @@
 import BackBtn from "@/app/_components/BackBtn";
+import Content from "@/app/_components/Content";
 import EchoItem from "@/app/_components/EchoItem";
 import Spinner from "@/app/_components/Spinner";
 import { GetAllFeeds, GetFeedById } from "@/app/_services/fetchDataAPI";
@@ -18,13 +19,16 @@ async function page({ params }) {
   const feed = await GetFeedById(params.feedId);
   return (
     <>
-      <h3>Post</h3>
-      <BackBtn />
-      {feed && (
-        <Suspense fallback={<Spinner />}>
-          <EchoItem feed={feed} />
-        </Suspense>
-      )}
+      <header className="fixed top-0 w-4/6 md:w-3/5 lg:w-4/6 bg-blue-500 text-white p-4 z-10  ">
+        <BackBtn />
+      </header>
+      <Content>
+        {feed && (
+          <Suspense fallback={<Spinner />}>
+            <EchoItem feed={feed} />
+          </Suspense>
+        )}
+      </Content>
     </>
   );
 }

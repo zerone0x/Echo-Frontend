@@ -1,3 +1,4 @@
+import Content from "@/app/_components/Content";
 import Header from "@/app/_components/Header";
 import { Metadata } from "next";
 
@@ -9,6 +10,9 @@ function page() {
   return (
     <>
       <Header title="Notification" />
+      <Content>
+        <Header title="Notification" />
+      </Content>
     </>
   );
 }
