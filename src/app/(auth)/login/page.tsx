@@ -4,19 +4,11 @@ import SignInButton from "@/app/_components/SignInButton";
 import { loginUser } from "@/app/_utils/actions";
 import { useFormStatus } from "react-dom";
 import { ToastContainer } from "react-toastify";
+import SubmitButton from "@/app/_components/SubmitButton";
 
 // export const metadata: Metadata = {
 //   title: "Login",
 // };
-
-function Button() {
-  const { pending } = useFormStatus();
-  return (
-    <button type="submit" disabled={pending}>
-      {pending ? "Loading..." : "Let's go →"}
-    </button>
-  );
-}
 
 function Login() {
   return (
@@ -33,7 +25,7 @@ function Login() {
           Password
           <input type="password" id="password" name="password" required />
         </label>
-        <Button />
+        <SubmitButton pendingLabel="Loading...">Let's go →</SubmitButton>
       </form>
     </div>
   );

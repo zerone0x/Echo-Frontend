@@ -3,6 +3,7 @@ import { useAuth } from "../_utils/getLogin";
 import { FaBookmark, FaStar } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { IoIosMore } from "react-icons/io";
+import { LuReply } from "react-icons/lu";
 import {
   BookMarkFeed,
   DeleteFeedById,
@@ -39,6 +40,10 @@ function Reaction({ feedId }) {
   }
 
   const reactItems = [
+    {
+      name: "Reply",
+      icon: <LuReply />,
+    },
     {
       name: "Repost",
       icon: <BiRepost />,

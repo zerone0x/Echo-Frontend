@@ -10,22 +10,25 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQueryClient } from "react-query";
 import { useEffect, useRef } from "react";
+import SubmitButton from "./SubmitButton";
+import { useRouter } from "next/navigation";
 
 function Publish() {
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
   const { authData } = useAuth();
   const queryClient = useQueryClient();
-  const emojiPickerRef = useRef(null); // 用于引用 EmojiPicker 组件的 ref
+  const emojiPickerRef = useRef(null);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userId = authData?.userId;
     await CreateFeed(content, userId);
     queryClient.invalidateQueries("feeds");
-    toast.success("Echo posted successfully!");
     setContent("");
     setShowPick(false);
+    router.push("/home");
   };
 
   const togglePicker = () => {
@@ -87,12 +90,7 @@ function Publish() {
             <EmojiPicker content={content} setContent={setContent} />
           </div>
         )}
-        <button
-          type="submit"
-          className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-        >
-          Echo!
-        </button>
+        <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
       </form>
     </div>
   );

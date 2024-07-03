@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Metadata } from "next";
 import SignInButton from "@/app/_components/SignInButton";
 import { registerUser } from "@/app/_utils/actions";
+import SubmitButton from "@/app/_components/SubmitButton";
 // export const metadata: Metadata = {
 //   title: "Sign up",
 // };
@@ -26,7 +27,9 @@ function SignUp() {
           A secret password
           <input type="password" id="password" name="password" />
         </label>
-        <button type="submit">Create a Echo account</button>
+        <SubmitButton pendingLabel="Loading...">
+          Create a Echo account
+        </SubmitButton>
       </form>
     </div>
   );

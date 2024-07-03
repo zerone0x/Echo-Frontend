@@ -7,13 +7,13 @@ export function FormatTime(time: string): string {
   const daysDiff = now.diff(inputTime, "days");
   const minutesDiff = now.diff(inputTime, "minutes");
   if (hoursDiff < 1) {
-    return `${minutesDiff} minutes ago`;
+    return `${minutesDiff}m`;
   }
   if (hoursDiff < 24) {
-    return `${hoursDiff} hours ago`;
+    return `${hoursDiff}h`;
   }
   if (daysDiff < 7) {
-    return `${daysDiff} days ago`;
+    return `${daysDiff}d`;
   }
   if (inputTime.year() === now.year()) {
     return inputTime.format("MMM DD");
