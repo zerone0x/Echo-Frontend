@@ -1,5 +1,4 @@
 "use client";
-
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { logOut } from "../_services/fetchDataAPI";
 import { useState } from "react";

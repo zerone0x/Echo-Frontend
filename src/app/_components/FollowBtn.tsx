@@ -29,9 +29,13 @@ function FollowBtn({ username }) {
     return <button>update detail</button>;
   }
   return follow ? (
-    <button onClick={handleFollow}>Followed</button>
+    <button className="btn" onClick={handleFollow}>
+      Unfollow
+    </button>
   ) : (
-    <button onClick={handleFollow}>Follow</button>
+    <button className="btn" onClick={handleFollow}>
+      Follow
+    </button>
   );
 }
 

@@ -6,6 +6,9 @@ export function FormatTime(time: string): string {
   const hoursDiff = now.diff(inputTime, "hours");
   const daysDiff = now.diff(inputTime, "days");
   const minutesDiff = now.diff(inputTime, "minutes");
+  if (minutesDiff < 1) {
+    return "now";
+  }
   if (hoursDiff < 1) {
     return `${minutesDiff}m`;
   }

@@ -10,14 +10,14 @@ export default function EchoLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid h-screen grid-cols-[auto_1fr_auto]">
+    <div className="grid h-screen grid-cols-[auto_1fr_auto] gap-4">
       <ReactQueryProvider>
         <AuthProvider>
           <div className=" h-full overflow-hidden">
             <LeftBar />
           </div>
 
-          <main className="    overflow-scroll">{children}</main>
+          <main className="  overflow-scroll">{children}</main>
 
           <div className="    h-full overflow-hidden">
             <Sidebar />

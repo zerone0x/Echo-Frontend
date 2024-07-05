@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  .input {
+    @apply w-full rounded border border-stone-200 px-4 py-2 text-sm transition-all
+    duration-300 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-[#5648c4];
+  }
+  .btn {
+    @apply inline-block transition-colors focus:outline-none focus:ring focus:ring-[#5648c4] bg-[#675AF2] focus:bg-[#5648c4] text-white hover:text-white hover:bg-[#5648c4] px-3 py-2 rounded-full;
+  }
+
   .spinner {
     margin: 3.2rem auto 1.6rem;
     width: 60px;

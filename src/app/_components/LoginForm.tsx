@@ -5,20 +5,20 @@ import SubmitButton from "./SubmitButton";
 function Login() {
   return (
     <form className="flex flex-col gap-4" action={loginUser}>
-      <label className="flex flex-col text-xl" htmlFor="email">
+      <label className=" text-xl" htmlFor="email">
         Email
         <input
-          className="rounded"
+          className="input"
           type="email"
           id="email"
           name="email"
           required
         />
       </label>
-      <label className="flex flex-col text-xl" htmlFor="password">
+      <label className="text-xl" htmlFor="password">
         Password
         <input
-          className="rounded"
+          className="input"
           type="password"
           id="password"
           name="password"

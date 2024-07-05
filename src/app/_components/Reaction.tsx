@@ -4,6 +4,7 @@ import { useAuth } from "../_utils/getLogin";
 import { FaBookmark, FaStar } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { IoIosMore } from "react-icons/io";
+import { IoIosClose } from "react-icons/io";
 import { LuReply } from "react-icons/lu";
 import {
   BookMarkFeed,
@@ -87,8 +88,8 @@ function Reaction({ feedId }) {
       color: bookmarkStatus ? "text-red-500" : "text-gray-500",
     },
     {
-      name: "More",
-      icon: <IoIosMore />,
+      name: "Delete",
+      icon: <IoIosClose />,
       action: delFeed,
       color: "text-yellow-500",
     },

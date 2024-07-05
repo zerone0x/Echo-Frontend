@@ -6,18 +6,18 @@ import SignInButton from "./SignInButton";
 function Welcome() {
   const [activeTab, setActiveTab] = useState("login");
   return (
-    <div className="flex flex-col items-center justify-center">
-      <header className="text-3xl">Echo</header>
+    <div className=" max-w-3xl  mx-auto my-auto">
+      <header className="text-3xl text-center py-2">Echo</header>
       <div className="border border-gray-300 rounded-lg p-4 mt-10">
         <div className="flex gap-10 mt-10 items-center justify-center">
           <button
-            className="bg-[#675AF2] text-white rounded-2xl py-3 px-6"
+            className={`${activeTab === "login" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} uppercase tracking-wide    rounded-2xl py-3 px-6`}
             onClick={() => setActiveTab("login")}
           >
             login
           </button>
           <button
-            className="bg-[#675AF2] text-white rounded-2xl py-3 px-6"
+            className={`${activeTab === "signup" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} uppercase tracking-wide  rounded-2xl py-3 px-6`}
             onClick={() => setActiveTab("signup")}
           >
             signup

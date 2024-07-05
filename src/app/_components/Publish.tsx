@@ -69,6 +69,7 @@ function Publish() {
           onChange={(e) => setContent(e.target.value)}
           onKeyDown={handleKeyDown}
           rows={4}
+          required
         />
         <div className="flex flex-row space-x-2 mt-3">
           <button

@@ -28,13 +28,22 @@ function FollowDetail({ username, feedLen }) {
   }
   return (
     <div>
-      <Link href={`/${username}`}>
+      <Link
+        href={`/${username}`}
+        className=" hover:text-[#675AF2] hover:underline"
+      >
         <span>{feedLen} posts </span>
       </Link>
-      <Link href={`/${username}/following`}>
-        <span>{followingData?.length} Following</span>
+      <Link
+        href={`/${username}/following`}
+        className=" hover:text-[#675AF2] hover:underline"
+      >
+        <span>{followingData?.length} Following </span>
       </Link>
-      <Link href={`/${username}/followers`}>
+      <Link
+        href={`/${username}/followers`}
+        className=" hover:text-[#675AF2] hover:underline"
+      >
         <span>{followersData?.length} Followers</span>
       </Link>
     </div>
