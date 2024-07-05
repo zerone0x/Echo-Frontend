@@ -29,7 +29,7 @@ function AllFeedsList() {
         </Fragment>
       ))}
       <div ref={ref} className="flex justify-center">
-        {isFetchingNextPage ? <SpinnerMini /> : "End of the list"}
+        {isFetchingNextPage ? <SpinnerMini /> : ""}
       </div>
     </div>
   );

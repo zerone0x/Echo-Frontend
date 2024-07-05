@@ -5,7 +5,6 @@ export default async function App() {
     <>
       <Link href="/login">Login</Link>
       <Link href="/signup">Register</Link>
-      <Link href="/logOut">Log out</Link>
     </>
   );
 }

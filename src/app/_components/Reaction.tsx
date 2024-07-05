@@ -1,3 +1,4 @@
+"use client";
 import { useQueryClient } from "react-query";
 import { useAuth } from "../_utils/getLogin";
 import { FaBookmark, FaStar } from "react-icons/fa";
@@ -8,17 +9,33 @@ import {
   BookMarkFeed,
   DeleteFeedById,
   LikeFeed,
+  getIsBooked,
+  getIsLiked,
 } from "../_services/fetchDataAPI";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect, useState } from "react";
 
 function Reaction({ feedId }) {
   const { currentUserId } = useAuth();
   const queryClient = useQueryClient();
+  const [likeStatus, setLikeStatus] = useState(false);
+  const [bookmarkStatus, setBookmarkStatus] = useState(false);
+
+  useEffect(() => {
+    async function fetchStatuses() {
+      const liked = await getIsLiked(feedId);
+      const bookmarked = await getIsBooked(feedId);
+      setLikeStatus(liked);
+      setBookmarkStatus(bookmarked);
+    }
+    fetchStatuses();
+  }, [feedId]);
 
   async function bookmarkClick(event) {
     // event.stopPropagation();
     event.preventDefault();
+    setBookmarkStatus((bookmarkStatus) => !bookmarkStatus);
     await BookMarkFeed(feedId, currentUserId);
     queryClient.invalidateQueries("bookmark");
     // toast.success("Echo bookmarked successfully!");
@@ -27,6 +44,7 @@ function Reaction({ feedId }) {
   async function likeClick(event) {
     event.stopPropagation();
     event.preventDefault();
+    setLikeStatus((likeStatus) => !likeStatus);
     await LikeFeed(feedId, currentUserId);
     queryClient.invalidateQueries("likes");
     toast.success("Echo liked successfully!");
@@ -60,13 +78,13 @@ function Reaction({ feedId }) {
       name: "Favorite",
       icon: <FaStar />,
       action: likeClick,
-      color: "text-yellow-500",
+      color: likeStatus ? "text-yellow-500" : "text-gray-500",
     },
     {
       name: "Bookmark",
       icon: <FaBookmark />,
       action: bookmarkClick,
-      color: "text-red-500",
+      color: bookmarkStatus ? "text-red-500" : "text-gray-500",
     },
     {
       name: "More",

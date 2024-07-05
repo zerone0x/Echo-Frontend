@@ -5,6 +5,7 @@ import FollowBtn from "@/app/_components/FollowBtn";
 import FollowDetail from "@/app/_components/FollowDetail";
 import UserCard from "@/app/_components/UserCard";
 import { getFeedByUsername, getUserByName } from "@/app/_services/fetchDataAPI";
+import { useAuth } from "@/app/_utils/getLogin";
 
 async function page({ params }) {
   const username = params.username;
@@ -12,6 +13,8 @@ async function page({ params }) {
     getUserByName(username),
     getFeedByUsername(username),
   ]);
+  // const {currentUserId} = useAuth();
+  // const checkME = currentUserId === user._id
   const feedLen = feeds?.length;
 
   return (
@@ -22,7 +25,7 @@ async function page({ params }) {
       <Content>
         <div className="flex flex-row  items-center gap-4">
           <UserCard user={user} />
-          <FollowBtn username={username} />
+          {/* {checkME ? <button>Update detail</button> : <FollowBtn username={username} />} */}
         </div>
         <FollowDetail username={username} feedLen={feedLen} />
 
