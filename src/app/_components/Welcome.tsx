@@ -1,7 +1,8 @@
 import { useState } from "react";
 import SignUpForm from "@/app/_components/SignUpForm";
 import LoginForm from "@/app/_components/LoginForm";
-import Link from "next/link";
+import SignInButton from "./SignInButton";
+
 function Welcome() {
   const [activeTab, setActiveTab] = useState("login");
   return (
@@ -22,7 +23,14 @@ function Welcome() {
             signup
           </button>
         </div>
-        {activeTab === "login" ? <LoginForm /> : <SignUpForm />}
+
+        <div className="flex flex-col gap-10 mt-10 items-center justify-center">
+          <h1 className="text-3xl font-semibold">
+            {activeTab === "login" ? "Come on in!" : "Sign up for Echo"}
+          </h1>
+          <SignInButton />
+          {activeTab === "login" ? <LoginForm /> : <SignUpForm />}
+        </div>
       </div>
     </div>
   );

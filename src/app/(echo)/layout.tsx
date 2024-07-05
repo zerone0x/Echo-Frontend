@@ -10,18 +10,16 @@ export default function EchoLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen">
+    <div className="grid h-screen grid-cols-[auto_1fr_auto]">
       <ReactQueryProvider>
         <AuthProvider>
-          <div className="flex-none w-1/6 md:w-1/5 lg:w-1/6    h-full overflow-hidden">
+          <div className=" h-full overflow-hidden">
             <LeftBar />
           </div>
 
-          <main className="flex-1 w-4/6 md:w-3/5 lg:w-4/6     overflow-auto">
-            {children}
-          </main>
+          <main className="    overflow-scroll">{children}</main>
 
-          <div className="flex-none w-1/6 md:w-1/5 lg:w-1/6    h-full overflow-hidden">
+          <div className="    h-full overflow-hidden">
             <Sidebar />
           </div>
         </AuthProvider>

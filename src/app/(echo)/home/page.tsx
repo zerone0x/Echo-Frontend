@@ -25,13 +25,13 @@ export default function Home() {
   // it will not cache anything
   // noStore();
   return (
-    <div>
+    <>
       <Header title="Echo" />
       <Content>
         <Suspense fallback={<Spinner />}>
           <AllFeedsList />
         </Suspense>
       </Content>
-    </div>
+    </>
   );
 }
