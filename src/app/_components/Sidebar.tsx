@@ -28,9 +28,8 @@ function Sidebar() {
         {navLinks.map((link, index) => (
           <li key={`${link.name}-${index}`}>
             <Link
-              className={`py-3 px-5  transition-colors flex items-center gap-4 font-semibold text-primary-800 text-3xl ${
-                pathname === link.href ? "text-blue-400" : "text-primary-800"
-              }`}
+              className={`py-3 px-5  transition-colors flex items-center gap-4 font-semibold  text-3xl 
+                ${pathname === link.href ? "text-blue-400" : "text-primary-800"}`}
               href={link.href}
             >
               {link.icon}

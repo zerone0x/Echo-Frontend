@@ -10,6 +10,9 @@
   .btn {
     @apply inline-block transition-colors focus:outline-none focus:ring focus:ring-[#5648c4] bg-[#675AF2] focus:bg-[#5648c4] text-white hover:text-white hover:bg-[#5648c4] px-3 py-2 rounded-full;
   }
+  .top-mid-header {
+    @apply top-0 text-black transition-colors flex items-center gap-4 font-semibold text-xl;
+  }
 
   .spinner {
     margin: 3.2rem auto 1.6rem;

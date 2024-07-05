@@ -7,13 +7,7 @@ export const metadata: Metadata = {
 };
 
 function page() {
-  return (
-    <>
-      <Content>
-        <Header title="Notification" />
-      </Content>
-    </>
-  );
+  return <h1>hi</h1>;
 }
 
 export default page;

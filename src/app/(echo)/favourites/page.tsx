@@ -26,19 +26,15 @@ function FavoritePage() {
 
   return (
     <div>
-      <Content>
-        <Suspense fallback={<Spinner />}>
-          {data && data.length > 0 ? (
-            <div>
-              {data.map((item, index) => (
-                <EchoItem key={item?.feed._id} feed={item?.feed} />
-              ))}
-            </div>
-          ) : (
-            <div>No favorited Echos available.</div>
-          )}
-        </Suspense>
-      </Content>
+      {data && data.length > 0 ? (
+        <div>
+          {data.map((item, index) => (
+            <EchoItem key={item?.feed._id} feed={item?.feed} />
+          ))}
+        </div>
+      ) : (
+        <div>No favorited Echos available.</div>
+      )}
     </div>
   );
 }

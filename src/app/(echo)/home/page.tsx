@@ -26,11 +26,7 @@ export default function Home() {
   // noStore();
   return (
     <>
-      <Content>
-        <Suspense fallback={<Spinner />}>
-          <AllFeedsList />
-        </Suspense>
-      </Content>
+      <AllFeedsList />
     </>
   );
 }

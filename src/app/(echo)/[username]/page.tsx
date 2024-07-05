@@ -19,10 +19,8 @@ async function page({ params }) {
 
   return (
     <div>
-      <header className="fixed top-0 w-full md:w-3/5 lg:w-4/6 bg-blue-500 text-white p-4 z-10">
-        <BackBtn />
-      </header>
-      <Content>
+      <BackBtn />
+      <div>
         <div className="w-full">
           {/* Banner Image */}
           <Image
@@ -42,7 +40,7 @@ async function page({ params }) {
           <FollowDetail username={username} feedLen={feedLen} />
           <FeedList feeds={feeds} />
         </div>
-      </Content>
+      </div>
     </div>
   );
 }
