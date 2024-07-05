@@ -74,13 +74,13 @@ function Publish() {
           <button
             type="button"
             onClick={togglePicker}
-            className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-full"
+            className="  hover:bg-gray-200 text-gray-700 p-2 rounded-full"
           >
             <MdEmojiEmotions />
           </button>
           <button
             type="button"
-            className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-2 rounded-full"
+            className="  hover:bg-gray-200 text-gray-700 p-2 rounded-full"
           >
             <GoPaperclip />
           </button>

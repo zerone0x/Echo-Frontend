@@ -1,36 +1,21 @@
 "use client";
-import useRegister from "@/app/_hooks/useRegister";
 import React, { useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 import { Metadata } from "next";
-import SignInButton from "@/app/_components/SignInButton";
-import { registerUser } from "@/app/_utils/actions";
-import SubmitButton from "@/app/_components/SubmitButton";
+import SignUpForm from "@/app/_components/SignUpForm";
+import LoginForm from "@/app/_components/LoginForm";
+
 // export const metadata: Metadata = {
 //   title: "Sign up",
 // };
 function SignUp() {
+  const [activeTab, setActiveTab] = useState("login");
   return (
-    <div className="bg-rainbow-gradient text-center space-y-5">
-      <h1 className="text-lg text-green-300">Sign up for Echo</h1>
-      <SignInButton />
-      <form className="flex flex-col" action={registerUser}>
-        <label htmlFor="name">
-          Your full name
-          <input type="text" id="name" name="name" />
-        </label>
-        <label htmlFor="email">
-          Your email address
-          <input type="email" id="email" name="email" />
-        </label>
-        <label htmlFor="password">
-          A secret password
-          <input type="password" id="password" name="password" />
-        </label>
-        <SubmitButton pendingLabel="Loading...">
-          Create a Echo account
-        </SubmitButton>
-      </form>
+    <div className="align-center">
+      <div>
+        <button onClick={() => setActiveTab("login")}>login</button>
+        <button onClick={() => setActiveTab("signup")}>signup</button>
+      </div>
+      {activeTab === "login" ? <LoginForm /> : <SignUpForm />}
     </div>
   );
 }

@@ -33,12 +33,7 @@ export async function middleware(request: NextRequest) {
 
     return response;
   }
-  if (
-    request.nextUrl.pathname !== "/" &&
-    request.nextUrl.pathname !== "/login" &&
-    request.nextUrl.pathname !== "/signup" &&
-    !verifiedToken
-  ) {
+  if (request.nextUrl.pathname !== "/" && !verifiedToken) {
     return NextResponse.redirect(new URL("/", request.url));
   }
   return NextResponse.next();

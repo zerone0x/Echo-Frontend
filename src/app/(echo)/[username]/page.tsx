@@ -35,7 +35,6 @@ async function page({ params }) {
           />
         </div>
         <div className="flex flex-row items-center gap-4 p-4">
-          {/* UserCard and Follow Button placed below the banner image */}
           <UserCard user={user} />
           <FollowBtn username={username} />
         </div>
