@@ -26,7 +26,6 @@ function FavoritePage() {
 
   return (
     <div>
-      <Header title="Favorite" />
       <Content>
         <Suspense fallback={<Spinner />}>
           {data && data.length > 0 ? (

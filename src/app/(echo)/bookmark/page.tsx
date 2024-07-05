@@ -26,7 +26,6 @@ function BookmarkPage() {
 
   return (
     <div>
-      <Header title="Bookmark" />
       <Content>
         <Suspense fallback={<Spinner />}>
           {data && data.length > 0 ? (

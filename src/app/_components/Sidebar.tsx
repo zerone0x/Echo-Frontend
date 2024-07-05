@@ -8,40 +8,8 @@ import { BsThreeDots } from "react-icons/bs";
 import logo from "../../../public/logo.png";
 import { usePathname } from "next/navigation";
 import SignOutButton from "./SignOutButton";
-// https://react-icons.github.io/react-icons/search/#q=
+import { navLinks } from "../_config/data";
 
-const navLinks = [
-  {
-    name: "Home",
-    href: "/home",
-    icon: <FaHome />,
-  },
-  {
-    name: "Notification",
-    href: "/notification",
-    icon: <IoIosNotifications />,
-  },
-  // {
-  //   name: "Live feeds",
-  //   href: "/public",
-  //   icon: <IoEarth />,
-  // },
-  {
-    name: "Bookmark",
-    href: "/bookmark",
-    icon: <IoBookmarkSharp />,
-  },
-  {
-    name: "Favorites",
-    href: "/favourites",
-    icon: <FaStar />,
-  },
-  {
-    name: "Preferences",
-    href: "/about",
-    icon: <BsThreeDots />,
-  },
-];
 function Sidebar() {
   const pathname = usePathname();
 
@@ -60,15 +28,13 @@ function Sidebar() {
         {navLinks.map((link, index) => (
           <li key={`${link.name}-${index}`}>
             <Link
-              className={`py-3 px-5 hover:bg-primary-900 hover:text-primary-100 transition-colors flex items-center gap-4 font-semibold text-primary-200 ${
-                pathname === link.href ? "bg-primary-900" : ""
+              className={`py-3 px-5  transition-colors flex items-center gap-4 font-semibold text-primary-800 text-3xl ${
+                pathname === link.href ? "text-blue-400" : "text-primary-800"
               }`}
               href={link.href}
             >
-              <div className="flex items-center">
-                {link.icon}
-                <span>{link.name}</span>
-              </div>
+              {link.icon}
+              <span>{link.name}</span>
             </Link>
           </li>
         ))}

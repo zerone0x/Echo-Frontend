@@ -3,6 +3,7 @@ import LeftBar from "@/app/_components/LeftBar";
 import Sidebar from "@/app/_components/Sidebar";
 import ReactQueryProvider from "@/app/_utils/ReactQueryProvider";
 import { AuthProvider } from "../_utils/getLogin";
+import Header from "../_components/Header";
 
 export default function EchoLayout({
   children,
@@ -17,7 +18,10 @@ export default function EchoLayout({
             <LeftBar />
           </div>
 
-          <main className="  overflow-scroll">{children}</main>
+          <main className="  overflow-scroll">
+            <Header />
+            {children}
+          </main>
 
           <div className="    h-full overflow-hidden">
             <Sidebar />

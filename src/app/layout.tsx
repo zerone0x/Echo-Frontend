@@ -28,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.className} bg-rainbow-gradient `}>
+      <body
+        className={`${lato.className} bg-rainbow-gradient text-stone-900 mx-12 mt-4 `}
+      >
         {children}
       </body>
     </html>

@@ -26,7 +26,6 @@ export default function Home() {
   // noStore();
   return (
     <>
-      <Header title="Echo" />
       <Content>
         <Suspense fallback={<Spinner />}>
           <AllFeedsList />

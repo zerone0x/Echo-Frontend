@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 function page() {
   return (
     <>
-      <Header title="Notification" />
       <Content>
         <Header title="Notification" />
       </Content>
