@@ -130,3 +130,8 @@ export const getFans = async (username: string) => {
   const { data } = await client.get(`follow/getFans/${username}`);
   return data.results;
 };
+
+export const getIsFollowed = async (username: string) => {
+  const { data } = await client.get(`like/getIsFollowed/${username}`);
+  return data.results;
+};

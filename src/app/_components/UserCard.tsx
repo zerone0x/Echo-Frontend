@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FollowBtn from "./FollowBtn";
 
 function UserCard({ user }) {
   const name = user?.name;

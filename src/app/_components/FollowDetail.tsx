@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useQuery } from "react-query";
 import Loading from "../loading";
 import { getFans, getFollow } from "../_services/fetchDataAPI";
+import SpinnerMini from "./SpinnerMini";
 
 function FollowDetail({ username, feedLen }) {
   const {
@@ -18,7 +19,7 @@ function FollowDetail({ username, feedLen }) {
   } = useQuery(["followers", username], () => getFans(username));
 
   if (followingLoading || followersLoading) {
-    return <Loading />;
+    return <SpinnerMini />;
   }
 
   if (followingError || followersError) {

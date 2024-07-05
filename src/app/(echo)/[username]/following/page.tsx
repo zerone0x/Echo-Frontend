@@ -1,4 +1,5 @@
 "use client";
+import FollowBtn from "@/app/_components/FollowBtn";
 import UserCard from "@/app/_components/UserCard";
 import { getFans, getFollow } from "@/app/_services/fetchDataAPI";
 import Loading from "@/app/loading";
