@@ -9,7 +9,7 @@ import useInfiniteScroll from "./useInfiniteScroll";
 
 function AllFeedsList() {
   const fetchData = ({ pageParam = null }) => GetAllFeeds(pageParam);
-  const getNextPageParam = (lastPage) => lastPage.cursor;
+  const getNextPageParam = (lastPage: any) => lastPage.cursor;
 
   const { data, isFetchingNextPage, status, ref } = useInfiniteScroll(
     fetchData,
@@ -23,7 +23,7 @@ function AllFeedsList() {
     <div>
       {data?.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.data.map((feed) => (
+          {page.data.map((feed: any) => (
             <EchoItem key={feed.id} feed={feed} />
           ))}
         </Fragment>

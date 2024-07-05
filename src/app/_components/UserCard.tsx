@@ -8,7 +8,7 @@ function UserCard({ user }) {
   // console.log(user);
 
   return (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-3 hover:cursor-pointer hover:underline">
       {ProfileImage && (
         <Link href={`/${name}`}>
           <Image
@@ -20,7 +20,7 @@ function UserCard({ user }) {
           />
         </Link>
       )}
-      <span className="font-medium text-gray-700">{name}</span>
+      <span className="font-medium text-gray-700 ">{name}</span>
     </div>
   );
 }

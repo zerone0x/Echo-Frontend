@@ -3,10 +3,12 @@ import Content from "@/app/_components/Content";
 import FeedList from "@/app/_components/FeedList";
 import FollowBtn from "@/app/_components/FollowBtn";
 import FollowDetail from "@/app/_components/FollowDetail";
+import Spinner from "@/app/_components/Spinner";
 import UserCard from "@/app/_components/UserCard";
 import { getFeedByUsername, getUserByName } from "@/app/_services/fetchDataAPI";
 import { useAuth } from "@/app/_utils/getLogin";
 import Image from "next/image";
+import { Suspense } from "react";
 
 async function page({ params }) {
   const username = params.username;
@@ -20,7 +22,7 @@ async function page({ params }) {
   return (
     <div>
       <BackBtn />
-      <div>
+      <Suspense fallback={<Spinner />}>
         <div className="w-full">
           {/* Banner Image */}
           <Image
@@ -40,7 +42,7 @@ async function page({ params }) {
           <FollowDetail username={username} feedLen={feedLen} />
           <FeedList feeds={feeds} />
         </div>
-      </div>
+      </Suspense>
     </div>
   );
 }

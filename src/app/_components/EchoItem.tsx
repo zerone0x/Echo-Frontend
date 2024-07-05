@@ -6,7 +6,7 @@ import UserCard from "./UserCard";
 import { useAuth } from "../_utils/getLogin";
 import Reaction from "./Reaction";
 
-function EchoItem({ feed }) {
+function EchoItem({ feed }: { feed: any }) {
   const user = feed?.user;
   const content = feed?.content;
   const createdAt = feed?.createdAt;

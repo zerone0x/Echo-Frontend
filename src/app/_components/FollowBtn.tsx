@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { useAuth } from "../_utils/getLogin";
 
-function FollowBtn({ username }) {
+function FollowBtn({ username }: { username: string }) {
   const [follow, setFollow] = useState(false);
   const queryClient = useQueryClient();
   const { currentUserName } = useAuth();
@@ -15,6 +15,7 @@ function FollowBtn({ username }) {
     }
     fetchStatuses();
   }, [username]);
+
   const handleFollow = async () => {
     try {
       setFollow((followed) => !followed);
@@ -26,7 +27,7 @@ function FollowBtn({ username }) {
     }
   };
   if (currentUserName === username) {
-    return <button>update detail</button>;
+    return <button className="btn">update detail</button>;
   }
   return follow ? (
     <button className="btn" onClick={handleFollow}>
