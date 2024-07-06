@@ -25,11 +25,13 @@ function SignOutButton() {
     <form onSubmit={handleSignOut}>
       <button
         type="submit"
-        className="py-3 px-5   transition-colors flex items-center gap-4 font-semibold text-primary-800 w-full text-3xl"
+        className="flex w-full items-center gap-4 px-5 py-3 text-3xl font-semibold text-primary-800 transition-colors"
         disabled={isLoading}
       >
         <FaArrowRightFromBracket className="h-5 w-5 text-primary-600" />
-        <span>{isLoading ? "Signing out..." : "Sign out"}</span>
+        <span className="hidden sm:inline-block">
+          {isLoading ? "Signing out..." : "Sign out"}
+        </span>
       </button>
     </form>
   );

@@ -4,14 +4,13 @@
 
 @layer components {
   .input {
-    @apply w-full rounded border border-stone-200 px-4 py-2 text-sm transition-all
-    duration-300 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-[#5648c4];
+    @apply w-full rounded border border-stone-200 px-4 py-2 text-sm transition-all duration-300 focus:outline-none focus:ring focus:ring-[#5648c4] focus:ring-opacity-50;
   }
   .btn {
-    @apply inline-block transition-colors focus:outline-none focus:ring focus:ring-[#5648c4] bg-[#675AF2] focus:bg-[#5648c4] text-white hover:text-white hover:bg-[#5648c4] px-3 py-2 rounded-full;
+    @apply inline-block rounded-full bg-[#675AF2] px-3 py-2 text-white transition-colors hover:bg-[#5648c4] hover:text-white focus:bg-[#5648c4] focus:outline-none focus:ring focus:ring-[#5648c4];
   }
   .top-mid-header {
-    @apply top-0 text-black transition-colors flex items-center gap-4 font-semibold text-xl;
+    @apply top-0 flex items-center gap-4 text-xl font-semibold text-black transition-colors;
   }
 
   .spinner {

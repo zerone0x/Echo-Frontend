@@ -14,16 +14,16 @@ export default function EchoLayout({
     <ReactQueryProvider>
       <AuthProvider>
         <div className="grid h-screen grid-cols-[auto_1fr_auto] gap-4">
-          <div className=" h-full overflow-hidden">
+          <div className="h-full overflow-hidden">
             <LeftBar />
           </div>
 
-          <main className="  overflow-scroll ">
+          <main className="overflow-scroll">
             <Header />
             {children}
           </main>
 
-          <div className="    h-full overflow-hidden">
+          <div className="h-full overflow-hidden">
             <Sidebar />
           </div>
         </div>

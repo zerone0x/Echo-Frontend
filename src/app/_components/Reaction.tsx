@@ -96,7 +96,7 @@ function Reaction({ feedId }) {
   ];
 
   return (
-    <div className="px-4 py-2 flex space-x-2 justify-start gap-10">
+    <div className="flex justify-start gap-10 space-x-2 px-4 py-2">
       <ToastContainer />
       {reactItems.map((item) => (
         <button
@@ -106,7 +106,6 @@ function Reaction({ feedId }) {
           aria-label={item.name}
         >
           <span className={item.color}>{item.icon}</span>
-          {/* {item.icon} */}
         </button>
       ))}
     </div>

@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.className} bg-rainbow-gradient text-stone-900 mx-12 mt-4 `}
+        className={`${lato.className} mx-12 mt-4 bg-rainbow-gradient text-stone-900`}
       >
         {children}
       </body>

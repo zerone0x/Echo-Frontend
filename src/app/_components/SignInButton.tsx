@@ -6,7 +6,7 @@ function SignInButton() {
       <form action={process.env.NEXT_PUBLIC_GOOGLE_URL} method="GET">
         <button
           type="submit"
-          className="flex rounded items-center gap-6 text-lg border border-primary-300 px-8 py-3 font-medium"
+          className="flex items-center gap-6 rounded border border-primary-300 px-8 py-3 text-lg font-medium"
         >
           <Image
             src="https://authjs.dev/img/providers/google.svg"
@@ -20,7 +20,7 @@ function SignInButton() {
       <form action={process.env.NEXT_PUBLIC_GITHUB_URL} method="GET">
         <button
           type="submit"
-          className="flex  rounded items-center gap-6 text-lg border border-primary-300 px-8 py-3 font-medium"
+          className="flex items-center gap-6 rounded border border-primary-300 px-8 py-3 text-lg font-medium"
         >
           <Image
             src="https://authjs.dev/img/providers/github.svg"

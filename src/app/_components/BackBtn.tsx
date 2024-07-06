@@ -9,7 +9,7 @@ function BackBtn() {
       <div className="top-mid-header">
         <button
           onClick={() => router.back()}
-          className=" text-black hover:text-[#675AF2] hover:underline"
+          className="text-black hover:text-[#675AF2] hover:underline"
         >
           Back
         </button>

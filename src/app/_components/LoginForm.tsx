@@ -5,7 +5,7 @@ import SubmitButton from "./SubmitButton";
 function Login() {
   return (
     <form className="flex flex-col gap-4" action={loginUser}>
-      <label className=" text-xl" htmlFor="email">
+      <label className="text-xl" htmlFor="email">
         Email
         <input
           className="input"

@@ -5,7 +5,6 @@ import FollowBtn from "./FollowBtn";
 function UserCard({ user }) {
   const name = user?.name;
   const ProfileImage = user?.ProfileImage;
-  // console.log(user);
 
   return (
     <div className="flex items-center space-x-3 hover:cursor-pointer hover:underline">
@@ -20,7 +19,7 @@ function UserCard({ user }) {
           />
         </Link>
       )}
-      <span className="font-medium text-gray-700 ">{name}</span>
+      <span className="font-medium text-gray-700">{name}</span>
     </div>
   );
 }

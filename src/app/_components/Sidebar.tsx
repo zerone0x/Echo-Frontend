@@ -14,7 +14,7 @@ function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <nav className="text-4xl flex flex-col">
+    <nav className="flex flex-col text-4xl">
       <ul>
         <li>
           <Image
@@ -28,12 +28,11 @@ function Sidebar() {
         {navLinks.map((link, index) => (
           <li key={`${link.name}-${index}`}>
             <Link
-              className={`py-3 px-5  transition-colors flex items-center gap-4 font-semibold  text-3xl hover:cursor-pointer
-                ${pathname === link.href ? "text-blue-400" : "text-primary-800"}`}
+              className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-blue-400" : "text-primary-800"}`}
               href={link.href}
             >
               {link.icon}
-              <span>{link.name}</span>
+              <span className="hidden md:inline-block">{link.name}</span>
             </Link>
           </li>
         ))}

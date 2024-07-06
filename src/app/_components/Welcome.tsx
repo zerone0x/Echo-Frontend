@@ -7,26 +7,26 @@ import { BsTypeH1 } from "react-icons/bs";
 function Welcome() {
   const [activeTab, setActiveTab] = useState("login");
   return (
-    <div className=" max-w-3xl  mx-auto my-auto">
-      <h1 className="text-3xl text-center py-2 font-semibold">Echo</h1>
-      <div className="border border-gray-300 rounded-lg p-4 mt-10">
-        <div className="flex gap-10 mt-10 items-center justify-center">
+    <div className="mx-auto my-auto max-w-3xl">
+      <h1 className="py-2 text-center text-3xl font-semibold">Echo</h1>
+      <div className="mt-10 rounded-lg border border-gray-300 p-4">
+        <div className="mt-10 flex items-center justify-center gap-10">
           <button
-            className={`${activeTab === "login" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} uppercase tracking-wide    rounded-2xl py-3 px-6`}
+            className={`${activeTab === "login" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} rounded-2xl px-6 py-3 uppercase tracking-wide`}
             onClick={() => setActiveTab("login")}
           >
             login
           </button>
           <button
-            className={`${activeTab === "signup" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} uppercase tracking-wide  rounded-2xl py-3 px-6`}
+            className={`${activeTab === "signup" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} rounded-2xl px-6 py-3 uppercase tracking-wide`}
             onClick={() => setActiveTab("signup")}
           >
             sign up
           </button>
         </div>
 
-        <div className="flex flex-col gap-10 mt-10 items-center justify-center">
-          <h1 className="text-3xl font-semibold ">
+        <div className="mt-10 flex flex-col items-center justify-center gap-10">
+          <h1 className="text-3xl font-semibold">
             {activeTab === "login" ? "Come on in!" : "Sign up for Echo"}
           </h1>
           <SignInButton />

@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 
 async function LeftBar() {
   return (
-    <div>
+    <div className="hidden flex-col gap-4 lg:flex">
       <SearchBar />
       <Publish />
     </div>

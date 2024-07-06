@@ -16,9 +16,9 @@ function EchoItem({ feed }: { feed: any }) {
 
   return (
     feed && (
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="overflow-hidden rounded-lg bg-white shadow-lg">
         <Link href={`/${name}/status/${feedId}`}>
-          <div className="p-4 flex justify-between items-center">
+          <div className="flex items-center justify-between p-4">
             <UserCard user={user} />
             <span className="text-sm text-gray-500">
               {FormatTime(createdAt)}

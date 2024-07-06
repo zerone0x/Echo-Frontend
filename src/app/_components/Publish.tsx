@@ -63,7 +63,7 @@ function Publish() {
       <UserCard user={authData} />
       <form onSubmit={handleSubmit} className="flex flex-col items-center p-4">
         <textarea
-          className="w-full h-16 px-4 py-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none"
           placeholder="What's on your mind?"
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -71,17 +71,17 @@ function Publish() {
           rows={4}
           required
         />
-        <div className="flex flex-row space-x-2 mt-3">
+        <div className="mt-3 flex flex-row space-x-2">
           <button
             type="button"
             onClick={togglePicker}
-            className="  hover:bg-gray-200 text-gray-700 p-2 rounded-full"
+            className="rounded-full p-2 text-gray-700 hover:bg-gray-200"
           >
             <MdEmojiEmotions />
           </button>
           <button
             type="button"
-            className="  hover:bg-gray-200 text-gray-700 p-2 rounded-full"
+            className="rounded-full p-2 text-gray-700 hover:bg-gray-200"
           >
             <GoPaperclip />
           </button>

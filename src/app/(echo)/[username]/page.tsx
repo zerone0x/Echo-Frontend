@@ -31,7 +31,7 @@ async function page({ params }) {
             layout="responsive"
             width={700} // Aspect ratio width
             height={250} // Aspect ratio height, adjust these to control the aspect ratio
-            className="object-cover w-full" // Cover will ensure the image covers the area without distorting aspect ratio
+            className="w-full object-cover" // Cover will ensure the image covers the area without distorting aspect ratio
           />
         </div>
         <div className="flex flex-row items-center gap-4 p-4">
