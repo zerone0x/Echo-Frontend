@@ -13,13 +13,53 @@
     @apply top-0 flex items-center gap-4 text-xl font-semibold text-black transition-colors;
   }
 
+  /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
+  .loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(theme(colors.stone.800) 0 0);
+    background:
+      var(--c) 0% 50%,
+      var(--c) 50% 50%,
+      var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+  }
+
+  @keyframes loading {
+    20% {
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
+    }
+    40% {
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
+    }
+    60% {
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
+    }
+    80% {
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
+    }
+  }
+
   .spinner {
     margin: 3.2rem auto 1.6rem;
     width: 60px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 8px solid theme("colors.primary.900");
-    border-right-color: theme("colors.primary.200");
+    border: 8px solid #8b80db;
+    border-right-color: #5648c4;
     animation: rotate 1s infinite linear;
   }
 

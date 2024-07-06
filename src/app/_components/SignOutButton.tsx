@@ -29,7 +29,7 @@ function SignOutButton() {
         disabled={isLoading}
       >
         <FaArrowRightFromBracket className="h-5 w-5 text-primary-600" />
-        <span className="hidden sm:inline-block">
+        <span className="hidden md:inline-block">
           {isLoading ? "Signing out..." : "Sign out"}
         </span>
       </button>

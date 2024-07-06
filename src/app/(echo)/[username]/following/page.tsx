@@ -1,8 +1,10 @@
 "use client";
 import FollowBtn from "@/app/_components/FollowBtn";
 import UserCard from "@/app/_components/UserCard";
+import UserDetail from "@/app/_components/UserDetail";
 import { getFans, getFollow } from "@/app/_services/fetchDataAPI";
 import Loading from "@/app/loading";
+import { Suspense } from "react";
 import { useQuery } from "react-query";
 
 function page({ params }) {
@@ -13,9 +15,9 @@ function page({ params }) {
     isLoading: followingLoading,
   } = useQuery(["following", username], () => getFollow(username));
 
-  if (followingLoading) {
-    return <Loading />;
-  }
+  // if (followingLoading) {
+  //   return <Loading />;
+  // }
 
   if (followingError) {
     const message = followingError?.message;
@@ -23,6 +25,7 @@ function page({ params }) {
   }
   return (
     <>
+    <UserDetail username={username}/>
       {followingData?.ppl.map((item, index) => (
         <UserCard key={index} user={item} />
       ))}
