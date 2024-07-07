@@ -16,12 +16,14 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
+import ConfirmDialog from "./ConfirmDialog";
 
 function Reaction({ feedId }) {
   const { currentUserId } = useAuth();
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
+  const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
 
   useEffect(() => {
     async function fetchStatuses() {
@@ -50,10 +52,15 @@ function Reaction({ feedId }) {
     queryClient.invalidateQueries("likes");
     toast.success("Echo liked successfully!");
   }
-  async function delFeed(event) {
+
+  function handleDelDialog(event) {
     event.stopPropagation();
     event.preventDefault();
-    await DeleteFeedById(feedId);
+    setDialog({ isOpen: true, feedId: feedId });
+  }
+
+  async function delFeed() {
+    await DeleteFeedById(dialog.feedId);
     queryClient.invalidateQueries("feeds");
     queryClient.invalidateQueries("bookmark");
     queryClient.invalidateQueries("likes");
@@ -61,7 +68,7 @@ function Reaction({ feedId }) {
       predicate: (query) =>
         ["feeds", "bookmark", "likes"].includes(query.queryKey[0]),
     });
-    // toast.success("Echo deleted successfully!");
+    setDialog({ isOpen: false, feedId: dialog.feedId });
   }
 
   const reactItems = [
@@ -90,7 +97,7 @@ function Reaction({ feedId }) {
     {
       name: "Delete",
       icon: <IoIosClose />,
-      action: delFeed,
+      action: handleDelDialog,
       color: "text-yellow-500",
     },
   ];
@@ -108,6 +115,13 @@ function Reaction({ feedId }) {
           <span className={item.color}>{item.icon}</span>
         </button>
       ))}
+      {dialog.isOpen && dialog.feedId === feedId && (
+        <ConfirmDialog
+          dialog={dialog}
+          setDialog={setDialog}
+          dialogAction={delFeed}
+        />
+      )}
     </div>
   );
 }

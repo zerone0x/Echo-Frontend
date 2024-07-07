@@ -25,7 +25,7 @@ function page({ params }) {
   }
   return (
     <>
-    <UserDetail username={username}/>
+      <UserDetail username={username} />
       {followingData?.ppl.map((item, index) => (
         <UserCard key={index} user={item} />
       ))}
