@@ -73,6 +73,13 @@ export const getFeedByUsername = async (username: string) => {
   return data.results;
 };
 
+export const searchFeeds = async (keyword: string) => {
+  const { data } = await client.post(`feeds/searchFeeds`, {
+    keyword: keyword,
+  });
+  return data.results;
+};
+
 export const BookMarkFeed = async (feedId: string, user: string) => {
   const { data } = await client.post(`bookmark/booked`, {
     feedId: feedId,

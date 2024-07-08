@@ -34,3 +34,12 @@ export const navLinks = [
   //   icon: <BsThreeDots />,
   // },
 ];
+
+const aboutEcho = `Overhead, the albatross
+Hangs motionless upon the air
+And deep beneath the rolling waves
+In labyrinths of coral caves
+The echo of a distant time
+Comes willowing across the sand
+And everything is green and submarine
+`;
