@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FollowBtn from "./FollowBtn";
 
-function UserCard({ user }) {
+function UserCard({ user, isBtnDisplay = true }) {
   const name = user?.name;
   const ProfileImage = user?.ProfileImage;
 
@@ -20,6 +20,7 @@ function UserCard({ user }) {
         </Link>
       )}
       <span className="font-medium text-gray-700">{name}</span>
+      {isBtnDisplay && <FollowBtn username={name} />}
     </div>
   );
 }

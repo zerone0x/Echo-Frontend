@@ -60,7 +60,7 @@ function Publish() {
   return (
     <div>
       <ToastContainer />
-      <UserCard user={authData} />
+      <UserCard user={authData} isBtnDisplay={false} />
       <form onSubmit={handleSubmit} className="flex flex-col items-center p-4">
         <textarea
           className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none"

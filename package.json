@@ -14,6 +14,7 @@
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
     "axios": "^1.7.2",
+    "embla-carousel-react": "^8.1.6",
     "emoji-picker-react": "^4.10.0",
     "jose": "^5.5.0",
     "moment": "^2.30.1",

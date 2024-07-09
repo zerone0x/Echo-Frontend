@@ -1,4 +1,5 @@
 "use client";
+import AllUserList from "@/app/_components/AllUserList";
 import FollowBtn from "@/app/_components/FollowBtn";
 import UserCard from "@/app/_components/UserCard";
 import UserDetail from "@/app/_components/UserDetail";
@@ -26,9 +27,7 @@ function page({ params }) {
   return (
     <>
       <UserDetail username={username} />
-      {followersData?.ppl.map((item, index) => (
-        <UserCard key={index} user={item} />
-      ))}
+      <AllUserList users={followersData?.ppl} />
     </>
   );
 }

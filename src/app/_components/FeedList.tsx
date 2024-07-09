@@ -3,7 +3,7 @@ import EchoItem from "./EchoItem";
 function FeedList({ feeds }) {
   return (
     <div>
-      {feeds &&
+      {feeds.length &&
         feeds.map((feed: object, index: number) => (
           <EchoItem feed={feed} key={index} />
         ))}
