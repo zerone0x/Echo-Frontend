@@ -30,7 +30,6 @@ async function UserDetail({ username }) {
         </div>
         <div className="flex flex-row items-center gap-4 p-4">
           <UserCard user={user} />
-          {/* <FollowBtn username={username} /> */}
         </div>
 
         <FollowDetail username={username} feedLen={feedLen} />

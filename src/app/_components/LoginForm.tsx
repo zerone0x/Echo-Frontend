@@ -25,6 +25,7 @@ function Login() {
           required
         />
       </label>
+
       <SubmitButton pendingLabel="Loading...">Let's go →</SubmitButton>
     </form>
   );

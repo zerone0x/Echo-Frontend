@@ -1,7 +1,7 @@
 import NotFound from "@/app/not-found";
-import client from "./client";
+import { mediaClient, client } from "./client";
 
-export const authUserLogin = async (email, password) => {
+export const authUserLogin = async (email: string, password: string) => {
   const { data } = await client.post("auth/login", {
     email: email,
     password: password,
@@ -9,7 +9,11 @@ export const authUserLogin = async (email, password) => {
   return data.results.user;
 };
 
-export const authUserSignUp = async (email, password, name) => {
+export const authUserSignUp = async (
+  email: string,
+  password: string,
+  name: string,
+) => {
   const { data } = await client.post("auth/register", {
     email: email,
     password: password,
@@ -42,11 +46,8 @@ export const getUserByName = async (username: string) => {
   return data.results;
 };
 
-export const CreateFeed = async (content: string, user: string) => {
-  const { data } = await client.post("feeds", {
-    content: content,
-    user: user,
-  });
+export const CreateFeed = async (formData: FormData) => {
+  const { data } = await mediaClient.post("feeds", formData);
   return data.results;
 };
 

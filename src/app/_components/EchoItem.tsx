@@ -7,6 +7,7 @@ import { useAuth } from "../_utils/getLogin";
 import Reaction from "./Reaction";
 import Image from "next/image";
 import ImageCarousel from "./imageCarousel";
+import { useState } from "react";
 
 function EchoItem({ feed }: { feed: any }) {
   const user = feed?.user;
@@ -15,8 +16,13 @@ function EchoItem({ feed }: { feed: any }) {
   const feedImages = feed?.feedImages;
   const name = user?.name;
   const { authData, setAuthData, currentUserId } = useAuth();
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const feedId = feed?.id;
-
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index);
+    setShowCarousel(true);
+  };
   return (
     feed && (
       <div className="overflow-hidden rounded-lg bg-white shadow-lg">
@@ -31,15 +37,30 @@ function EchoItem({ feed }: { feed: any }) {
             <TextExpander>{content}</TextExpander>
           </div>
           {feedImages.length > 0 && (
-            <>
-              {/* {feedImages.map((imageUrl, index) => (
-        <Image src={imageUrl} alt={`Echo ${index}`} width={300} height={200} key={index} />
-      ))} */}
-              <ImageCarousel images={feedImages} />
-            </>
+            <div className="grid grid-cols-2 gap-4">
+              {feedImages.map((imageUrl, index) => (
+                <div onClick={handleImageClick} key={index}>
+                  <Image
+                    src={imageUrl}
+                    alt={`Echo ${index}`}
+                    width={300}
+                    height={200}
+                  />
+                </div>
+              ))}
+            </div>
           )}
         </Link>
         <Reaction feedId={feedId} />
+        {showCarousel && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+            <ImageCarousel
+              images={feedImages}
+              initialIndex={currentImageIndex}
+              onClose={() => setShowCarousel(false)}
+            />
+          </div>
+        )}
       </div>
     )
   );

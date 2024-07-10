@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_ECHO_URL;
-const client = axios.create({
+export const client = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
   params: {
@@ -12,4 +12,10 @@ const client = axios.create({
   },
 });
 
-export default client;
+export const mediaClient = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
+  params: {
+    language: "en-US",
+  },
+});
