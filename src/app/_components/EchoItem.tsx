@@ -61,7 +61,13 @@ function EchoItem({ feed }: { feed: any }) {
         <Reaction feedId={feedId} />
 
         {showCarousel && (
-          <div className="z-100 fixed inset-0 bg-black bg-opacity-80">
+          <div className="z-100 fixed inset-0 bg-black bg-opacity-80"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setShowCarousel(false);
+            }
+          }}
+          >
             <button
               onClick={() => setShowCarousel(false)}
               className="bg-grey-700 absolute right-4 top-4 z-10 rounded-full bg-opacity-70 p-2 text-xl text-white"
