@@ -10,6 +10,7 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import Image from "next/image";
+import AvatarUploader from "./AvatorUpload";
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
@@ -20,28 +21,24 @@ function UpdateUserDetail({ isOpen, setOpenDialog }) {
 
   const default_name = authData?.username;
   const default_bio = authData?.Bio;
-  const default_avatar = authData?.ProfileImage;
-  const default_Banner = authData?.Banner;
+  const avatar = authData?.ProfileImage;
+  const banner = authData?.Banner;
   const [name, setName] = useState(default_name);
   const [bio, setBio] = useState(default_bio);
-  const [avatar, setAvatar] = useState(default_avatar);
-  const [banner, setBanner] = useState(default_Banner);
   const [file, setFile] = useState(null);
+  const [bannerFile, setBannerFile] = useState(null);
 
-  // Ref to the hidden file input
-  const fileInputRef = useRef(null);
-
-  // Function to trigger the hidden file input
-  const handleAvatarClick = () => {
-    fileInputRef.current.click();
-  };
   async function handleSubmit(event: any) {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
+    formData.append("username", name);
     formData.append("bio", bio);
+    formData.append("ProfileImage", file);
+    formData.append("Banner", bannerFile);
     await updateUser(formData);
     setOpenDialog(false);
+    setFile(null);
+    setBannerFile(null);
   }
   return (
     <dialog open={isOpen}>
@@ -54,31 +51,15 @@ function UpdateUserDetail({ isOpen, setOpenDialog }) {
           <IoMdClose />
         </button>
         <h2>Update User Details</h2>
-        <label htmlFor="banner" />
-        <input type="file" id="banner" accept="image/*" className="input" />
-
-        <div onClick={handleAvatarClick} style={{ cursor: "pointer" }}>
-          <Image src={avatar} width={300} height={200} alt="avatar" />
-        </div>
-        <input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: "none" }}
-          onChange={(e) => {
-            // Set the file to the first file in the input file list
-            setFile(e.target.files[0] || null); // Set to null if no files selected
-          }}
-        />
-        <FilePond
-          files={file ? [file] : []}
-          allowReorder={false}
-          allowMultiple={false}
-          onupdatefiles={(fileItems) => {
-            // Update the file based on what's currently in the FilePond
-            setFile(fileItems.length ? fileItems[0].file : null);
-          }}
+        <AvatarUploader
+          avatar={banner}
+          onUpdate={(bannerfile) => setBannerFile(bannerfile)}
         />
 
+        <AvatarUploader
+          avatar={avatar}
+          onUpdate={(newFile) => setFile(newFile)}
+        />
         <label htmlFor="name" className="text-xl">
           Name
         </label>
@@ -88,7 +69,6 @@ function UpdateUserDetail({ isOpen, setOpenDialog }) {
           value={name}
           className="input"
           onChange={(e) => setName(e.target.value)}
-          required
         />
         <label htmlFor="bio" className="text-xl">
           Bio

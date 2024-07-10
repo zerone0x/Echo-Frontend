@@ -5,7 +5,7 @@ function FeedList({ feeds }) {
     <div>
       {feeds.length &&
         feeds.map((feed: object, index: number) => (
-          <EchoItem feed={feed} key={index} />
+          <EchoItem feed={feed} key={feed._id} />
         ))}
     </div>
   );

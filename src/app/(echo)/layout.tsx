@@ -20,7 +20,7 @@ export default function EchoLayout({
 
           <main className="overflow-scroll">
             <Header />
-            {children}
+            <div className="min-h-screen bg-white">{children}</div>
           </main>
 
           <div className="h-full overflow-hidden">

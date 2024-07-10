@@ -18,13 +18,13 @@ async function UserDetail({ username }: { username: string }) {
       <BackBtn />
       <Suspense fallback={<Loading />}>
         <div className="w-full">
-          {/* Banner Image */}
           <Image
-            src={`${process.env.NEXT_PUBLIC_ROOT_URL}${user.Banner}`}
+            src={user.Banner}
             alt="User Banner"
             layout="responsive"
-            width={700} // Aspect ratio width
-            height={250} // Aspect ratio height, adjust these to control the aspect ratio
+            width={700}
+            height={250}
+            objectFit="cover"
             className="w-full object-cover" // Cover will ensure the image covers the area without distorting aspect ratio
           />
         </div>

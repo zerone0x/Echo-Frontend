@@ -1,8 +1,5 @@
 import BackBtn from "@/app/_components/BackBtn";
 import FeedList from "@/app/_components/FeedList";
-import FollowBtn from "@/app/_components/FollowBtn";
-import FollowDetail from "@/app/_components/FollowDetail";
-import Spinner from "@/app/_components/Spinner";
 import UserCard from "@/app/_components/UserCard";
 import UserDetail from "@/app/_components/UserDetail";
 import { getFeedByUsername, getUserByName } from "@/app/_services/fetchDataAPI";

@@ -10,6 +10,7 @@ function SearchBar() {
   const [feedRes, setFeedRes] = useState([]);
   const [users, setUsers] = useState([]);
   async function handleSubmit(event) {
+    // TODO add router redirect
     event.preventDefault();
     const { feeds, user } = await searchFeeds(query);
     if (feeds.length) {

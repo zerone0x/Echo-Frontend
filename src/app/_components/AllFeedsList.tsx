@@ -6,6 +6,7 @@ import Loading from "../loading";
 import EchoItem from "./EchoItem";
 import SpinnerMini from "./SpinnerMini";
 import useInfiniteScroll from "./useInfiniteScroll";
+import FeedList from "./FeedList";
 
 function AllFeedsList() {
   const fetchData = ({ pageParam = null }) => GetAllFeeds(pageParam);
@@ -23,13 +24,15 @@ function AllFeedsList() {
     <div>
       {data?.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.data.map((feed: any) => (
-            <EchoItem key={feed.id} feed={feed} />
-          ))}
+          <FeedList feeds={page.data} />
         </Fragment>
       ))}
       <div ref={ref} className="flex justify-center">
-        {isFetchingNextPage ? <SpinnerMini /> : ""}
+        {isFetchingNextPage ? (
+          <SpinnerMini />
+        ) : (
+          "Can you believe you already hit the bottom!"
+        )}
       </div>
     </div>
   );

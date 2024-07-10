@@ -18,12 +18,7 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
   const username = params.username;
   const feed = await GetFeedById(params.feedId);
-  return (
-    <>
-      <UserDetail username={username} />
-      {feed && <EchoItem feed={feed} />}
-    </>
-  );
+  return <>{feed && <EchoItem feed={feed} />}</>;
 }
 
 export default page;
