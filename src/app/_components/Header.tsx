@@ -11,7 +11,7 @@ function Header() {
     return null;
   }
   return (
-    // need to use smaller z-index incase shelter overlay 
+    // need to use smaller z-index incase shelter overlay
     <div className="z-5 sticky top-0 bg-white p-4">
       <Link
         className={`top-mid-header ${

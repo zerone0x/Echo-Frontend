@@ -25,7 +25,7 @@ function ImageCarousel({ images, initialIndex }) {
             <Image
               src={image}
               alt={`Image ${index}`}
-              width={1600} 
+              width={1600}
               height={900}
               layout="responsive"
               objectFit="contain"

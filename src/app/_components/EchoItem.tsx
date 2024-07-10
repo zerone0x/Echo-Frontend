@@ -61,12 +61,13 @@ function EchoItem({ feed }: { feed: any }) {
         <Reaction feedId={feedId} />
 
         {showCarousel && (
-          <div className="z-100 fixed inset-0 bg-black bg-opacity-80"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) {
-              setShowCarousel(false);
-            }
-          }}
+          <div
+            className="z-100 fixed inset-0 bg-black bg-opacity-80"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                setShowCarousel(false);
+              }
+            }}
           >
             <button
               onClick={() => setShowCarousel(false)}

@@ -34,11 +34,9 @@ function Publish() {
     e.preventDefault();
     const formData = new FormData();
     files.forEach((file) => {
-      formData.append("image", file); // 使用 'image' 作为键，添加每个文件
+      formData.append("image", file);
     });
     formData.append("content", content);
-    console.log(files);
-    console.log(formData);
 
     await CreateFeed(formData);
     queryClient.invalidateQueries("feeds");

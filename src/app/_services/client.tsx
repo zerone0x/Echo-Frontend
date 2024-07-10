@@ -12,7 +12,7 @@ export const client = axios.create({
   },
 });
 
-// image use non-text content-type, so created a new one  
+// image use non-text content-type, so created a new one
 export const mediaClient = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,

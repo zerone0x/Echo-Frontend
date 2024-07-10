@@ -42,7 +42,12 @@ export const getAllUsers = async () => {
 };
 
 export const getUserByName = async (username: string) => {
-  const { data } = await client.get(`/users/username/${username}`);
+  const { data } = await client.get(`users/username/${username}`);
+  return data.results;
+};
+
+export const updateUser = async (formData: FormData) => {
+  const { data } = await mediaClient.post(`users/updateUser`, formData);
   return data.results;
 };
 
