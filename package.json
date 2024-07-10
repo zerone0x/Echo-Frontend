@@ -14,7 +14,6 @@
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
     "axios": "^1.7.2",
-    "embla-carousel-react": "^8.1.6",
     "emoji-picker-react": "^4.10.0",
     "filepond": "^4.31.1",
     "jose": "^5.5.0",
@@ -35,6 +34,7 @@
     "react-search-autocomplete": "^8.5.2",
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
+    "swiper": "^11.1.4",
     "toast": "^0.5.4"
   },
   "devDependencies": {

@@ -52,38 +52,6 @@
         100% 100%;
     }
   }
-  .embla {
-    overflow: hidden;
-    z-index: 10;
-  }
-  .embla__container {
-    display: flex;
-  }
-  .embla__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-  }
-
-  .embla_prev,
-  .embla_next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #fff; /* 确保颜色与背景对比 */
-    border: 1px solid black; /* 添加边框以增加可见性 */
-    cursor: pointer;
-    padding: 10px;
-    font-size: 16px;
-    z-index: 10; /* 确保按钮在最上层 */
-  }
-
-  .embla_prev {
-    left: 10px;
-  }
-
-  .embla_next {
-    right: 10px;
-  }
 
   .spinner {
     margin: 3.2rem auto 1.6rem;

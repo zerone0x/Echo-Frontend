@@ -7,7 +7,7 @@ import FollowBtn from "./FollowBtn";
 import FollowDetail from "./FollowDetail";
 import Loading from "../loading";
 
-async function UserDetail({ username }) {
+async function UserDetail({ username }: { username: string }) {
   const [user, feeds] = await Promise.all([
     getUserByName(username),
     getFeedByUsername(username),

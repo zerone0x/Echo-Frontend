@@ -1,61 +1,39 @@
 "use client";
-import useEmblaCarousel from "embla-carousel-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import Image from "next/image";
-import { useCallback, useEffect } from "react";
+import { Pagination, Navigation } from "swiper/modules";
 
-function ImageCarousel({ images, initialIndex, onClose }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
-  useEffect(() => {
-    if (emblaApi && typeof initialIndex === "number") {
-      emblaApi.scrollTo(initialIndex);
-    }
-  }, [emblaApi, initialIndex]);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-    console.log("prev");
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
+function ImageCarousel({ images, initialIndex }) {
   return (
-    <div className="embla h-full max-h-full w-full max-w-6xl p-4">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {images.map((image, index) => (
-            <div className="embla__slide" key={index}>
-              <Image
-                src={image}
-                alt={`Image ${index}`}
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      <button
-        onClick={scrollPrev}
-        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 text-white"
+    <section className="z-100 m-auto flex h-full w-full max-w-6xl items-center p-4">
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={40}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        initialSlide={initialIndex}
       >
-        Prev
-      </button>
-      <button
-        onClick={scrollNext}
-        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 text-white"
-      >
-        Next
-      </button>
-      <button
-        onClick={onClose}
-        className="absolute right-4 top-4 z-10 rounded-full bg-red-700 bg-opacity-70 p-2 text-white"
-      >
-        Close
-      </button>
-    </div>
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <Image
+              src={image}
+              alt={`Image ${index}`}
+              width={1600} // Example width
+              height={900}
+              layout="responsive"
+              objectFit="contain"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
   );
 }
 

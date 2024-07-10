@@ -8,7 +8,6 @@ import Loading from "@/app/loading";
 import Header from "@/app/_components/Header";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
-import Content from "@/app/_components/Content";
 
 function BookmarkPage() {
   const { currentUserId } = useAuth();

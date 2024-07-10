@@ -12,7 +12,6 @@ import { unstable_noStore as noStore } from "next/cache";
 import SignOutButton from "@/app/_components/SignOutButton";
 import { headers } from "next/headers";
 import Header from "@/app/_components/Header";
-import Content from "@/app/_components/Content";
 
 // revalidate to update feeds in time
 export const revalidate = 300;

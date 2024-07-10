@@ -3,7 +3,7 @@ import { DeleteFeedById } from "../_services/fetchDataAPI";
 
 function ConfirmDialog({ dialog, setDialog, dialogAction }) {
   const queryClient = useQueryClient();
-  async function delFeed(e) {
+  async function delFeed(e: any) {
     e.preventDefault();
     dialogAction();
     // toast.success("Echo deleted successfully!");

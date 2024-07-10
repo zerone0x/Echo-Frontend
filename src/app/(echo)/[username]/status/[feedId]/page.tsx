@@ -1,5 +1,4 @@
 import BackBtn from "@/app/_components/BackBtn";
-import Content from "@/app/_components/Content";
 import EchoItem from "@/app/_components/EchoItem";
 import Spinner from "@/app/_components/Spinner";
 import UserDetail from "@/app/_components/UserDetail";

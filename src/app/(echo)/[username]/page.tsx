@@ -1,5 +1,4 @@
 import BackBtn from "@/app/_components/BackBtn";
-import Content from "@/app/_components/Content";
 import FeedList from "@/app/_components/FeedList";
 import FollowBtn from "@/app/_components/FollowBtn";
 import FollowDetail from "@/app/_components/FollowDetail";
