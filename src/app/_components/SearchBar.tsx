@@ -4,13 +4,14 @@ import { searchFeeds } from "../_services/fetchDataAPI";
 import FeedList from "./FeedList";
 import UserCard from "./UserCard";
 import AllUserList from "./AllUserList";
+import { useRouter } from "next/navigation";
 
 function SearchBar() {
   const [query, setQuery] = useState("");
   const [feedRes, setFeedRes] = useState([]);
   const [users, setUsers] = useState([]);
+  const router = useRouter();
   async function handleSubmit(event) {
-    // TODO add router redirect
     event.preventDefault();
     const { feeds, user } = await searchFeeds(query);
     if (feeds.length) {
@@ -23,6 +24,7 @@ function SearchBar() {
     } else {
       setUsers([]);
     }
+    router.push("/search");
   }
   return (
     <>
