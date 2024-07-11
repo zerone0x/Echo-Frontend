@@ -11,15 +11,18 @@ import ImageCarousel from "./ImageCarousel";
 import { IoMdClose } from "react-icons/io";
 
 function EchoItem({ feed }: { feed: any }) {
+  console.log(feed);
+  const type = feed?.type;
   const user = feed?.user;
   const content = feed?.content;
   const createdAt = feed?.createdAt;
   const feedImages = feed?.feedImages;
+  const { likesCount, commentsCount } = feed;
   const name = user?.name;
   const { authData, setAuthData, currentUserId } = useAuth();
   const [showCarousel, setShowCarousel] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const feedId = feed?.id;
+  const feedId = type === "Feed" ? feed?.id : feed._id;
   const handleImageClick = (index: number) => {
     setCurrentImageIndex(index);
     setShowCarousel(true);
@@ -27,9 +30,16 @@ function EchoItem({ feed }: { feed: any }) {
   return (
     feed && (
       <div className="overflow-hidden rounded-lg bg-white shadow-lg">
-        <Link href={`/${name}/status/${feedId}`}>
+        <Link
+          href={
+            type === "Feed"
+              ? `/${name}/status/${feedId}`
+              : `/${name}/status/${feed?.feed}`
+          }
+        >
           <div className="flex items-center justify-between p-4">
             <UserCard user={user} isBtnDisplay={false} />
+            {/* TODO text no need to be clickable  */}
             <span className="text-sm text-gray-500">
               {FormatTime(createdAt)}
             </span>
@@ -38,7 +48,7 @@ function EchoItem({ feed }: { feed: any }) {
             <TextExpander>{content}</TextExpander>
           </div>
         </Link>
-        {feedImages.length > 0 && (
+        {feedImages?.length > 0 && (
           <div className="grid grid-cols-2 gap-4">
             {feedImages.map((imageUrl, index) => (
               // 不要用传递的参数给click event 因为参数是event
@@ -57,8 +67,12 @@ function EchoItem({ feed }: { feed: any }) {
             ))}
           </div>
         )}
-
-        <Reaction feedId={feedId} />
+        <Reaction
+          feedId={feedId}
+          type={type}
+          likesCount={likesCount}
+          commentsCount={commentsCount}
+        />
 
         {showCarousel && (
           <div

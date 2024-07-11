@@ -9,15 +9,21 @@ import { useRouter } from "next/navigation";
 function SearchBar() {
   const [query, setQuery] = useState("");
   const [feedRes, setFeedRes] = useState([]);
+  const [commentRes, setCommentRes] = useState([]);
   const [users, setUsers] = useState([]);
   const router = useRouter();
   async function handleSubmit(event) {
     event.preventDefault();
-    const { feeds, user } = await searchFeeds(query);
+    const { feeds, user, comments } = await searchFeeds(query);
     if (feeds.length) {
       setFeedRes(feeds);
     } else {
       setFeedRes([]);
+    }
+    if (comments.length) {
+      setCommentRes(comments);
+    } else {
+      setCommentRes([]);
     }
     if (user.length) {
       setUsers(user);
@@ -38,6 +44,7 @@ function SearchBar() {
       </form>
       <AllUserList users={users} />
       <FeedList feeds={feedRes} />
+      <FeedList feeds={commentRes} />
     </>
   );
 }

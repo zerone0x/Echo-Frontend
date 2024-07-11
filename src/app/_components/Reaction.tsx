@@ -18,17 +18,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
 
-function Reaction({ feedId }) {
+function Reaction({ feedId, type, likesCount, commentsCount }) {
   const { currentUserId } = useAuth();
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
+  const [likedCount, setLikedCount] = useState(likesCount);
+  const [commentCount, setCommentCount] = useState(commentsCount);
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
 
   useEffect(() => {
     async function fetchStatuses() {
-      const liked = await getIsLiked(feedId);
-      const bookmarked = await getIsBooked(feedId);
+      const liked = await getIsLiked(feedId, type);
+      const bookmarked = await getIsBooked(feedId, type);
       setLikeStatus(liked);
       setBookmarkStatus(bookmarked);
     }
@@ -48,6 +50,7 @@ function Reaction({ feedId }) {
     event.stopPropagation();
     event.preventDefault();
     setLikeStatus((likeStatus) => !likeStatus);
+    setLikedCount(likeStatus ? likedCount - 1 : likedCount + 1);
     await LikeFeed(feedId, currentUserId);
     queryClient.invalidateQueries("likes");
     toast.success("Echo liked successfully!");
@@ -76,6 +79,7 @@ function Reaction({ feedId }) {
       name: "Reply",
       icon: <LuReply />,
       color: "text-green-500",
+      number: commentCount,
     },
     {
       name: "Repost",
@@ -87,6 +91,7 @@ function Reaction({ feedId }) {
       icon: <FaStar />,
       action: likeClick,
       color: likeStatus ? "text-yellow-500" : "text-gray-500",
+      number: likedCount,
     },
     {
       name: "Bookmark",
@@ -112,7 +117,9 @@ function Reaction({ feedId }) {
           onClick={(e) => item.action && item.action(e)} // TODO:check later
           aria-label={item.name}
         >
-          <span className={item.color}>{item.icon}</span>
+          <span className={item.color}>
+            {item.icon} {item?.number}
+          </span>
         </button>
       ))}
       {dialog.isOpen && dialog.feedId === feedId && (

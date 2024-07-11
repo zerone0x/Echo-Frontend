@@ -69,7 +69,6 @@ export const DeleteFeedById = async (feedId: string) => {
 
 export const GetFeedById = async (feedId: string) => {
   const { data } = await client.get(`feeds/${feedId}`);
-
   return data.results;
 };
 
@@ -85,43 +84,57 @@ export const searchFeeds = async (keyword: string) => {
   return data.results;
 };
 
-export const BookMarkFeed = async (feedId: string, user: string) => {
+export const BookMarkFeed = async (
+  feedId: string,
+  user: string,
+  itemType: string,
+) => {
   const { data } = await client.post(`bookmark/booked`, {
     feedId: feedId,
     user: user,
+    itemType: itemType,
   });
   return data.results;
 };
 
 export const getAllBookMark = async (user: string) => {
-  const { data } = await client.get(`bookmark/getAllBookMark`, {
-    // user: user,
+  const { data } = await client.get(`bookmark/getAllBookMark`);
+  return data.results;
+};
+
+export const getIsBooked = async (feedId: string, itemType: string) => {
+  const { data } = await client.get(`bookmark/getIsBooked/${feedId}`, {
+    params: {
+      itemType: itemType,
+    },
   });
   return data.results;
 };
 
-export const getIsBooked = async (feedId: string) => {
-  const { data } = await client.get(`bookmark/getIsBooked/${feedId}`, {});
-  return data.results;
-};
-
-export const LikeFeed = async (feedId: string, user: string) => {
+export const LikeFeed = async (
+  feedId: string,
+  user: string,
+  itemType: string,
+) => {
   const { data } = await client.post(`like/likedfeed`, {
     feedId: feedId,
     user: user,
+    itemType: itemType,
   });
   return data.results;
 };
 
 export const getAllLikes = async (user: string) => {
-  const { data } = await client.get(`like/getAllLikes`, {
-    // user: user,
-  });
+  const { data } = await client.get(`like/getAllLikes`);
   return data.results;
 };
 
-export const getIsLiked = async (feedId: string) => {
-  const { data } = await client.get(`like/getIsLiked/${feedId}`, {});
+export const getIsLiked = async (feedId: string, itemType: string) => {
+  const { data } = await client.get(`like/getIsLiked/${feedId}`, {
+    params: {
+      itemType: itemType,
+    },
+  });
   return data.results;
 };
 
@@ -148,3 +161,7 @@ export const getIsFollowed = async (username: string) => {
   return data.results;
 };
 
+export const getCommentsByFeedID = async (feedId: string) => {
+  const { data } = await client.get(`comments/getCommentsByFeedID/${feedId}`);
+  return data.results;
+};
