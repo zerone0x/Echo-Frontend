@@ -69,7 +69,6 @@ export const DeleteFeedById = async (feedId: string) => {
 
 export const GetFeedById = async (feedId: string) => {
   const { data } = await client.get(`feeds/${feedId}`);
-  // console.log(data);
 
   return data.results;
 };
@@ -148,3 +147,4 @@ export const getIsFollowed = async (username: string) => {
   const { data } = await client.get(`follow/getIsFollowed/${username}`);
   return data.results;
 };
+

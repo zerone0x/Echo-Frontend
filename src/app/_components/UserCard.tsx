@@ -4,6 +4,7 @@ import FollowBtn from "./FollowBtn";
 
 function UserCard({ user, isBtnDisplay = true }) {
   const name = user?.name;
+  const username = user?.username;
   const ProfileImage = user?.ProfileImage;
 
   return (
@@ -20,7 +21,10 @@ function UserCard({ user, isBtnDisplay = true }) {
             />
           </Link>
         )}
-        <span className="font-medium text-gray-700">{name}</span>
+        <div className="flex flex-col">
+          <span className="font-medium text-gray-700">{username}</span>
+          <span className="font-medium text-gray-700">@{name}</span>
+        </div>
       </div>
       {isBtnDisplay && <FollowBtn username={name} />}
     </>

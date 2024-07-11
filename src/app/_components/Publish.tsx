@@ -29,11 +29,21 @@ function Publish() {
   const queryClient = useQueryClient();
   const emojiPickerRef = useRef(null);
   const router = useRouter();
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const fileInputRef = useRef(null);
 
+  const handleAvatarClick = () => {
+    // Trigger FilePond's browse files
+    fileInputRef.current?.browse();
+  };
+
+  const handleFilesUpdate = (files) => {
+    setUploadedFiles(files);
+  };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const formData = new FormData();
-    files.forEach((file) => {
+    uploadedFiles.forEach((file) => {
       formData.append("image", file);
     });
     formData.append("content", content);
@@ -41,6 +51,7 @@ function Publish() {
     await CreateFeed(formData);
     queryClient.invalidateQueries("feeds");
     setContent("");
+    handleFilesUpdate([]);
     setFiles([]);
     setShowPick(false);
     router.push("/home");
@@ -94,15 +105,26 @@ function Publish() {
           >
             <MdEmojiEmotions />
           </button>
-          <FilePond
-            files={files}
-            allowReorder={true}
-            allowMultiple={true}
-            onupdatefiles={(fileItems) => {
-              setFiles(fileItems.map((fileItem) => fileItem.file));
-            }}
-            labelIdle={`Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`}
-          />
+          {/* <AvatarUploader onUpdate={handleFilesUpdate} isImage={false} 
+           /> */}
+          <div>
+            <div onClick={handleAvatarClick} className="cursor-pointer">
+              <GoPaperclip />
+            </div>
+            <FilePond
+              ref={fileInputRef}
+              files={files}
+              allowReorder={true}
+              allowMultiple={true}
+              onupdatefiles={(fileItems) => {
+                // Update the file array based on operation in FilePond
+                const newFiles = fileItems.map((fileItem) => fileItem.file);
+                setFiles(newFiles);
+                handleFilesUpdate(newFiles);
+              }}
+              labelIdle=""
+            />
+          </div>
         </div>
         {showPick && (
           <div ref={emojiPickerRef}>

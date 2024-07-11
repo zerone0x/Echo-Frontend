@@ -42,7 +42,7 @@ const AvatarUploader = ({ avatar, onUpdate }) => {
           setFile(newFile);
           onUpdate(newFile);
         }}
-        labelIdle='Drag & Drop your avatar or <span class="filepond--label-action">Browse</span>'
+        labelIdle=""
       />
     </div>
   );
