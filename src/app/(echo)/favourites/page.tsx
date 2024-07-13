@@ -10,15 +10,7 @@ import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
 
 function FavoritePage() {
-  const { currentUserId } = useAuth();
-
-  const { data, error, isLoading } = useQuery(
-    "likes",
-    () => getAllLikes(currentUserId),
-    {
-      enabled: !!currentUserId,
-    },
-  );
+  const { data, error, isLoading } = useQuery("likes", () => getAllLikes());
 
   if (isLoading) return <Loading />;
   if (error) return <div>Error loading Favorited Echos: {error.message}</div>;

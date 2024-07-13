@@ -1,12 +1,12 @@
-import Header from "@/app/_components/Header";
+import Notify from "@/app/_components/Notify";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Notification",
 };
 
-function page() {
-  return <h1>hi</h1>;
+async function page() {
+  return <Notify />;
 }
 
 export default page;

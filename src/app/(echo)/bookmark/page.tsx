@@ -10,14 +10,8 @@ import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
 
 function BookmarkPage() {
-  const { currentUserId } = useAuth();
-
-  const { data, error, isLoading } = useQuery(
-    "bookmark",
-    () => getAllBookMark(currentUserId),
-    {
-      enabled: !!currentUserId,
-    },
+  const { data, error, isLoading } = useQuery("bookmark", () =>
+    getAllBookMark(),
   );
 
   if (isLoading) return <Loading />;

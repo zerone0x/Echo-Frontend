@@ -24,8 +24,8 @@ export default function Home() {
   // it will not cache anything
   // noStore();
   return (
-    <>
+    <div>
       <AllFeedsList />
-    </>
+    </div>
   );
 }

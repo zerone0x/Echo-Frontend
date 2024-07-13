@@ -12,7 +12,7 @@ function SearchBar() {
   const [commentRes, setCommentRes] = useState([]);
   const [users, setUsers] = useState([]);
   const router = useRouter();
-  async function handleSubmit(event) {
+  async function handleSubmit(event: any) {
     event.preventDefault();
     const { feeds, user, comments } = await searchFeeds(query);
     if (feeds.length) {

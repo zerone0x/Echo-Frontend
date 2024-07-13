@@ -18,7 +18,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
 
-function Reaction({ feedId, type, likesCount, commentsCount }) {
+function Reaction({
+  feedId,
+  type,
+  likesCount,
+  commentsCount,
+}: {
+  feedId: string;
+  type: string;
+  likesCount: number;
+  commentsCount: number;
+}) {
   const { currentUserId } = useAuth();
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
@@ -37,26 +47,26 @@ function Reaction({ feedId, type, likesCount, commentsCount }) {
     fetchStatuses();
   }, [feedId]);
 
-  async function bookmarkClick(event) {
+  async function bookmarkClick(event: any) {
     // event.stopPropagation();
     event.preventDefault();
     setBookmarkStatus((bookmarkStatus) => !bookmarkStatus);
-    await BookMarkFeed(feedId, currentUserId);
+    await BookMarkFeed(feedId, type);
     queryClient.invalidateQueries("bookmark");
     // toast.success("Echo bookmarked successfully!");
   }
 
-  async function likeClick(event) {
+  async function likeClick(event: any) {
     event.stopPropagation();
     event.preventDefault();
     setLikeStatus((likeStatus) => !likeStatus);
     setLikedCount(likeStatus ? likedCount - 1 : likedCount + 1);
-    await LikeFeed(feedId, currentUserId);
+    await LikeFeed(feedId, type);
     queryClient.invalidateQueries("likes");
     toast.success("Echo liked successfully!");
   }
 
-  function handleDelDialog(event) {
+  function handleDelDialog(event: any) {
     event.stopPropagation();
     event.preventDefault();
     setDialog({ isOpen: true, feedId: feedId });

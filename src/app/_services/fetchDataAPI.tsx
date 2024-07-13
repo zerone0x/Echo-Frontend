@@ -84,20 +84,15 @@ export const searchFeeds = async (keyword: string) => {
   return data.results;
 };
 
-export const BookMarkFeed = async (
-  feedId: string,
-  user: string,
-  itemType: string,
-) => {
+export const BookMarkFeed = async (feedId: string, itemType: string) => {
   const { data } = await client.post(`bookmark/booked`, {
     feedId: feedId,
-    user: user,
     itemType: itemType,
   });
   return data.results;
 };
 
-export const getAllBookMark = async (user: string) => {
+export const getAllBookMark = async () => {
   const { data } = await client.get(`bookmark/getAllBookMark`);
   return data.results;
 };
@@ -111,20 +106,15 @@ export const getIsBooked = async (feedId: string, itemType: string) => {
   return data.results;
 };
 
-export const LikeFeed = async (
-  feedId: string,
-  user: string,
-  itemType: string,
-) => {
+export const LikeFeed = async (feedId: string, itemType: string) => {
   const { data } = await client.post(`like/likedfeed`, {
     feedId: feedId,
-    user: user,
     itemType: itemType,
   });
   return data.results;
 };
 
-export const getAllLikes = async (user: string) => {
+export const getAllLikes = async () => {
   const { data } = await client.get(`like/getAllLikes`);
   return data.results;
 };
@@ -141,7 +131,6 @@ export const getIsLiked = async (feedId: string, itemType: string) => {
 export const AddFollow = async (idolName: string) => {
   const { data } = await client.post(`follow/AddFollow`, {
     idolName: idolName,
-    // user: user,
   });
   return data.results;
 };
@@ -164,4 +153,13 @@ export const getIsFollowed = async (username: string) => {
 export const getCommentsByFeedID = async (feedId: string) => {
   const { data } = await client.get(`comments/getCommentsByFeedID/${feedId}`);
   return data.results;
+};
+
+export const getAllNotifications = async () => {
+  try {
+    const { data } = await client.get("notification/GetAllNotifications");
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
 };
