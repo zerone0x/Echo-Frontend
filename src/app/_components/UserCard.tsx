@@ -3,31 +3,28 @@ import Link from "next/link";
 import FollowBtn from "./FollowBtn";
 
 function UserCard({ user, isBtnDisplay = true }) {
-  const name = user?.name;
-  const username = user?.username;
-  const ProfileImage = user?.ProfileImage;
+  const { name, username, ProfileImage } = user;
 
   return (
-    <>
-      <div className="flex items-center space-x-3 hover:cursor-pointer hover:underline">
-        {ProfileImage && (
-          <Link href={`/${name}`}>
+    <div className="flex items-center ">
+      <div className="flex items-center space-x-3 hover:cursor-pointer ">
+        <Link href={`/${name}`}>
+          <div className="z-3 relative h-16 w-16 cursor-pointer overflow-hidden rounded-full hover:brightness-75 transition-all duration-300">
             <Image
               src={ProfileImage}
-              alt="user profile"
-              width={50}
-              height={50}
-              className="rounded-full"
+              alt="Avatar"
+              layout="fill"
+              objectFit="cover"
             />
-          </Link>
-        )}
+          </div>
+        </Link>
         <div className="flex flex-col">
-          <span className="font-medium text-gray-700">{username}</span>
-          <span className="font-medium text-gray-700">@{name}</span>
+        <span className="block font-medium text-lg text-black hover:underline">{username}</span>
+        <span className="block font-medium text-gray-700 ">@{name}</span>
         </div>
       </div>
       {isBtnDisplay && <FollowBtn username={name} />}
-    </>
+    </div>
   );
 }
 

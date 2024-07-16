@@ -75,6 +75,8 @@ function EchoItem({ feed }: { feed: any }) {
         />
 
         {showCarousel && (
+          <div className="fixed inset-5 bg-opacity-80 bg-black z-50">
+            <div className="z-100 relative   ">
           <div
             className="z-100 fixed inset-0 bg-black bg-opacity-80"
             onClick={(event) => {

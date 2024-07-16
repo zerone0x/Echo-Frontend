@@ -4,7 +4,10 @@ import SubmitButton from "./SubmitButton";
 
 function Login() {
   return (
-    <form className="flex flex-col gap-4" action={loginUser}>
+    <form
+      className="flex w-full max-w-md flex-col gap-4 border border-gray-300 p-8 shadow-lg"
+      action={loginUser}
+    >
       <label className="text-xl" htmlFor="email">
         Email
         <input

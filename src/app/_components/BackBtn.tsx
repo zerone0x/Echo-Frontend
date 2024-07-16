@@ -5,7 +5,7 @@ function BackBtn() {
   const router = useRouter();
 
   return (
-    <div className="z-5 sticky top-0 bg-white p-5">
+    <div className="sticky top-0 z-10 w-full border-b-2 bg-[#F3FFF9] p-4">
       <div className="top-mid-header">
         <button
           onClick={() => router.back()}

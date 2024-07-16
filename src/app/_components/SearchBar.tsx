@@ -6,7 +6,7 @@ import UserCard from "./UserCard";
 import AllUserList from "./AllUserList";
 import { useRouter } from "next/navigation";
 
-function SearchBar() {
+function SearchBar({ isShow = false }) {
   const [query, setQuery] = useState("");
   const [feedRes, setFeedRes] = useState([]);
   const [commentRes, setCommentRes] = useState([]);
@@ -42,9 +42,13 @@ function SearchBar() {
           onChange={(event) => setQuery(event.target.value)}
         />
       </form>
-      <AllUserList users={users} />
-      <FeedList feeds={feedRes} />
-      <FeedList feeds={commentRes} />
+      {isShow && (
+        <>
+          <AllUserList users={users} />
+          <FeedList feeds={feedRes} />
+          <FeedList feeds={commentRes} />
+        </>
+      )}
     </>
   );
 }

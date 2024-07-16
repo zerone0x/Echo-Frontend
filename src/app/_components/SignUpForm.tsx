@@ -4,7 +4,10 @@ import SubmitButton from "./SubmitButton";
 
 function SignUpForm() {
   return (
-    <form className="flex flex-col gap-4" action={registerUser}>
+    <form
+      className="flex w-full max-w-md flex-col gap-4 border border-gray-300 p-8 shadow-lg"
+      action={registerUser}
+    >
       <label htmlFor="name" className="text-xl">
         Your full name
         <input type="text" id="name" name="name" className="input" required />
@@ -29,9 +32,7 @@ function SignUpForm() {
           required
         />
       </label>
-      <SubmitButton pendingLabel="Loading...">
-        Create a Echo account
-      </SubmitButton>
+      <SubmitButton pendingLabel="Loading...">Create Account</SubmitButton>
     </form>
   );
 }

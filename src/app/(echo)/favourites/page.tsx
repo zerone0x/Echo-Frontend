@@ -20,7 +20,7 @@ function FavoritePage() {
       {data && data.length > 0 ? (
         <div>
           {data.map((item, index) => (
-            <EchoItem key={item?.feed._id} feed={item?.feed} />
+            <EchoItem key={item?.bookmarkedItem._id} feed={item?.bookmarkedItem} />
           ))}
         </div>
       ) : (

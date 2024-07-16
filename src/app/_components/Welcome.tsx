@@ -8,8 +8,8 @@ function Welcome() {
   const [activeTab, setActiveTab] = useState("login");
   return (
     <div className="mx-auto my-auto max-w-3xl">
-      <h1 className="py-2 text-center text-3xl font-semibold">Echo</h1>
-      <div className="mt-10 rounded-lg border border-gray-300 p-4">
+      <h1 className="py-6 text-center text-3xl font-semibold">Echo</h1>
+      <div className="mt-10 rounded-lg">
         <div className="mt-10 flex items-center justify-center gap-10">
           <button
             className={`${activeTab === "login" ? "bg-[#675AF2] text-white" : "bg-white-400 text-black"} rounded-2xl px-6 py-3 uppercase tracking-wide`}

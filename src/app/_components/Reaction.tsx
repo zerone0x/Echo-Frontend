@@ -118,17 +118,17 @@ function Reaction({
   ];
 
   return (
-    <div className="flex justify-start gap-10 space-x-2 px-4 py-2">
-      <ToastContainer />
+    <div className="flex justify-evenly gap-10 space-x-2 px-4 py-2 text-xl w-full">
+      {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <button
           key={item.name}
-          className={`text-gray-500 hover:text-gray-700 focus:outline-none`}
+          className={`text-gray-500 hover:text-gray-700 focus:outline-none `}
           onClick={(e) => item.action && item.action(e)} // TODO:check later
           aria-label={item.name}
         >
-          <span className={item.color}>
-            {item.icon} {item?.number}
+          <span className={`${item.color} flex items-center gap-1 text-xl `}>
+            {item.icon} {item?.number && item?.number > 0 ? item?.number : ""}
           </span>
         </button>
       ))}
