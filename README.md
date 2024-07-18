@@ -13,7 +13,7 @@ Welcome to Echo Social BackEnd, a Mastodon-like platform that amplifies your voi
 
 ### 🚧 Under Construction
 
-Please note that Echo Social is still in active development. We're working hard to bring you the best social experience possible. Your patience and feedback are greatly appreciated as we continue to improve and expand our features.
+Please note that Echo Social is still in active development.
 
 ## About Echo Social
 
