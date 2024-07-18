@@ -7,7 +7,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/zerone0x/Echo-Frontend) ![GitHub last commit](https://img.shields.io/github/last-commit/zerone0x/Echo-Frontend)
 ![GitHub](https://img.shields.io/github/license/zerone0x/Echo-Frontend)
 
-## 🎵 Share Your Echo with the World
+## Echo Social App
 
 Welcome to Echo Social BackEnd, a Mastodon-like platform that amplifies your voice in the digital realm!
 
