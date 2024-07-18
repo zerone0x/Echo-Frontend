@@ -6,10 +6,10 @@ function UserCard({ user, isBtnDisplay = true }) {
   const { name, username, ProfileImage } = user;
 
   return (
-    <div className="flex items-center ">
-      <div className="flex items-center space-x-3 hover:cursor-pointer ">
+    <div className="flex items-center">
+      <div className="flex items-center space-x-3 hover:cursor-pointer">
         <Link href={`/${name}`}>
-          <div className="z-3 relative h-16 w-16 cursor-pointer overflow-hidden rounded-full hover:brightness-75 transition-all duration-300">
+          <div className="z-3 relative h-16 w-16 cursor-pointer overflow-hidden rounded-full transition-all duration-300 hover:brightness-75">
             <Image
               src={ProfileImage}
               alt="Avatar"
@@ -19,8 +19,10 @@ function UserCard({ user, isBtnDisplay = true }) {
           </div>
         </Link>
         <div className="flex flex-col">
-        <span className="block font-medium text-lg text-black hover:underline">{username}</span>
-        <span className="block font-medium text-gray-700 ">@{name}</span>
+          <span className="block text-lg font-medium text-black hover:underline">
+            {username}
+          </span>
+          <span className="block font-medium text-gray-700">@{name}</span>
         </div>
       </div>
       {isBtnDisplay && <FollowBtn username={name} />}

@@ -8,7 +8,7 @@ import { Pagination, Navigation } from "swiper/modules";
 
 function ImageCarousel({ images, initialIndex }) {
   return (
-    <section className="z-100 m-auto flex h-full w-full max-w-6xl items-center p-4">
+    <section className="m-auto flex h-full w-full max-w-6xl items-center p-4">
       <Swiper
         slidesPerView={1}
         spaceBetween={40}

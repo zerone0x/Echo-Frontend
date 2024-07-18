@@ -11,7 +11,6 @@ import ImageCarousel from "./ImageCarousel";
 import { IoMdClose } from "react-icons/io";
 
 function EchoItem({ feed }: { feed: any }) {
-  console.log(feed);
   const type = feed?.type;
   const user = feed?.user;
   const content = feed?.content;
@@ -29,7 +28,7 @@ function EchoItem({ feed }: { feed: any }) {
   };
   return (
     feed && (
-      <div className="overflow-hidden rounded-lg bg-white shadow-lg">
+      <div className="overflow-hidden border-b-2">
         <Link
           href={
             type === "Feed"
@@ -49,7 +48,7 @@ function EchoItem({ feed }: { feed: any }) {
           </div>
         </Link>
         {feedImages?.length > 0 && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2 p-4">
             {feedImages.map((imageUrl, index) => (
               // 不要用传递的参数给click event 因为参数是event
               <div
@@ -75,26 +74,27 @@ function EchoItem({ feed }: { feed: any }) {
         />
 
         {showCarousel && (
-          <div className="fixed inset-5 bg-opacity-80 bg-black z-50">
-            <div className="z-100 relative   ">
-          <div
-            className="z-100 fixed inset-0 bg-black bg-opacity-80"
-            onClick={(event) => {
-              if (event.target === event.currentTarget) {
-                setShowCarousel(false);
-              }
-            }}
-          >
-            <button
-              onClick={() => setShowCarousel(false)}
-              className="bg-grey-700 absolute right-4 top-4 z-10 rounded-full bg-opacity-70 p-2 text-xl text-white"
-            >
-              <IoMdClose />
-            </button>
-            <ImageCarousel
-              images={feedImages}
-              initialIndex={currentImageIndex}
-            />
+          <div className="fixed inset-0 z-50 bg-black bg-opacity-80">
+            <div className="z-100 relative">
+              <div
+                onClick={(event) => {
+                  if (event.target === event.currentTarget) {
+                    setShowCarousel(false);
+                  }
+                }}
+              >
+                <button
+                  onClick={() => setShowCarousel(false)}
+                  className="bg-grey-700 z-100 absolute right-4 top-4 rounded-full bg-opacity-70 p-2 text-xl text-white"
+                >
+                  <IoMdClose />
+                </button>
+                <ImageCarousel
+                  images={feedImages}
+                  initialIndex={currentImageIndex}
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>

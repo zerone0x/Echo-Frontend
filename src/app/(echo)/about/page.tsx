@@ -1,7 +1,7 @@
-import Header from "@/app/_components/Header";
+import { aboutEcho } from "@/app/_config/data";
 
 function page() {
-  return <></>;
+  return <p>{aboutEcho}</p>;
 }
 
 export default page;

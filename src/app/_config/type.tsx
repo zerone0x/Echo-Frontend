@@ -2,7 +2,6 @@ export interface Params {
   feedId: string;
 }
 
-export interface User{
+export interface User {
   id: string;
-  
 }

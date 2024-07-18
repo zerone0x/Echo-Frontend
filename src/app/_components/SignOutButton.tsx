@@ -28,7 +28,7 @@ function SignOutButton() {
         className="flex w-full items-center gap-4 px-5 py-3 text-3xl font-semibold text-primary-800 transition-colors"
         disabled={isLoading}
       >
-        <FaArrowRightFromBracket  />
+        <FaArrowRightFromBracket />
         <span className="hidden md:inline-block">
           {isLoading ? "Signing out..." : "Sign out"}
         </span>

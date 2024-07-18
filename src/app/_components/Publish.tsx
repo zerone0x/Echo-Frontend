@@ -19,11 +19,12 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 // Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+registerPlugin(FilePondPluginImagePreview);
 
-function Publish() {
+function Publish({ type = "Feed" }) {
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
+  const [shouldShowFilePond, setShouldShowFilePond] = useState(false);
   const [files, setFiles] = useState([]);
   const { authData } = useAuth();
   const queryClient = useQueryClient();
@@ -34,7 +35,10 @@ function Publish() {
 
   const handleAvatarClick = () => {
     // Trigger FilePond's browse files
+    console.log("######clickmepop");
+
     fileInputRef.current?.browse();
+    setShouldShowFilePond(true);
   };
 
   const handleFilesUpdate = (files) => {
@@ -47,7 +51,7 @@ function Publish() {
       formData.append("image", file);
     });
     formData.append("content", content);
-
+    formData.append("type", type);
     await CreateFeed(formData);
     queryClient.invalidateQueries("feeds");
     setContent("");
@@ -87,7 +91,7 @@ function Publish() {
     <div>
       <ToastContainer />
       <UserCard user={authData} isBtnDisplay={false} />
-      <form onSubmit={handleSubmit} className="flex flex-col items-center p-4">
+      <form onSubmit={handleSubmit} className="">
         <textarea
           className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none"
           placeholder="What's on your mind?"
@@ -97,7 +101,7 @@ function Publish() {
           rows={4}
           required
         />
-        <div className="mt-3 flex flex-col gap-6 space-y-2">
+        <div className="mt-3 flex gap-6 space-y-2">
           <button
             type="button"
             onClick={togglePicker}
@@ -105,17 +109,31 @@ function Publish() {
           >
             <MdEmojiEmotions />
           </button>
-          {/* <AvatarUploader onUpdate={handleFilesUpdate} isImage={false} 
-           /> */}
           <div>
-            <div onClick={handleAvatarClick} className="cursor-pointer">
+            <button
+              type="button"
+              onClick={handleAvatarClick}
+              className="cursor-pointer"
+            >
               <GoPaperclip />
-            </div>
+            </button>
+          </div>
+        </div>
+        {showPick && (
+          <div ref={emojiPickerRef}>
+            <EmojiPicker content={content} setContent={setContent} />
+          </div>
+        )}
+
+        {shouldShowFilePond && (
+          <div className="bg-red-30">
             <FilePond
+              itemInsertLocation="before"
               ref={fileInputRef}
               files={files}
               allowReorder={true}
               allowMultiple={true}
+              maxFiles={4}
               onupdatefiles={(fileItems) => {
                 // Update the file array based on operation in FilePond
                 const newFiles = fileItems.map((fileItem) => fileItem.file);
@@ -124,11 +142,6 @@ function Publish() {
               }}
               labelIdle=""
             />
-          </div>
-        </div>
-        {showPick && (
-          <div ref={emojiPickerRef}>
-            <EmojiPicker content={content} setContent={setContent} />
           </div>
         )}
         <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>

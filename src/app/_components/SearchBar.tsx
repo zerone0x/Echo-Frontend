@@ -15,17 +15,17 @@ function SearchBar({ isShow = false }) {
   async function handleSubmit(event: any) {
     event.preventDefault();
     const { feeds, user, comments } = await searchFeeds(query);
-    if (feeds.length) {
+    if (feeds.length > 0) {
       setFeedRes(feeds);
     } else {
       setFeedRes([]);
     }
-    if (comments.length) {
+    if (comments.length > 0) {
       setCommentRes(comments);
     } else {
       setCommentRes([]);
     }
-    if (user.length) {
+    if (user.length > 0) {
       setUsers(user);
     } else {
       setUsers([]);

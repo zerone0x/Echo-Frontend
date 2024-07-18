@@ -22,7 +22,10 @@ function BookmarkPage() {
       {data && data.length > 0 ? (
         <div>
           {data.map((item, index) => (
-            <EchoItem key={item?.bookmarkedItem._id} feed={item?.bookmarkedItem} />
+            <EchoItem
+              key={item?.bookmarkedItem._id}
+              feed={item?.bookmarkedItem}
+            />
           ))}
         </div>
       ) : (

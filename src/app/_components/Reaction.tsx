@@ -17,6 +17,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
+import Select from "react-select";
+import { dropdownOptions } from "../_config/data";
 
 function Reaction({
   feedId,
@@ -36,6 +38,7 @@ function Reaction({
   const [commentCount, setCommentCount] = useState(commentsCount);
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
+  const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
     async function fetchStatuses() {
@@ -111,23 +114,22 @@ function Reaction({
     },
     {
       name: "Delete",
-      icon: <IoIosClose />,
+      icon: <IoIosMore />,
       action: handleDelDialog,
-      color: "text-yellow-500",
     },
   ];
 
   return (
-    <div className="flex justify-evenly gap-10 space-x-2 px-4 py-2 text-xl w-full">
+    <div className="flex w-full justify-evenly gap-10 space-x-2 px-4 py-2 text-xl">
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <button
           key={item.name}
-          className={`text-gray-500 hover:text-gray-700 focus:outline-none `}
+          className={`text-gray-500 hover:text-gray-700 focus:outline-none`}
           onClick={(e) => item.action && item.action(e)} // TODO:check later
           aria-label={item.name}
         >
-          <span className={`${item.color} flex items-center gap-1 text-xl `}>
+          <span className={`${item.color} flex items-center gap-1 text-xl`}>
             {item.icon} {item?.number && item?.number > 0 ? item?.number : ""}
           </span>
         </button>
@@ -139,6 +141,11 @@ function Reaction({
           dialogAction={delFeed}
         />
       )}
+      <Select
+        defaultValue={selectedOption}
+        onChange={setSelectedOption}
+        options={dropdownOptions}
+      />
     </div>
   );
 }

@@ -41,41 +41,61 @@ function UpdateUserDetail({ isOpen, setOpenDialog }) {
     setBannerFile(null);
   }
   return (
-    <dialog open={isOpen}>
+    <dialog
+      open={isOpen}
+      className="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 w-full max-w-full rounded-lg bg-white p-5 shadow-xl sm:max-w-lg"
+    >
       <form
         method="dialog"
         onSubmit={handleSubmit}
         className="flex flex-col gap-4"
       >
-        <button onClick={() => setOpenDialog(false)}>
-          <IoMdClose />
-        </button>
-        <h2>Update User Details</h2>
-        <AvatarUploader
-          avatar={banner}
-          onUpdate={(bannerfile) => setBannerFile(bannerfile)}
-        />
+        <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
+          <h2 className="mb-2 text-xl font-semibold text-gray-900 sm:mb-0 sm:text-2xl">
+            Update User Details
+          </h2>
+          <button
+            onClick={() => setOpenDialog(false)}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <IoMdClose />
+          </button>
+        </div>
 
         <AvatarUploader
           avatar={avatar}
           onUpdate={(newFile) => setFile(newFile)}
+          labelName="Avator"
         />
-        <label htmlFor="name" className="text-xl">
+        <AvatarUploader
+          avatar={banner}
+          onUpdate={(bannerfile) => setBannerFile(bannerfile)}
+          labelName="Banner"
+          isBig={true}
+        />
+
+        <label
+          htmlFor="name"
+          className="text-lg font-medium text-gray-700 sm:text-xl"
+        >
           Name
         </label>
         <input
           type="text"
           id="name"
           value={name}
-          className="input"
+          className="input rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
           onChange={(e) => setName(e.target.value)}
         />
-        <label htmlFor="bio" className="text-xl">
+        <label
+          htmlFor="bio"
+          className="text-lg font-medium text-gray-700 sm:text-xl"
+        >
           Bio
         </label>
         <textarea
           id="bio"
-          className="input"
+          className="input rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         ></textarea>

@@ -1,15 +1,9 @@
-"use client";
-import AllUserList from "@/app/_components/AllUserList";
-import FollowBtn from "@/app/_components/FollowBtn";
-import UserCard from "@/app/_components/UserCard";
-import UserDetail from "@/app/_components/UserDetail";
-import { getFans, getFollow } from "@/app/_services/fetchDataAPI";
-import Loading from "@/app/loading";
-import { Suspense } from "react";
 import { useQuery } from "react-query";
+import { getFans } from "../_services/fetchDataAPI";
+import UserDetail from "./UserDetail";
+import AllUserList from "./AllUserList";
 
-function page({ params }) {
-  const username = params.username;
+function Follower({ username }) {
   const {
     data: followersData,
     error: followersError,
@@ -32,4 +26,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default Follower;

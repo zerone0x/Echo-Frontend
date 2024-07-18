@@ -14,11 +14,13 @@ function page({ params }) {
     data: followingData,
     error: followingError,
     isLoading: followingLoading,
-  } = useQuery(["following", username], () => getFollow(username));
+  } = useQuery(["following", username], () => getFollow(username), {
+    staleTime: 1000 * 60 * 5,
+  });
 
-  // if (followingLoading) {
-  //   return <Loading />;
-  // }
+  if (followingLoading) {
+    return <Loading />;
+  }
 
   if (followingError) {
     const message = followingError?.message;

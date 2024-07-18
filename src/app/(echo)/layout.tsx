@@ -13,14 +13,14 @@ export default function EchoLayout({
   return (
     <ReactQueryProvider>
       <AuthProvider>
-        <div className="grid h-screen grid-cols-[auto_1fr_auto] gap-4">
+        <div className="grid h-screen gap-4 bg-[#F3FFF9] px-4 sm:grid-cols-[1fr_2fr_1fr] sm:gap-6 sm:px-6 md:grid-cols-[0.7fr_2fr_0.7fr] md:gap-8 md:px-8 lg:grid-cols-[0.7fr_2fr_0.7fr] lg:gap-8 lg:px-24">
           <div className="h-full overflow-hidden">
             <LeftBar />
           </div>
 
-          <main className="overflow-scroll">
+          <main className="overflow-scroll border-l-2 border-r-2">
             <Header />
-            <div className="min-h-screen bg-white">{children}</div>
+            <div className="min-h-screen">{children}</div>
           </main>
 
           <div className="h-full overflow-hidden">
