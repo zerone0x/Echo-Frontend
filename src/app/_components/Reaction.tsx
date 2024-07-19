@@ -15,30 +15,51 @@ import {
 } from "../_services/fetchDataAPI";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
-import Select from "react-select";
-import { dropdownOptions } from "../_config/data";
 
 function Reaction({
   feedId,
   type,
   likesCount,
   commentsCount,
+  user,
 }: {
   feedId: string;
   type: string;
   likesCount: number;
   commentsCount: number;
+  user: string;
 }) {
   const { currentUserId } = useAuth();
+  const isDeletable = currentUserId === user._id;
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
   const [likedCount, setLikedCount] = useState(likesCount);
   const [commentCount, setCommentCount] = useState(commentsCount);
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [dotsDialog, setDotsDialog] = useState(false);
+  const dialogRef = useRef(null);
+
+  // NOTE: We need to close dialog when click outside the dropdown
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dialogRef.current && !dialogRef.current.contains(event.target)) {
+        setDotsDialog(false);
+      }
+    }
+
+    if (dotsDialog) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dotsDialog]);
 
   useEffect(() => {
     async function fetchStatuses() {
@@ -54,6 +75,7 @@ function Reaction({
     // event.stopPropagation();
     event.preventDefault();
     setBookmarkStatus((bookmarkStatus) => !bookmarkStatus);
+    setDotsDialog(false);
     await BookMarkFeed(feedId, type);
     queryClient.invalidateQueries("bookmark");
     // toast.success("Echo bookmarked successfully!");
@@ -64,6 +86,7 @@ function Reaction({
     event.preventDefault();
     setLikeStatus((likeStatus) => !likeStatus);
     setLikedCount(likeStatus ? likedCount - 1 : likedCount + 1);
+    setDotsDialog(false);
     await LikeFeed(feedId, type);
     queryClient.invalidateQueries("likes");
     toast.success("Echo liked successfully!");
@@ -72,7 +95,14 @@ function Reaction({
   function handleDelDialog(event: any) {
     event.stopPropagation();
     event.preventDefault();
+    setDotsDialog(false);
     setDialog({ isOpen: true, feedId: feedId });
+  }
+
+  function handleThreeDotsDialog(event: any) {
+    event.stopPropagation();
+    event.preventDefault();
+    setDotsDialog(!dotsDialog);
   }
 
   async function delFeed() {
@@ -93,11 +123,13 @@ function Reaction({
       icon: <LuReply />,
       color: "text-green-500",
       number: commentCount,
+      settings: false,
     },
     {
       name: "Repost",
       icon: <BiRepost />,
       color: "text-green-500",
+      settings: false,
     },
     {
       name: "Favorite",
@@ -105,17 +137,20 @@ function Reaction({
       action: likeClick,
       color: likeStatus ? "text-yellow-500" : "text-gray-500",
       number: likedCount,
+      settings: true,
     },
     {
       name: "Bookmark",
       icon: <FaBookmark />,
       action: bookmarkClick,
       color: bookmarkStatus ? "text-red-500" : "text-gray-500",
+      settings: true,
     },
     {
-      name: "Delete",
-      icon: <IoIosMore />,
-      action: handleDelDialog,
+      name: "Others",
+      icon: dotsDialog ? <IoIosClose /> : <IoIosMore />,
+      action: handleThreeDotsDialog,
+      settings: false,
     },
   ];
 
@@ -123,16 +158,45 @@ function Reaction({
     <div className="flex w-full justify-evenly gap-10 space-x-2 px-4 py-2 text-xl">
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
-        <button
-          key={item.name}
-          className={`text-gray-500 hover:text-gray-700 focus:outline-none`}
-          onClick={(e) => item.action && item.action(e)} // TODO:check later
-          aria-label={item.name}
-        >
-          <span className={`${item.color} flex items-center gap-1 text-xl`}>
-            {item.icon} {item?.number && item?.number > 0 ? item?.number : ""}
-          </span>
-        </button>
+        <div className="relative" key={item.name}>
+          <button
+            className="flex flex-col items-center text-gray-500 hover:text-gray-700 focus:outline-none"
+            onClick={(e) => item.action && item.action(e)}
+            aria-label={item.name}
+          >
+            <span className={`${item.color} flex items-center gap-1 text-xl`}>
+              {item.icon} {item?.number && item?.number > 0 ? item?.number : ""}
+            </span>
+          </button>
+          {dotsDialog && item.name === "Others" && (
+            <div
+              ref={dialogRef}
+              className="fixed mt-1 flex flex-col gap-1 border border-gray-300 bg-white p-2 text-left"
+            >
+              {reactItems
+                .filter((item) => item.settings !== false)
+                .map((dotBtn, index) => {
+                  return (
+                    <button
+                      key={index}
+                      className="text-left"
+                      onClick={dotBtn.action}
+                    >
+                      {dotBtn.name}
+                    </button>
+                  );
+                })}
+              {isDeletable && (
+                <button
+                  className="text-left text-red-500 hover:bg-gray-400"
+                  onClick={(e) => handleDelDialog(e)}
+                >
+                  delete
+                </button>
+              )}
+            </div>
+          )}
+        </div>
       ))}
       {dialog.isOpen && dialog.feedId === feedId && (
         <ConfirmDialog
@@ -141,11 +205,6 @@ function Reaction({
           dialogAction={delFeed}
         />
       )}
-      <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={dropdownOptions}
-      />
     </div>
   );
 }

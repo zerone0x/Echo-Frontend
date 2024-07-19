@@ -35,12 +35,6 @@ export const navLinks = [
   // },
 ];
 
-export const dropdownOptions = [
-  { value: "delete", label: "Delete" },
-  { value: "bookmark", label: "Bookmark" },
-  { value: "Follow @", label: "Follow @" },
-];
-
 export const aboutEcho = `Overhead, the albatross
 Hangs motionless upon the air
 And deep beneath the rolling waves

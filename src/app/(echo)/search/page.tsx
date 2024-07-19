@@ -10,9 +10,9 @@ import { useQuery } from "react-query";
 import { useSearchParams } from "next/navigation";
 
 function Page() {
-  const { searchQuery } = useSearch();
-  const searchParams = useSearchParams();
-  const q = searchParams.get("q");
+  const { searchQuery, setSearchQuery } = useSearch();
+  // const searchParams = useSearchParams();
+  // const q = searchParams.get("q");
   const [feedRes, setFeedRes] = useState([]);
   const [commentRes, setCommentRes] = useState([]);
   const [users, setUsers] = useState([]);
@@ -24,7 +24,11 @@ function Page() {
   } = useQuery(["Search", searchQuery], () => searchFeeds(searchQuery), {
     enabled: !!searchQuery,
   });
-
+  useEffect(() => {
+    return () => {
+      setSearchQuery("");
+    };
+  }, [setSearchQuery]);
   useEffect(() => {
     if (searchData) {
       const { feeds, user, comments } = searchData;

@@ -9,8 +9,9 @@ function SearchBar() {
     event.preventDefault();
     router.push(`/search`);
   }
+
   return (
-    <>
+    <div className="w-full bg-[#F3FFF9] p-4">
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
@@ -20,7 +21,7 @@ function SearchBar() {
           onChange={(event) => setSearchQuery(event.target.value)}
         />
       </form>
-    </>
+    </div>
   );
 }
 
