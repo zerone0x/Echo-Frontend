@@ -17,20 +17,23 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useRef, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
+import { useRouter } from "next/navigation";
+import { usePublishType } from "../_utils/getPublishType";
 
 function Reaction({
-  feedId,
+  feed,
   type,
   likesCount,
   commentsCount,
   user,
 }: {
-  feedId: string;
+  feed: object;
   type: string;
   likesCount: number;
   commentsCount: number;
   user: string;
 }) {
+  const feedId = feed?._id;
   const { currentUserId } = useAuth();
   const isDeletable = currentUserId === user._id;
   const queryClient = useQueryClient();
@@ -40,7 +43,10 @@ function Reaction({
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
   const [dotsDialog, setDotsDialog] = useState(false);
+  // const [replyDialog, setReplyDialog] = useState(false);
   const dialogRef = useRef(null);
+  const router = useRouter();
+  const { publishType, setPublishType } = usePublishType();
 
   // NOTE: We need to close dialog when click outside the dropdown
   useEffect(() => {
@@ -78,7 +84,6 @@ function Reaction({
     setDotsDialog(false);
     await BookMarkFeed(feedId, type);
     queryClient.invalidateQueries("bookmark");
-    // toast.success("Echo bookmarked successfully!");
   }
 
   async function likeClick(event: any) {
@@ -89,7 +94,14 @@ function Reaction({
     setDotsDialog(false);
     await LikeFeed(feedId, type);
     queryClient.invalidateQueries("likes");
-    toast.success("Echo liked successfully!");
+  }
+
+  async function ReplyClick(event: any) {
+    event.stopPropagation();
+    event.preventDefault();
+    // setReplyDialog(true)
+    setPublishType({ type: "Comment", feed: feed });
+    router.push("/publish");
   }
 
   function handleDelDialog(event: any) {
@@ -121,9 +133,9 @@ function Reaction({
     {
       name: "Reply",
       icon: <LuReply />,
-      color: "text-green-500",
       number: commentCount,
       settings: false,
+      action: ReplyClick,
     },
     {
       name: "Repost",
@@ -186,12 +198,16 @@ function Reaction({
                     </button>
                   );
                 })}
+              {/* TODO add copy link */}
+              <button className="text-left text-red-500 hover:bg-gray-400">
+                Copy Link
+              </button>
               {isDeletable && (
                 <button
                   className="text-left text-red-500 hover:bg-gray-400"
                   onClick={(e) => handleDelDialog(e)}
                 >
-                  delete
+                  Delete
                 </button>
               )}
             </div>

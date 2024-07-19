@@ -26,41 +26,46 @@ function EchoItem({ feed }: { feed: any }) {
   return (
     feed && (
       <div className="border-b-2">
-        <div className="flex items-center justify-between p-4">
-          <UserCard user={user} isBtnDisplay={false} />
-          <span className="text-sm text-gray-500">{FormatTime(createdAt)}</span>
-        </div>
-        <Link
-          href={
-            type === "Feed"
-              ? `/${name}/status/${feedId}`
-              : `/${name}/status/${feed?.feed}`
-          }
-        >
-          <div className="pointer-events-none block px-4 py-2">
-            <TextExpander>{content}</TextExpander>
+        <>
+          <div className="flex items-center justify-between p-4">
+            <UserCard user={user} isBtnDisplay={false} />
+            <span className="text-sm text-gray-500">
+              {FormatTime(createdAt)}
+            </span>
           </div>
-        </Link>
-        {feedImages?.length > 0 && (
-          <div className="grid grid-cols-2 gap-2 p-4">
-            {feedImages.map((imageUrl, index) => (
-              <div
-                onClick={() => handleImageClick(index)}
-                key={index}
-                className="cursor-zoom-in"
-              >
-                <Image
-                  src={imageUrl}
-                  alt={`Echo ${index}`}
-                  width={300}
-                  height={200}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+          <Link
+            href={
+              type === "Feed"
+                ? `/${name}/status/${feedId}`
+                : `/${name}/status/${feed?.feed}`
+            }
+          >
+            <div className="pointer-events-none block px-4 py-2">
+              <TextExpander>{content}</TextExpander>
+            </div>
+          </Link>
+          {feedImages?.length > 0 && (
+            <div className="grid grid-cols-2 gap-2 p-4">
+              {feedImages.map((imageUrl, index) => (
+                <div
+                  onClick={() => handleImageClick(index)}
+                  key={index}
+                  className="cursor-zoom-in"
+                >
+                  <Image
+                    src={imageUrl}
+                    alt={`Echo ${index}`}
+                    width={300}
+                    height={200}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </>
         <Reaction
-          feedId={feedId}
+          feed={feed}
+          // feedId={feedId}
           type={type}
           likesCount={likesCount}
           commentsCount={commentsCount}

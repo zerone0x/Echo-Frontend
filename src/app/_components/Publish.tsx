@@ -17,11 +17,15 @@ import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+import { usePublishType } from "../_utils/getPublishType";
+import EchoContent from "./EchoContent";
 
 // Register the plugins
 registerPlugin(FilePondPluginImagePreview);
 
 function Publish({ type = "Feed" }) {
+  const { publishType, setPublishType } = usePublishType();
+
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
   const [shouldShowFilePond, setShouldShowFilePond] = useState(false);
@@ -35,8 +39,6 @@ function Publish({ type = "Feed" }) {
 
   const handleAvatarClick = () => {
     // Trigger FilePond's browse files
-    console.log("######clickmepop");
-
     fileInputRef.current?.browse();
     setShouldShowFilePond(true);
   };
@@ -55,6 +57,7 @@ function Publish({ type = "Feed" }) {
     await CreateFeed(formData);
     queryClient.invalidateQueries("feeds");
     setContent("");
+    setPublishType({});
     handleFilesUpdate([]);
     setFiles([]);
     setShowPick(false);
@@ -90,6 +93,9 @@ function Publish({ type = "Feed" }) {
   return (
     <div>
       <ToastContainer />
+      {publishType?.type === "Comment" && (
+        <EchoContent feed={publishType?.feed} />
+      )}
       <UserCard user={authData} isBtnDisplay={false} />
       <form onSubmit={handleSubmit} className="">
         <textarea
