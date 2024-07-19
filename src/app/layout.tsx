@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReactQueryProvider from "@/app/_utils/ReactQueryProvider";
-import Publish from "@/app/_components/Publish";
-import Sidebar from "@/app/_components/Sidebar";
-import SearchBar from "@/app/_components/SearchBar";
-import { AuthProvider } from "@/app/_data/getLogin";
 import { Roboto } from "next/font/google";
 import LeftBar from "@/app/_components/LeftBar";
 const lato = Roboto({
