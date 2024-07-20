@@ -23,9 +23,8 @@ import EchoContent from "./EchoContent";
 // Register the plugins
 registerPlugin(FilePondPluginImagePreview);
 
-function Publish({ type = "Feed" }) {
+function Publish({ isPage = true }) {
   const { publishType, setPublishType } = usePublishType();
-
   const [content, setContent] = useState("");
   const [showPick, setShowPick] = useState(false);
   const [shouldShowFilePond, setShouldShowFilePond] = useState(false);
@@ -36,6 +35,10 @@ function Publish({ type = "Feed" }) {
   const router = useRouter();
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const fileInputRef = useRef(null);
+  const postType = publishType?.type === "Comment" ? "Comment" : "Feed";
+  const PublishFeed = publishType?.feed;
+  const feedId = PublishFeed?._id;
+  const name = PublishFeed?.user?.name;
 
   const handleAvatarClick = () => {
     // Trigger FilePond's browse files
@@ -53,19 +56,27 @@ function Publish({ type = "Feed" }) {
       formData.append("image", file);
     });
     formData.append("content", content);
-    formData.append("type", type);
+    formData.append("type", postType);
+    if (postType === "Comment") {
+      formData.append("feed", feedId);
+    }
     await CreateFeed(formData);
     queryClient.invalidateQueries("feeds");
     setContent("");
-    setPublishType({});
+    // setPublishType({});
     handleFilesUpdate([]);
     setFiles([]);
     setShowPick(false);
-    router.push("/home");
+    // toast.success("Post published.")
+    if (postType === "Comment") {
+      router.push(`/${name}/status/${feedId}`);
+    } else {
+      router.push(`/home`);
+    }
   };
 
   const togglePicker = () => {
-    setShowPick(!showPick);
+    setShowPick(() => !showPick);
   };
 
   function handleKeyDown(e: any) {
@@ -88,70 +99,65 @@ function Publish({ type = "Feed" }) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [emojiPickerRef]);
+  }, [emojiPickerRef, showPick]);
 
   return (
     <div>
-      <ToastContainer />
-      {publishType?.type === "Comment" && (
-        <EchoContent feed={publishType?.feed} />
+      {publishType?.type === "Comment" && isPage && (
+        <div className="pointer-events-none">
+          <EchoContent feed={publishType?.feed} />
+        </div>
       )}
-      <UserCard user={authData} isBtnDisplay={false} />
-      <form onSubmit={handleSubmit} className="">
-        <textarea
-          className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none"
-          placeholder="What's on your mind?"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          onKeyDown={handleKeyDown}
-          rows={4}
-          required
-        />
-        <div className="mt-3 flex gap-6 space-y-2">
-          <button
-            type="button"
-            onClick={togglePicker}
-            className="rounded-full p-2 text-gray-700 hover:bg-gray-200"
-          >
-            <MdEmojiEmotions />
-          </button>
-          <div>
-            <button
-              type="button"
-              onClick={handleAvatarClick}
-              className="cursor-pointer"
-            >
-              <GoPaperclip />
+      <div className="pl-4">
+        <UserCard user={authData} isBtnDisplay={false} />
+        <form onSubmit={handleSubmit} className="mt-4">
+          <textarea
+            className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            placeholder={`${postType === "Comment" ? "Reply to" : "What's on your mind?"}`}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            onKeyDown={handleKeyDown}
+            rows={4}
+            required
+          />
+          <div className="mt-3 flex items-center gap-6">
+            <button type="button" onClick={togglePicker} className=" ">
+              <MdEmojiEmotions size={24} />
+            </button>
+            <button type="button" onClick={handleAvatarClick} className=" ">
+              <GoPaperclip size={24} />
             </button>
           </div>
-        </div>
-        {showPick && (
-          <div ref={emojiPickerRef}>
-            <EmojiPicker content={content} setContent={setContent} />
-          </div>
-        )}
-
-        {shouldShowFilePond && (
-          <div className="bg-red-30">
-            <FilePond
-              itemInsertLocation="before"
-              ref={fileInputRef}
-              files={files}
-              allowReorder={true}
-              allowMultiple={true}
-              maxFiles={4}
-              onupdatefiles={(fileItems) => {
-                // Update the file array based on operation in FilePond
-                const newFiles = fileItems.map((fileItem) => fileItem.file);
-                setFiles(newFiles);
-                handleFilesUpdate(newFiles);
-              }}
-              labelIdle=""
-            />
-          </div>
-        )}
-        <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
-      </form>
+          {showPick && (
+            <div
+              ref={emojiPickerRef}
+              className="absolute z-10 rounded-lg bg-white p-4 shadow-lg"
+            >
+              <EmojiPicker content={content} setContent={setContent} />
+            </div>
+          )}
+          {shouldShowFilePond && (
+            <div className="bg-red-30">
+              <FilePond
+                itemInsertLocation="before"
+                ref={fileInputRef}
+                files={files}
+                allowReorder={true}
+                allowMultiple={true}
+                maxFiles={4}
+                onupdatefiles={(fileItems) => {
+                  // Update the file array based on operation in FilePond
+                  const newFiles = fileItems.map((fileItem) => fileItem.file);
+                  setFiles(newFiles);
+                  handleFilesUpdate(newFiles);
+                }}
+                labelIdle=""
+              />
+            </div>
+          )}
+          <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
+        </form>
+      </div>
     </div>
   );
 }

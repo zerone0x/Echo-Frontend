@@ -29,10 +29,10 @@ async function UserDetail({ username }: { username: string }) {
             className="w-full object-cover" // Cover will ensure the image covers the area without distorting aspect ratio
           />
         </div>
-        <div className="flex flex-row items-center gap-4 p-4">
+        <div className="p-4">
           <UserCard user={user} />
         </div>
-        <span className="font-medium text-gray-700">{user?.Bio}</span>
+        <span className="p-4 font-medium text-gray-700">{user?.Bio}</span>
         <FollowDetail username={username} feedLen={feedLen} />
       </Suspense>
     </>

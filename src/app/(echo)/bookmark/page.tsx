@@ -8,6 +8,7 @@ import Loading from "@/app/loading";
 import Header from "@/app/_components/Header";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
+import NoResult from "@/app/_components/NoResult";
 
 function BookmarkPage() {
   const { data, error, isLoading } = useQuery("bookmark", () =>
@@ -19,7 +20,7 @@ function BookmarkPage() {
 
   return (
     <div>
-      {data && data.length > 0 ? (
+      {data?.length > 0 ? (
         <div>
           {data.map((item, index) => (
             <EchoItem
@@ -29,7 +30,7 @@ function BookmarkPage() {
           ))}
         </div>
       ) : (
-        <div>No bookmarks available.</div>
+        <NoResult content="You don't have any bookmarked posts yet. When you bookmark one, it will show up here." />
       )}
     </div>
   );

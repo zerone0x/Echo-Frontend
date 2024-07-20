@@ -8,11 +8,14 @@ import { useSearch } from "@/app/_utils/SearchContext";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useSearchParams } from "next/navigation";
+import NoResult from "@/app/_components/NoResult";
+import { LuUsers2 } from "react-icons/lu";
+import SearchHeader from "@/app/_components/SearchHeader";
+import { MdArticle, MdOutlineArticle } from "react-icons/md";
+import { FaRegComment } from "react-icons/fa";
 
 function Page() {
   const { searchQuery, setSearchQuery } = useSearch();
-  // const searchParams = useSearchParams();
-  // const q = searchParams.get("q");
   const [feedRes, setFeedRes] = useState([]);
   const [commentRes, setCommentRes] = useState([]);
   const [users, setUsers] = useState([]);
@@ -50,9 +53,22 @@ function Page() {
   return (
     <>
       <SearchBar />
+      {users.length < 1 && feedRes.length < 1 && commentRes.length < 1 && (
+        // Need to export these
+        <NoResult content="Could not find anything for these search terms" />
+      )}
       <>
+        {users?.length > 0 && (
+          <SearchHeader header="Profiles" icon={<LuUsers2 size={24} />} />
+        )}
         <AllUserList users={users} />
+        {feedRes?.length > 0 && (
+          <SearchHeader header="Posts" icon={<MdOutlineArticle size={24} />} />
+        )}
         <FeedList feeds={feedRes} />
+        {commentRes?.length > 0 && (
+          <SearchHeader header="Comments" icon={<FaRegComment size={24} />} />
+        )}
         <FeedList feeds={commentRes} />
       </>
     </>

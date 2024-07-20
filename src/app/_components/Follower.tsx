@@ -1,27 +1,15 @@
-import { useQuery } from "react-query";
 import { getFans } from "../_services/fetchDataAPI";
 import UserDetail from "./UserDetail";
 import AllUserList from "./AllUserList";
 
-function Follower({ username }) {
-  const {
-    data: followersData,
-    error: followersError,
-    isLoading: followersLoading,
-  } = useQuery(["followers", username], () => getFans(username));
+async function Follower({ username }) {
+  const followersData = await getFans(username);
+  const followersPeople = followersData?.ppl;
 
-  if (followersLoading) {
-    return <Loading />;
-  }
-
-  if (followersError) {
-    const message = followersError?.message;
-    return <div>Error: {message}</div>;
-  }
   return (
     <>
       <UserDetail username={username} />
-      <AllUserList users={followersData?.ppl} />
+      <AllUserList users={followersPeople} />
     </>
   );
 }

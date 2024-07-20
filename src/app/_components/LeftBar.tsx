@@ -7,7 +7,7 @@ async function LeftBar() {
   return (
     <div className="hidden flex-col gap-4 lg:flex">
       <SearchBar />
-      <Publish />
+      <Publish isPage={false} />
     </div>
   );
 }

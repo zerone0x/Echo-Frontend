@@ -7,9 +7,13 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/zerone0x/Echo-Frontend) ![GitHub last commit](https://img.shields.io/github/last-commit/zerone0x/Echo-Frontend)
 ![GitHub](https://img.shields.io/github/license/zerone0x/Echo-Frontend)
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
 ## Echo Social App
 
-Welcome to Echo Social BackEnd, a Mastodon-like platform that amplifies your voice in the digital realm!
+Welcome to Echo Social Frontend, a Mastodon-like platform that amplifies your voice in the digital realm!
 
 ### 🚧 Under Construction
 
@@ -17,7 +21,7 @@ Please note that Echo Social is still in active development.
 
 ## About Echo Social
 
-Echo Social is designed to be a social networking platform where users can freely express themselves, connect with others, and create vibrant communities. Inspired by Mastodon, we aim to provide a user-centric experience with a focus on privacy and content control.
+Echo Social is designed to be a social networking platform where users can freely express themselves, connect with others, and create vibrant communities. Inspired by Mastodon, it aims to provide a user-centric experience with a focus on privacy and content control.
 
 ## Features
 

@@ -27,7 +27,7 @@ function FollowDetail({ username, feedLen }) {
     return <div>Error: {message}</div>;
   }
   return (
-    <div>
+    <div className="border-b-2 p-4">
       <Link
         href={`/${username}`}
         className="hover:text-[#675AF2] hover:underline"

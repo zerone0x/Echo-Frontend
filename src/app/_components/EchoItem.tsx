@@ -65,7 +65,6 @@ function EchoItem({ feed }: { feed: any }) {
         </>
         <Reaction
           feed={feed}
-          // feedId={feedId}
           type={type}
           likesCount={likesCount}
           commentsCount={commentsCount}

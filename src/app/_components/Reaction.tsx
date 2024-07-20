@@ -43,7 +43,6 @@ function Reaction({
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
   const [dotsDialog, setDotsDialog] = useState(false);
-  // const [replyDialog, setReplyDialog] = useState(false);
   const dialogRef = useRef(null);
   const router = useRouter();
   const { publishType, setPublishType } = usePublishType();

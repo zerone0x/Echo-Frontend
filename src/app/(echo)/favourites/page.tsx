@@ -8,6 +8,7 @@ import Loading from "@/app/loading";
 import Header from "@/app/_components/Header";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
+import NoResult from "@/app/_components/NoResult";
 
 function FavoritePage() {
   const { data, error, isLoading } = useQuery("likes", () => getAllLikes());
@@ -27,7 +28,7 @@ function FavoritePage() {
           ))}
         </div>
       ) : (
-        <div>No favorited Echos available.</div>
+        <NoResult content="You don't have any favorite posts yet. When you favorite one, it will show up here." />
       )}
     </div>
   );

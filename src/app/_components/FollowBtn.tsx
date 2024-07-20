@@ -33,23 +33,16 @@ function FollowBtn({ username }: { username: string }) {
     setOpenDialog(true);
   }
 
-  if (currentUserName === username) {
-    return (
-      <>
-        <button className="btn" onClick={handleUpdateDetail}>
-          Update Detail
-        </button>
-        <UpdateUserDetail isOpen={openDialog} setOpenDialog={setOpenDialog} />
-      </>
-    );
-  }
-  return follow ? (
-    <button className="btn" onClick={handleFollow}>
-      Unfollow
-    </button>
+  return currentUserName === username ? (
+    <div className="flex justify-end">
+      <button className="btn" onClick={handleUpdateDetail}>
+        Update Detail
+      </button>
+      <UpdateUserDetail isOpen={openDialog} setOpenDialog={setOpenDialog} />
+    </div>
   ) : (
     <button className="btn" onClick={handleFollow}>
-      Follow
+      {follow ? "Unfollow" : "Follow"}
     </button>
   );
 }
