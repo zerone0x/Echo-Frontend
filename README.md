@@ -9,8 +9,6 @@
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-<!-- code_chunk_output -->
-
 ## Echo Social App
 
 Welcome to Echo Social Frontend, a Mastodon-like platform that amplifies your voice in the digital realm!
