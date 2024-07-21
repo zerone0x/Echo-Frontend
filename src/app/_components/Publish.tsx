@@ -14,16 +14,16 @@ import SubmitButton from "./SubmitButton";
 import { useRouter } from "next/navigation";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
-import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
-import FilePondPluginImageTransform from "filepond-plugin-image-transform";
+// import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+// import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 // import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-import FilePondPluginImageResize from "filepond-plugin-image-resize";
+// import FilePondPluginImageResize from "filepond-plugin-image-resize";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { usePublishType } from "../_utils/getPublishType";
 import EchoContent from "./EchoContent";
 
 // Register the plugins
-registerPlugin(FilePondPluginImageTransform, FilePondPluginImageResize);
+// registerPlugin(FilePondPluginImageTransform, FilePondPluginImageResize);
 
 function Publish({ isPage = true }) {
   const { publishType, setPublishType } = usePublishType();
