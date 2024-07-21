@@ -28,7 +28,7 @@ function FollowDetail({
     return <SpinnerMini />;
   }
 
-  if (followingError || followersError) {
+  if (followingError instanceof Error || followersError instanceof Error) {
     const message = followingError?.message || followersError?.message;
     return <div>Error: {message}</div>;
   }

@@ -7,7 +7,7 @@ import { FormatTime } from "../_utils/FormatData";
 //   FOLLOW: "follow",
 //   BOOKMARK: "bookmark",
 // });
-// TYPE TODO
+
 function NotificationItem({
   notification,
 }: {

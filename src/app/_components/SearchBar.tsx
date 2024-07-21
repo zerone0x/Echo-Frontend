@@ -14,15 +14,24 @@ function SearchBar() {
   };
 
   // Debounce function to delay the setSearchQuery call
-  const debounce = (func, delay) => {
-    let timerId;
-    return (...args) => {
-      clearTimeout(timerId);
+  type AnyFunction = (...args: any[]) => any;
+
+  function debounce<T extends AnyFunction>(
+    func: T,
+    delay: number,
+  ): (...args: Parameters<T>) => void {
+    let timerId: NodeJS.Timeout | undefined;
+
+    return (...args: Parameters<T>) => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+
       timerId = setTimeout(() => {
         func(...args);
       }, delay);
     };
-  };
+  }
 
   // Create a debounced version of setSearchQuery
   const debounceSearch = debounce((value: string) => {

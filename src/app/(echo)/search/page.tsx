@@ -44,7 +44,7 @@ function Page() {
     return <Spinner />;
   }
 
-  if (error) {
+  if (error instanceof Error) {
     const message = error?.message;
     return <div>Error: {message}</div>;
   }

@@ -9,30 +9,27 @@ import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import Image from "next/image";
 import AvatarUploader from "./AvatorUpload";
-// TYPE TODO
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-function UpdateUserDetail({
-  isOpen,
-  setOpenDialog,
-}: {
+interface UpdateUserDetailProps {
   isOpen: boolean;
-  setOpenDialog: any;
-}) {
+  setOpenDialog: (isOpen: boolean) => void;
+}
+
+function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
   const { authData } = useAuth();
   const {
     username: default_name,
     Bio: default_bio,
     ProfileImage: avatar,
     Banner: banner,
-  } = authData ?? {};
+  } = authData;
   const [name, setName] = useState(default_name);
   const [bio, setBio] = useState(default_bio);
-  const [file, setFile] = useState(null);
-  const [bannerFile, setBannerFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [bannerFile, setBannerFile] = useState<File | null>(null);
 
   async function handleSubmit(event: any) {
     event.preventDefault();

@@ -50,8 +50,11 @@ function Reaction({
 
   // NOTE: We need to close dialog when click outside the dropdown
   useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (dialogRef.current && !dialogRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dialogRef.current &&
+        !dialogRef.current.contains(event.target as Node)
+      ) {
         setDotsDialog(false);
       }
     }

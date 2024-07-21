@@ -8,9 +8,9 @@ export interface ParamsProps {
 export interface UserProps {
   id: string;
   name: string;
-  _id?: string;
+  _id: string;
   email?: string;
-  username?: string;
+  username: string;
   ProfileImage: string;
   Banner: string;
   Bio: string;
@@ -38,7 +38,7 @@ export interface CommentProps {
   content: string;
   createdAt: string;
   type: string;
-  feed?: FeedProps;
+  feed?: string;
   feedImages: string[];
 }
 
@@ -52,4 +52,12 @@ export interface NotificationProps {
   type: string;
   action: string;
   status: string;
+}
+
+export interface BookLikeProps {
+  id: string;
+  _id: string;
+  type: string;
+  bookmarkedItem: FeedProps;
+  user: UserProps;
 }

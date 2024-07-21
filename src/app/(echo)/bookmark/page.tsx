@@ -1,39 +1,12 @@
-"use client";
-import EchoItem from "@/app/_components/EchoItem";
-import { getAllBookMark } from "@/app/_services/fetchDataAPI";
-import { useAuth } from "@/app/_utils/getLogin";
-import Head from "next/head";
-import { useQuery } from "react-query";
-import Loading from "@/app/loading";
-import Header from "@/app/_components/Header";
-import { Suspense } from "react";
-import Spinner from "@/app/_components/Spinner";
-import NoResult from "@/app/_components/NoResult";
+import BookMark from "@/app/_components/BookMark";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "BookMark",
+};
 
 function BookmarkPage() {
-  const { data, error, isLoading } = useQuery("bookmark", () =>
-    getAllBookMark(),
-  );
-
-  if (isLoading) return <Loading />;
-  if (error) return <div>Error loading bookmarks: {error.message}</div>;
-
-  return (
-    <div>
-      {data?.length > 0 ? (
-        <div>
-          {data.map((item, index) => (
-            <EchoItem
-              key={item?.bookmarkedItem._id}
-              feed={item?.bookmarkedItem}
-            />
-          ))}
-        </div>
-      ) : (
-        <NoResult content="You don't have any bookmarked posts yet. When you bookmark one, it will show up here." />
-      )}
-    </div>
-  );
+  return <BookMark />;
 }
 
 export default BookmarkPage;

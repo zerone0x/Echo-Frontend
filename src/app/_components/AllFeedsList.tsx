@@ -1,12 +1,11 @@
 "use client";
-import { useQuery } from "react-query";
 import { GetAllFeeds } from "../_services/fetchDataAPI";
 import React, { Fragment, useEffect } from "react";
 import Loading from "../loading";
-import EchoItem from "./EchoItem";
 import SpinnerMini from "./SpinnerMini";
 import useInfiniteScroll from "./useInfiniteScroll";
 import FeedList from "./FeedList";
+import { FeedProps } from "../_config/type";
 
 function AllFeedsList() {
   const fetchData = ({ pageParam = null }) => GetAllFeeds(pageParam);
@@ -22,9 +21,9 @@ function AllFeedsList() {
 
   return (
     <div>
-      {data?.pages.map((page, i) => (
+      {data?.pages.map((page: any, i: number) => (
         <Fragment key={i}>
-          <FeedList feeds={page.data} />
+          <FeedList feeds={page.data as FeedProps[]} />
         </Fragment>
       ))}
       <div ref={ref} className="flex justify-center">
