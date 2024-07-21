@@ -43,7 +43,7 @@ function UpdateUserDetail({ isOpen, setOpenDialog }) {
   return (
     <dialog
       open={isOpen}
-      className="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 w-full max-w-full rounded-lg bg-white p-5 shadow-xl sm:max-w-lg"
+      className="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 w-full max-w-full overflow-scroll rounded-lg bg-white p-5 shadow-xl sm:max-w-lg"
     >
       <form
         method="dialog"

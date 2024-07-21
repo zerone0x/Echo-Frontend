@@ -23,6 +23,38 @@
   .no-underline-hover:hover {
     text-decoration: none !important;
   }
+  /* 调整 FilePond 预览图像的尺寸 */
+  .filepond--item {
+    width: calc(50% - 0.5em); /* 设置每个项目宽度为容器的一半减去间隔 */
+    margin-bottom: 1em; /* 设置底部间隔 */
+  }
+
+  .filepond--root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* 确保两个文件间有空间 */
+  }
+
+  .h-screen-10 {
+    height: 10vh;
+    min-height: 146px;
+  }
+  .imageFullHeight {
+    height: 100% !important; /* 强制图片高度与容器相同 */
+  }
+  .line::before {
+    content: ""; /* 必须设置，否则伪元素不会显示 */
+    position: absolute; /* 让伪元素脱离文档流，便于定位 */
+    left: 1; /* 在容器的最左边 */
+    top: 0; /* 顶部对齐 */
+    bottom: 0; /* 底部对齐 */
+    width: 2px; /* 线的宽度 */
+    background-color: theme("colors.primary.200"); /* 线的颜色 */
+  }
+  .line {
+    position: relative;
+    padding-left: 10px;
+  }
   .loader {
     width: 45px;
     aspect-ratio: 0.75;

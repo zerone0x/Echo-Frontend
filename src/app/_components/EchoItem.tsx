@@ -45,21 +45,23 @@ function EchoItem({ feed }: { feed: any }) {
             </div>
           </Link>
           {feedImages?.length > 0 && (
-            <div className="grid grid-cols-2 gap-2 p-4">
-              {feedImages.map((imageUrl, index) => (
-                <div
-                  onClick={() => handleImageClick(index)}
-                  key={index}
-                  className="cursor-zoom-in"
-                >
-                  <Image
-                    src={imageUrl}
-                    alt={`Echo ${index}`}
-                    width={300}
-                    height={200}
-                  />
-                </div>
-              ))}
+            <div className="w-full">
+              <div className={`grid w-full grid-cols-2 gap-2 p-4`}>
+                {feedImages.map((imageUrl, index) => (
+                  <div
+                    onClick={() => handleImageClick(index)}
+                    key={index}
+                    className={`cursor-zoom-in ${feedImages.length < 3 ? "h-full" : "h-1/2"} relative h-64 w-64`}
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={`Echo ${index}`}
+                      objectFit="cover"
+                      layout="fill"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </>

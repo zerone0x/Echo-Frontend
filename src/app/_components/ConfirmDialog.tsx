@@ -11,16 +11,18 @@ function ConfirmDialog({ dialog, setDialog, dialogAction }) {
   return (
     <dialog
       open={dialog.isOpen}
-      className="absolute inset-0 flex w-full items-center justify-center bg-white bg-opacity-50 p-4"
+      className="absolute inset-0 w-1/2 rounded-lg bg-white bg-opacity-50 p-5 shadow-xl sm:max-w-lg"
     >
-      <form onSubmit={(e) => delFeed(e)} className="">
-        <h2>Delete Echo?</h2>
-        <label htmlFor="confirm">It can't be undone.</label>
-        <div className="bg-gray-500">
+      <form onSubmit={(e) => delFeed(e)} className="flex flex-col">
+        <div className="space-y-4 text-center">
+          <h2>Delete Echo?</h2>
+          <span>It can't be undone.</span>
+        </div>
+        <div className="flex justify-between">
           <button
             type="button"
             onClick={() => setDialog({ isOpen: false, feedId: dialog.feedId })}
-            className="btn bg-gray-500"
+            className=""
           >
             Cancel
           </button>

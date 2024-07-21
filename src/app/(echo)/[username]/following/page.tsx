@@ -1,6 +1,12 @@
 import Followed from "@/app/_components/Followed";
+import { ParamsProps } from "@/app/_config/type";
+import { Metadata } from "next";
 
-function page({ params }) {
+export const metadata: Metadata = {
+  title: "Following",
+};
+
+function page({ params }: ParamsProps) {
   const username = params.username;
 
   return (

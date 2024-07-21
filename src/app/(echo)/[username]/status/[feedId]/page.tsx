@@ -3,7 +3,7 @@ import EchoItem from "@/app/_components/EchoItem";
 import FeedList from "@/app/_components/FeedList";
 import Spinner from "@/app/_components/Spinner";
 import UserDetail from "@/app/_components/UserDetail";
-import { Params } from "@/app/_config/type";
+import { ParamsProps } from "@/app/_config/type";
 import {
   GetAllFeeds,
   getCommentsByFeedID,
@@ -13,7 +13,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 // auto generate title for each feed
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: ParamsProps) {
   const feed = await GetFeedById(params.feedId);
   const feedContent =
     feed && feed.content && feed.content.length > 30
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   return { title: `${feed?.user?.name}: "${feedContent}"` };
 }
 
-async function page({ params }: { params: Params }) {
+async function page({ params }: ParamsProps) {
   const feed = await GetFeedById(params.feedId);
   const comments = feed?.comments;
   return (

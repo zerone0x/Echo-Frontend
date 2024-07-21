@@ -15,13 +15,15 @@ import { useRouter } from "next/navigation";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
-import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import FilePondPluginImageTransform from "filepond-plugin-image-transform";
+// import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import FilePondPluginImageResize from "filepond-plugin-image-resize";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { usePublishType } from "../_utils/getPublishType";
 import EchoContent from "./EchoContent";
 
 // Register the plugins
-registerPlugin(FilePondPluginImagePreview);
+registerPlugin(FilePondPluginImageTransform, FilePondPluginImageResize);
 
 function Publish({ isPage = true }) {
   const { publishType, setPublishType } = usePublishType();
@@ -109,7 +111,11 @@ function Publish({ isPage = true }) {
         </div>
       )}
       <div className="pl-4">
-        <UserCard user={authData} isBtnDisplay={false} />
+        <div className="line">
+          <div className="pl-4">
+            <UserCard user={authData} isBtnDisplay={false} />
+          </div>
+        </div>
         <form onSubmit={handleSubmit} className="mt-4">
           <textarea
             className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
@@ -120,6 +126,7 @@ function Publish({ isPage = true }) {
             rows={4}
             required
           />
+
           <div className="mt-3 flex items-center gap-6">
             <button type="button" onClick={togglePicker} className=" ">
               <MdEmojiEmotions size={24} />

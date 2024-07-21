@@ -27,55 +27,49 @@ const AvatarUploader = ({ avatar, onUpdate, labelName, isBig = false }) => {
       >
         {labelName}
       </label>
-      <div className="flex flex-row gap-2">
-        {isBig ? (
-          <div
-            onClick={handleAvatarClick}
-            className="relative h-36 w-1/2 cursor-pointer overflow-hidden"
-          >
-            <Image
-              src={avatar}
-              alt="Avatar"
-              layout="fill"
-              objectFit="cover"
-              className=""
-            />
-          </div>
-        ) : (
-          <div
-            onClick={handleAvatarClick}
-            className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-full"
-          >
-            <Image
-              src={avatar}
-              alt="Avatar"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full"
-            />
-          </div>
-        )}
-        <input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: "none" }}
-          onChange={(e) => {
-            const file = e.target.files[0] || null;
-            setFile(file);
-            onUpdate(file);
-          }}
-        />
-        <FilePond
-          files={file ? [file] : []}
-          allowReorder={false}
-          allowMultiple={false}
-          onupdatefiles={(fileItems) => {
-            const newFile = fileItems.length ? fileItems[0].file : null;
-            setFile(newFile);
-            onUpdate(newFile);
-          }}
-          labelIdle=""
-        />
+      <div className="">
+        <div className="flex flex-row gap-2">
+          {isBig ? (
+            <div
+              onClick={handleAvatarClick}
+              className="relative h-36 w-1/2 cursor-pointer overflow-hidden"
+            >
+              <Image
+                src={avatar}
+                alt="Avatar"
+                layout="fill"
+                objectFit="cover"
+                className=""
+              />
+            </div>
+          ) : (
+            <div
+              onClick={handleAvatarClick}
+              className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-full"
+            >
+              <Image
+                src={avatar}
+                alt="Avatar"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
+              />
+            </div>
+          )}
+        </div>
+        <div className="relative h-36 w-1/2 cursor-pointer overflow-hidden">
+          <FilePond
+            files={file ? [file] : []}
+            allowReorder={false}
+            allowMultiple={false}
+            onupdatefiles={(fileItems) => {
+              const newFile = fileItems.length ? fileItems[0].file : null;
+              setFile(newFile);
+              onUpdate(newFile);
+            }}
+            labelIdle="Drag & Drop your avatar or <span class='filepond--label-action'>Browse</span>"
+          />
+        </div>
       </div>
     </div>
   );

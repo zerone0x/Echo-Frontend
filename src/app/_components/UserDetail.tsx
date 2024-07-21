@@ -3,7 +3,6 @@ import { getFeedByUsername, getUserByName } from "../_services/fetchDataAPI";
 import BackBtn from "./BackBtn";
 import Image from "next/image";
 import UserCard from "./UserCard";
-import FollowBtn from "./FollowBtn";
 import FollowDetail from "./FollowDetail";
 import Loading from "../loading";
 
@@ -18,15 +17,15 @@ async function UserDetail({ username }: { username: string }) {
     <>
       <BackBtn />
       <Suspense fallback={<Loading />}>
-        <div className="w-full">
+        <div className="h-screen-10 w-full overflow-hidden">
           <Image
             src={user.Banner}
-            alt="User Banner"
+            alt={`${username} Banner`}
             layout="responsive"
-            width={700}
-            height={250}
+            width={100}
+            height={10}
             objectFit="cover"
-            className="w-full object-cover" // Cover will ensure the image covers the area without distorting aspect ratio
+            className="imageFullHeight"
           />
         </div>
         <div className="p-4">

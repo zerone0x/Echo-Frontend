@@ -53,24 +53,27 @@ function Page() {
   return (
     <>
       <SearchBar />
-      {users.length < 1 && feedRes.length < 1 && commentRes.length < 1 && (
-        // Need to export these
+      {!users.length && !feedRes.length && !commentRes.length ? (
         <NoResult content="Could not find anything for these search terms" />
+      ) : (
+        <>
+          {users?.length > 0 && (
+            <SearchHeader header="Profiles" icon={<LuUsers2 size={24} />} />
+          )}
+          <AllUserList users={users} />
+          {feedRes?.length > 0 && (
+            <SearchHeader
+              header="Posts"
+              icon={<MdOutlineArticle size={24} />}
+            />
+          )}
+          <FeedList feeds={feedRes} />
+          {commentRes?.length > 0 && (
+            <SearchHeader header="Comments" icon={<FaRegComment size={24} />} />
+          )}
+          <FeedList feeds={commentRes} />
+        </>
       )}
-      <>
-        {users?.length > 0 && (
-          <SearchHeader header="Profiles" icon={<LuUsers2 size={24} />} />
-        )}
-        <AllUserList users={users} />
-        {feedRes?.length > 0 && (
-          <SearchHeader header="Posts" icon={<MdOutlineArticle size={24} />} />
-        )}
-        <FeedList feeds={feedRes} />
-        {commentRes?.length > 0 && (
-          <SearchHeader header="Comments" icon={<FaRegComment size={24} />} />
-        )}
-        <FeedList feeds={commentRes} />
-      </>
     </>
   );
 }

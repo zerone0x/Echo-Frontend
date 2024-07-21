@@ -198,9 +198,9 @@ function Reaction({
                   );
                 })}
               {/* TODO add copy link */}
-              <button className="text-left text-red-500 hover:bg-gray-400">
+              {/* <button className="text-left text-red-500 hover:bg-gray-400">
                 Copy Link
-              </button>
+              </button> */}
               {isDeletable && (
                 <button
                   className="text-left text-red-500 hover:bg-gray-400"
