@@ -40,7 +40,7 @@ function Publish({ isPage = true }) {
   const postType = publishType?.type === "Comment" ? "Comment" : "Feed";
   const PublishFeed = publishType?.feed;
   const feedId = PublishFeed?._id;
-  const name = PublishFeed.user?.name;
+  const name = PublishFeed?.user?.name;
 
   const handleAvatarClick = () => {
     // Trigger FilePond's browse files

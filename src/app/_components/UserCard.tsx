@@ -9,7 +9,9 @@ interface UserCardProps {
 }
 
 function UserCard({ user, isBtnDisplay = true }: UserCardProps) {
-  const { name, username, ProfileImage } = user;
+  const name = user?.name;
+  const username = user?.username;
+  const ProfileImage = user?.ProfileImage;
 
   return (
     <div className="flex items-center justify-between">
