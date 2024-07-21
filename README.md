@@ -19,7 +19,7 @@ Please note that Echo Social is still in active development.
 
 ## About Echo Social
 
-Echo Social is designed to be a social networking platform where users can freely express themselves, connect with others, and create vibrant communities. Inspired by Mastodon, it aims to provide a user-centric experience with a focus on privacy and content control.
+Echo Social is designed to be a social networking platform where users can freely express themselves, connect with others, and create vibrant communities. Inspired by Mastodon, it aims to provide a user-centric experience.
 
 ## Features
 
