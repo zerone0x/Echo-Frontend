@@ -1,6 +1,7 @@
+import { FeedProps } from "../_config/type";
 import EchoItem from "./EchoItem";
 
-function FeedList({ feeds }) {
+function FeedList({ feeds }: { feeds: FeedProps[] }) {
   return (
     <div>
       {feeds.length > 0 &&

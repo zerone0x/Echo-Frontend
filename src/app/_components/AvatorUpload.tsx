@@ -10,7 +10,17 @@ import Image from "next/image";
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-const AvatarUploader = ({ avatar, onUpdate, labelName, isBig = false }) => {
+const AvatarUploader = ({
+  avatar,
+  onUpdate,
+  labelName,
+  isBig = false,
+}: {
+  avatar: string;
+  onUpdate: any;
+  labelName: string;
+  isBig?: boolean;
+}) => {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
 

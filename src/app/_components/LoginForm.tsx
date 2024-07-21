@@ -1,5 +1,4 @@
 import { loginUser } from "../_utils/actions";
-import SignInButton from "./SignInButton";
 import SubmitButton from "./SubmitButton";
 
 function Login() {

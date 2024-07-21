@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import LeftBar from "@/app/_components/LeftBar";
 const lato = Roboto({
   subsets: ["latin"],
   weight: "400",

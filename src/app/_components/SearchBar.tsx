@@ -8,7 +8,7 @@ function SearchBar() {
   const { searchQuery, setSearchQuery } = useSearch();
   const [inputValue, setInputValue] = useState(searchQuery);
 
-  const handleInputChange = (value) => {
+  const handleInputChange = (value: string) => {
     setInputValue(value);
     debounceSearch(value);
   };
@@ -25,7 +25,7 @@ function SearchBar() {
   };
 
   // Create a debounced version of setSearchQuery
-  const debounceSearch = debounce((value) => {
+  const debounceSearch = debounce((value: string) => {
     setSearchQuery(value);
   }, 1000);
 
@@ -47,7 +47,7 @@ function SearchBar() {
           placeholder="Search Echo"
           className="w-full rounded-full px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-500 focus:outline-none focus:ring focus:ring-[#5648c4] focus:ring-opacity-50"
           value={inputValue}
-          onChange={(event) => handleInputChange(event.target.value)}
+          onChange={(event: any) => handleInputChange(event.target.value)}
         />
       </form>
     </div>

@@ -1,7 +1,15 @@
 import { useQueryClient } from "react-query";
 import { DeleteFeedById } from "../_services/fetchDataAPI";
 
-function ConfirmDialog({ dialog, setDialog, dialogAction }) {
+function ConfirmDialog({
+  dialog,
+  setDialog,
+  dialogAction,
+}: {
+  dialog: any;
+  setDialog: any;
+  dialogAction: any;
+}) {
   const queryClient = useQueryClient();
   async function delFeed(e: any) {
     e.preventDefault();

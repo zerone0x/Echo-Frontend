@@ -1,8 +1,7 @@
 "use client";
-
 import { useState } from "react";
 
-function TextExpander({ children }) {
+function TextExpander({ children }: { children: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
   if (children.length <= 40) {
     return <span>{children}</span>;

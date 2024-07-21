@@ -4,7 +4,6 @@ import { verifyJwtToken } from "./app/_utils/auth";
 
 export async function middleware(request: NextRequest) {
   let token = request.cookies.get("token")?.value;
-  // console.log("Token from cookie:", token);
 
   if (token) {
     if (token.startsWith("s:")) {
@@ -18,7 +17,6 @@ export async function middleware(request: NextRequest) {
     (await verifyJwtToken(token).catch((err) => {
       console.log(err);
     }));
-  // console.log(verifiedToken);
 
   if (verifiedToken) {
     const requestHeaders = new Headers(request.headers);

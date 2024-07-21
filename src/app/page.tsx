@@ -1,6 +1,9 @@
-"use client";
 import Welcome from "./_components/Welcome";
 import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Welcome Echo!",
+};
 
 export default async function App() {
   return (

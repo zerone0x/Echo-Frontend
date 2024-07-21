@@ -6,7 +6,7 @@ export const getJwtSecretKey = () => {
   }
   return secret;
 };
-export async function verifyJwtToken(token) {
+export async function verifyJwtToken(token: string): Promise<any> {
   try {
     const verified = await jwtVerify(
       token,
@@ -14,7 +14,6 @@ export async function verifyJwtToken(token) {
     );
     return verified.payload;
   } catch (error) {
-    console.log(error);
     throw new Error("Your token is expired");
   }
 }

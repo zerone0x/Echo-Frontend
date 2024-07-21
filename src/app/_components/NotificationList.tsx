@@ -1,8 +1,11 @@
+import { NotificationProps } from "../_config/type";
 import NotificationItem from "./NotificationItem";
 
-function NotificationList({ notifications }) {
-  console.log(notifications);
-
+function NotificationList({
+  notifications,
+}: {
+  notifications: NotificationProps[];
+}) {
   return (
     notifications.length > 0 &&
     notifications.map((notification, index) => {

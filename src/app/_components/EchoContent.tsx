@@ -3,8 +3,9 @@ import { FormatTime } from "../_utils/FormatData";
 import TextExpander from "./TextExpander";
 import UserCard from "./UserCard";
 import Image from "next/image";
+import { CommentProps, FeedProps } from "../_config/type";
 
-function EchoContent({ feed }) {
+function EchoContent({ feed }: { feed: FeedProps | CommentProps }) {
   const { type, user, content, createdAt, feedImages } = feed;
   const feedId = type === "Feed" ? feed?.id : feed._id;
   return (

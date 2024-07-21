@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import getCurrentUser from "./getCurrentUser";
+import { UserProps } from "../_config/type";
 
 const AuthContext = createContext<AuthContextType>({
   authData: {},
@@ -9,16 +10,16 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 interface AuthContextType {
-  authData: any;
-  setAuthData: (data: any) => void;
-  currentUserId: string;
-  currentUserName: string;
+  authData: UserProps | {};
+  setAuthData: (data: UserProps | {}) => void;
+  currentUserId: string | undefined;
+  currentUserName: string | undefined;
 }
 
-export const AuthProvider = ({ children }) => {
-  const [authData, setAuthData] = useState({});
-  const currentUserId = authData._id;
-  const currentUserName = authData.name;
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [authData, setAuthData] = useState<UserProps | {}>({});
+  const currentUserId = authData?._id;
+  const currentUserName = authData?.name;
   useEffect(() => {
     async function fetchUser() {
       const userData = await getCurrentUser();

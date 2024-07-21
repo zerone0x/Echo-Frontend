@@ -2,7 +2,7 @@ import AllUserList from "./AllUserList";
 import { getFollow } from "../_services/fetchDataAPI";
 import UserDetail from "./UserDetail";
 
-async function Followed({ username }) {
+async function Followed({ username }: { username: string }) {
   const followingData = await getFollow(username);
   const followingPeople = followingData?.ppl;
 

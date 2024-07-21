@@ -5,7 +5,13 @@ import Loading from "../loading";
 import { getFans, getFollow } from "../_services/fetchDataAPI";
 import SpinnerMini from "./SpinnerMini";
 
-function FollowDetail({ username, feedLen }) {
+function FollowDetail({
+  username,
+  feedLen,
+}: {
+  username: string;
+  feedLen: number;
+}) {
   const {
     data: followingData,
     error: followingError,

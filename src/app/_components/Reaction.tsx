@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
 import { useRouter } from "next/navigation";
 import { usePublishType } from "../_utils/getPublishType";
+import { FeedProps, UserProps } from "../_config/type";
 
 function Reaction({
   feed,
@@ -27,11 +28,11 @@ function Reaction({
   commentsCount,
   user,
 }: {
-  feed: object;
+  feed: FeedProps;
   type: string;
   likesCount: number;
   commentsCount: number;
-  user: string;
+  user: UserProps;
 }) {
   const feedId = feed?._id;
   const { currentUserId } = useAuth();
@@ -49,7 +50,7 @@ function Reaction({
 
   // NOTE: We need to close dialog when click outside the dropdown
   useEffect(() => {
-    function handleClickOutside(event) {
+    function handleClickOutside(event: any) {
       if (dialogRef.current && !dialogRef.current.contains(event.target)) {
         setDotsDialog(false);
       }

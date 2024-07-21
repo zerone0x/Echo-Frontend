@@ -1,4 +1,4 @@
-function NoResult({ content }) {
+function NoResult({ content }: { content: string }) {
   return (
     <div className="m-auto flex h-screen w-full flex-col items-center justify-center gap-10">
       <p>{content}</p>

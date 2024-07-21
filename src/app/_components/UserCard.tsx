@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import FollowBtn from "./FollowBtn";
+import { UserProps } from "../_config/type";
 
-function UserCard({ user, isBtnDisplay = true }) {
+function UserCard({
+  user,
+  isBtnDisplay = true,
+}: {
+  user: UserProps;
+  isBtnDisplay?: boolean;
+}) {
   const { name, username, ProfileImage } = user;
 
   return (

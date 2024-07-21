@@ -11,18 +11,24 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import Image from "next/image";
 import AvatarUploader from "./AvatorUpload";
-
+// TYPE TODO
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-function UpdateUserDetail({ isOpen, setOpenDialog }) {
+function UpdateUserDetail({
+  isOpen,
+  setOpenDialog,
+}: {
+  isOpen: boolean;
+  setOpenDialog: any;
+}) {
   const { authData } = useAuth();
-  console.log(authData);
-
-  const default_name = authData?.username;
-  const default_bio = authData?.Bio;
-  const avatar = authData?.ProfileImage;
-  const banner = authData?.Banner;
+  const {
+    username: default_name,
+    Bio: default_bio,
+    ProfileImage: avatar,
+    Banner: banner,
+  } = authData ?? {};
   const [name, setName] = useState(default_name);
   const [bio, setBio] = useState(default_bio);
   const [file, setFile] = useState(null);

@@ -9,12 +9,12 @@ import Image from "next/image";
 import { useState } from "react";
 import ImageCarousel from "./ImageCarousel";
 import { IoMdClose } from "react-icons/io";
+import { CommentProps, FeedProps } from "../_config/type";
 
-function EchoItem({ feed }: { feed: any }) {
+function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
   const { type, user, content, createdAt, feedImages } = feed;
   const { likesCount, commentsCount } = feed;
   const name = user?.name;
-  const { authData, setAuthData, currentUserId } = useAuth();
   const [showCarousel, setShowCarousel] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const feedId = type === "Feed" ? feed?.id : feed._id;
@@ -76,7 +76,7 @@ function EchoItem({ feed }: { feed: any }) {
           <div className="fixed inset-0 z-50 bg-black bg-opacity-80">
             <div className="z-100 relative">
               <div
-                onClick={(event) => {
+                onClick={(event: any) => {
                   if (event.target === event.currentTarget) {
                     setShowCarousel(false);
                   }

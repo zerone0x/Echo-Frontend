@@ -1,5 +1,3 @@
-// "use client";
-// import { AuthProvider } from "@/_data/getLogin";
 import Publish from "./Publish";
 import SearchBar from "./SearchBar";
 
