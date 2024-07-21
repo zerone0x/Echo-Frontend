@@ -18,7 +18,7 @@ import "filepond/dist/filepond.min.css";
 // import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 // import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 // import FilePondPluginImageResize from "filepond-plugin-image-resize";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { usePublishType } from "../_utils/getPublishType";
 import EchoContent from "./EchoContent";
 
