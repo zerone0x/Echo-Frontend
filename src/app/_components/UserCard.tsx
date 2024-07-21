@@ -3,13 +3,12 @@ import Link from "next/link";
 import FollowBtn from "./FollowBtn";
 import { UserProps } from "../_config/type";
 
-function UserCard({
-  user,
-  isBtnDisplay = true,
-}: {
+interface UserCardProps {
   user: UserProps;
   isBtnDisplay?: boolean;
-}) {
+}
+
+function UserCard({ user, isBtnDisplay = true }: UserCardProps) {
   const { name, username, ProfileImage } = user;
 
   return (

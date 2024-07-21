@@ -20,12 +20,10 @@ interface UpdateUserDetailProps {
 
 function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
   const { authData } = useAuth();
-  const {
-    username: default_name,
-    Bio: default_bio,
-    ProfileImage: avatar,
-    Banner: banner,
-  } = authData;
+  const default_name = authData?.username;
+  const default_bio = authData?.Bio;
+  const avatar = authData?.ProfileImage;
+  const banner = authData?.Banner;
   const [name, setName] = useState(default_name);
   const [bio, setBio] = useState(default_bio);
   const [file, setFile] = useState<File | null>(null);
@@ -34,9 +32,13 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
   async function handleSubmit(event: any) {
     event.preventDefault();
     const formData = new FormData();
+    // @ts-ignore
     formData.append("username", name);
+    // @ts-ignore
     formData.append("bio", bio);
+    // @ts-ignore
     formData.append("ProfileImage", file);
+    // @ts-ignore
     formData.append("Banner", bannerFile);
     await updateUser(formData);
     setOpenDialog(false);
@@ -66,12 +68,16 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
         </div>
 
         <AvatarUploader
+          // @ts-ignore
           avatar={avatar}
+          // @ts-ignore
           onUpdate={(newFile) => setFile(newFile)}
           labelName="Avator"
         />
         <AvatarUploader
+          // @ts-ignore
           avatar={banner}
+          // @ts-ignore
           onUpdate={(bannerfile) => setBannerFile(bannerfile)}
           labelName="Banner"
           isBig={true}

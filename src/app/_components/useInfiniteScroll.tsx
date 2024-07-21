@@ -2,7 +2,10 @@ import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
-export default function useInfiniteScroll(fetchData, getNextPageParam) {
+export default function useInfiniteScroll(
+  fetchData: any,
+  getNextPageParam: any,
+) {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery("feeds", fetchData, { getNextPageParam });
 

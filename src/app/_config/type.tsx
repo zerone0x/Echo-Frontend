@@ -24,7 +24,7 @@ export interface FeedProps {
   likesCount: number;
   content: string;
   createdAt: string;
-  type: string;
+  type: "Feed";
   comments: CommentProps[];
   feedImages: string[];
 }
@@ -37,8 +37,8 @@ export interface CommentProps {
   user: UserProps;
   content: string;
   createdAt: string;
-  type: string;
-  feed?: string;
+  type: "Comment";
+  feed: string;
   feedImages: string[];
 }
 

@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import ConfirmDialog from "./ConfirmDialog";
 import { useRouter } from "next/navigation";
 import { usePublishType } from "../_utils/getPublishType";
-import { FeedProps, UserProps } from "../_config/type";
+import { CommentProps, FeedProps, UserProps } from "../_config/type";
 
 function Reaction({
   feed,
@@ -28,7 +28,7 @@ function Reaction({
   commentsCount,
   user,
 }: {
-  feed: FeedProps;
+  feed: FeedProps | CommentProps;
   type: string;
   likesCount: number;
   commentsCount: number;
@@ -49,10 +49,12 @@ function Reaction({
   const { publishType, setPublishType } = usePublishType();
 
   // NOTE: We need to close dialog when click outside the dropdown
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
         dialogRef.current &&
+        // @ts-ignore
         !dialogRef.current.contains(event.target as Node)
       ) {
         setDotsDialog(false);
@@ -127,6 +129,7 @@ function Reaction({
     queryClient.invalidateQueries("likes");
     queryClient.invalidateQueries({
       predicate: (query) =>
+        // @ts-ignore
         ["feeds", "bookmark", "likes"].includes(query.queryKey[0]),
     });
     setDialog({ isOpen: false, feedId: dialog.feedId });
