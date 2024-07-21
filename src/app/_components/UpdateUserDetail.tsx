@@ -9,31 +9,36 @@ import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import Image from "next/image";
 import AvatarUploader from "./AvatorUpload";
-
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-function UpdateUserDetail({ isOpen, setOpenDialog }) {
-  const { authData } = useAuth();
-  console.log(authData);
+interface UpdateUserDetailProps {
+  isOpen: boolean;
+  setOpenDialog: (isOpen: boolean) => void;
+}
 
+function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
+  const { authData } = useAuth();
   const default_name = authData?.username;
   const default_bio = authData?.Bio;
   const avatar = authData?.ProfileImage;
   const banner = authData?.Banner;
   const [name, setName] = useState(default_name);
   const [bio, setBio] = useState(default_bio);
-  const [file, setFile] = useState(null);
-  const [bannerFile, setBannerFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [bannerFile, setBannerFile] = useState<File | null>(null);
 
   async function handleSubmit(event: any) {
     event.preventDefault();
     const formData = new FormData();
+    // @ts-ignore
     formData.append("username", name);
+    // @ts-ignore
     formData.append("bio", bio);
+    // @ts-ignore
     formData.append("ProfileImage", file);
+    // @ts-ignore
     formData.append("Banner", bannerFile);
     await updateUser(formData);
     setOpenDialog(false);
@@ -63,12 +68,16 @@ function UpdateUserDetail({ isOpen, setOpenDialog }) {
         </div>
 
         <AvatarUploader
+          // @ts-ignore
           avatar={avatar}
+          // @ts-ignore
           onUpdate={(newFile) => setFile(newFile)}
           labelName="Avator"
         />
         <AvatarUploader
+          // @ts-ignore
           avatar={banner}
+          // @ts-ignore
           onUpdate={(bannerfile) => setBannerFile(bannerfile)}
           labelName="Banner"
           isBig={true}

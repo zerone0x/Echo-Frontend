@@ -1,6 +1,7 @@
+import { UserProps } from "../_config/type";
 import UserCard from "./UserCard";
 
-function AllUserList({ users }) {
+function AllUserList({ users }: { users: UserProps[] }) {
   return (
     <div className="flex flex-col gap-4 p-4">
       {users?.length > 0 &&

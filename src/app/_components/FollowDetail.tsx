@@ -1,11 +1,20 @@
 "use client";
 import Link from "next/link";
 import { useQuery } from "react-query";
-import Loading from "../loading";
 import { getFans, getFollow } from "../_services/fetchDataAPI";
 import SpinnerMini from "./SpinnerMini";
 
-function FollowDetail({ username, feedLen }) {
+interface QueryError {
+  message?: string;
+}
+
+function FollowDetail({
+  username,
+  feedLen,
+}: {
+  username: string;
+  feedLen: number;
+}) {
   const {
     data: followingData,
     error: followingError,
@@ -23,6 +32,7 @@ function FollowDetail({ username, feedLen }) {
   }
 
   if (followingError || followersError) {
+    // @ts-ignore
     const message = followingError?.message || followersError?.message;
     return <div>Error: {message}</div>;
   }

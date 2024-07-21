@@ -7,7 +7,6 @@ import { searchFeeds } from "@/app/_services/fetchDataAPI";
 import { useSearch } from "@/app/_utils/SearchContext";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { useSearchParams } from "next/navigation";
 import NoResult from "@/app/_components/NoResult";
 import { LuUsers2 } from "react-icons/lu";
 import SearchHeader from "@/app/_components/SearchHeader";
@@ -45,7 +44,7 @@ function Page() {
     return <Spinner />;
   }
 
-  if (error) {
+  if (error instanceof Error) {
     const message = error?.message;
     return <div>Error: {message}</div>;
   }

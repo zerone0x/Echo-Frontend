@@ -1,9 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import FollowBtn from "./FollowBtn";
+import { UserProps } from "../_config/type";
 
-function UserCard({ user, isBtnDisplay = true }) {
-  const { name, username, ProfileImage } = user;
+interface UserCardProps {
+  user: UserProps;
+  isBtnDisplay?: boolean;
+}
+
+function UserCard({ user, isBtnDisplay = true }: UserCardProps) {
+  const name = user?.name;
+  const username = user?.username;
+  const ProfileImage = user?.ProfileImage;
 
   return (
     <div className="flex items-center justify-between">

@@ -1,8 +1,8 @@
+"use client";
 import { useState } from "react";
 import SignUpForm from "@/app/_components/SignUpForm";
 import LoginForm from "@/app/_components/LoginForm";
 import SignInButton from "./SignInButton";
-import { BsTypeH1 } from "react-icons/bs";
 
 function Welcome() {
   const [activeTab, setActiveTab] = useState("login");

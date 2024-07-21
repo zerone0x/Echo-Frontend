@@ -10,7 +10,11 @@ interface PublishTypeContextType {
   setPublishType: (data: any) => void;
 }
 
-export const PublishProvider = ({ children }) => {
+export const PublishProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [publishType, setPublishType] = useState({});
 
   return (

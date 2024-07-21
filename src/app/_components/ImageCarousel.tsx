@@ -6,7 +6,13 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { Pagination, Navigation } from "swiper/modules";
 
-function ImageCarousel({ images, initialIndex }) {
+function ImageCarousel({
+  images,
+  initialIndex,
+}: {
+  images: Array<string>;
+  initialIndex: number;
+}) {
   return (
     <section className="m-auto flex h-full w-full max-w-6xl items-center p-4">
       <Swiper

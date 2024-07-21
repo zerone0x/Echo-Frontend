@@ -1,32 +1,42 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import getCurrentUser from "./getCurrentUser";
-
-const AuthContext = createContext<AuthContextType>({
-  authData: {},
-  setAuthData: () => {},
-  currentUserId: "",
-  currentUserName: "",
-});
+import { UserProps } from "../_config/type";
 
 interface AuthContextType {
-  authData: any;
-  setAuthData: (data: any) => void;
-  currentUserId: string;
-  currentUserName: string;
+  authData: UserProps | null;
+  setAuthData: React.Dispatch<React.SetStateAction<UserProps | null>>;
+  currentUserId: string | undefined;
+  currentUserName: string | undefined;
 }
 
-export const AuthProvider = ({ children }) => {
-  const [authData, setAuthData] = useState({});
-  const currentUserId = authData._id;
-  const currentUserName = authData.name;
+const AuthContext = createContext<AuthContextType>({
+  authData: null,
+  setAuthData: () => {},
+  currentUserId: undefined,
+  currentUserName: undefined,
+});
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [authData, setAuthData] = useState<UserProps | null>(null);
+  const currentUserId = authData?._id;
+  const currentUserName = authData?.name;
+
   useEffect(() => {
     async function fetchUser() {
-      const userData = await getCurrentUser();
-      setAuthData(userData);
+      try {
+        const userData = await getCurrentUser();
+        setAuthData(userData);
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+        setAuthData(null);
+      }
     }
 
     fetchUser();
   }, []);
+
   return (
     <AuthContext.Provider
       value={{ authData, setAuthData, currentUserId, currentUserName }}

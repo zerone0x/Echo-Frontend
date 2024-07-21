@@ -44,10 +44,11 @@ function Publish({ isPage = true }) {
 
   const handleAvatarClick = () => {
     // Trigger FilePond's browse files
+    // @ts-ignore
     fileInputRef.current?.browse();
     setShouldShowFilePond(true);
   };
-
+  // @ts-ignore
   const handleFilesUpdate = (files) => {
     setUploadedFiles(files);
   };
@@ -92,6 +93,7 @@ function Publish({ isPage = true }) {
     function handleClickOutside(event: any) {
       if (
         emojiPickerRef.current &&
+        // @ts-ignore
         !emojiPickerRef.current.contains(event.target)
       ) {
         setShowPick(false);
@@ -113,6 +115,7 @@ function Publish({ isPage = true }) {
       <div className="pl-4">
         <div className="line">
           <div className="pl-4">
+            {/* @ts-ignore */}
             <UserCard user={authData} isBtnDisplay={false} />
           </div>
         </div>
@@ -155,6 +158,7 @@ function Publish({ isPage = true }) {
                 onupdatefiles={(fileItems) => {
                   // Update the file array based on operation in FilePond
                   const newFiles = fileItems.map((fileItem) => fileItem.file);
+                  // @ts-ignore
                   setFiles(newFiles);
                   handleFilesUpdate(newFiles);
                 }}

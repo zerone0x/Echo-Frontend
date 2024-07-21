@@ -8,7 +8,7 @@ function SignOutButton() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSignOut = async (event) => {
+  const handleSignOut = async (event: any) => {
     event.preventDefault();
     setIsLoading(true);
     try {

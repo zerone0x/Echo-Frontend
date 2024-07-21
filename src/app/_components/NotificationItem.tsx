@@ -1,3 +1,4 @@
+import { NotificationProps } from "../_config/type";
 import { FormatTime } from "../_utils/FormatData";
 // const ActionEnum = Object.freeze({
 //   LIKE: "like",
@@ -6,7 +7,12 @@ import { FormatTime } from "../_utils/FormatData";
 //   FOLLOW: "follow",
 //   BOOKMARK: "bookmark",
 // });
-function NotificationItem({ notification }) {
+
+function NotificationItem({
+  notification,
+}: {
+  notification: NotificationProps;
+}) {
   const { sender, receiver, content, createdAt, type, action, status } =
     notification;
   return (
