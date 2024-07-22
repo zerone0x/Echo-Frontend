@@ -4,7 +4,9 @@ import { verifyJwtToken } from "./app/_utils/auth";
 
 export async function middleware(request: NextRequest) {
   console.log(request);
+  // let token = request.cookies.get("token")?.value;
   let token = request.cookies.get("token")?.value;
+
 
   if (token) {
     if (token.startsWith("s:")) {
@@ -12,12 +14,16 @@ export async function middleware(request: NextRequest) {
     }
     token = token.split(".").slice(0, 3).join(".");
   }
+  console.log(token);
+  
 
   const verifiedToken =
     token &&
     (await verifyJwtToken(token).catch((err) => {
       console.log(err);
     }));
+  console.log(verifiedToken);
+  
 
   if (verifiedToken) {
     const requestHeaders = new Headers(request.headers);
