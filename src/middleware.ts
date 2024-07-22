@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import { verifyJwtToken } from "./app/_utils/auth";
 
 export async function middleware(request: NextRequest) {
+  console.log(request);
   let token = request.cookies.get("token")?.value;
 
   if (token) {
@@ -11,8 +12,6 @@ export async function middleware(request: NextRequest) {
     }
     token = token.split(".").slice(0, 3).join(".");
   }
-  console.log(token);
-  
 
   const verifiedToken =
     token &&
