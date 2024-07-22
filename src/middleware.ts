@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   console.log(request);
   // let token = request.cookies.get("token")?.value;
   let token = request.cookies.get("token")?.value;
-
+  console.log('token',token);
 
   if (token) {
     if (token.startsWith("s:")) {
@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
     }
     token = token.split(".").slice(0, 3).join(".");
   }
-  console.log(token);
+  console.log('after token', token);
   
 
   const verifiedToken =
@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
     (await verifyJwtToken(token).catch((err) => {
       console.log(err);
     }));
-  console.log(verifiedToken);
+  console.log('verifiedToken',verifiedToken);
   
 
   if (verifiedToken) {
