@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_ECHO_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_ENV === "PRD" ? process.env.NEXT_PUBLIC_ECHO_URL : process.env.NEXT_PUBLIC_STG_ECHO_URL;
 export const client = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
