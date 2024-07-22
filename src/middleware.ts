@@ -11,6 +11,8 @@ export async function middleware(request: NextRequest) {
     }
     token = token.split(".").slice(0, 3).join(".");
   }
+  console.log(token);
+  
 
   const verifiedToken =
     token &&
