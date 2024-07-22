@@ -8,12 +8,12 @@ export async function middleware(request: NextRequest) {
   let token = request.cookies.get("_vercel_jwt")?.value;
   console.log('token',token);
 
-  // if (token) {
-  //   if (token.startsWith("s:")) {
-  //     token = token.slice(2);
-  //   }
-  //   token = token.split(".").slice(0, 3).join(".");
-  // }
+  if (token) {
+    if (token.startsWith("s:")) {
+      token = token.slice(2);
+    }
+    token = token.split(".").slice(0, 3).join(".");
+  }
   console.log('after token', token);
   
 
