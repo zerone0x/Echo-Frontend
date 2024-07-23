@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-export default {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -10,7 +10,7 @@ export default {
       {
         protocol: "http",
         hostname: "localhost",
-        // port: '3001',
+        // port: '3001', // 如果需要指定端口，可以取消注释
       },
       {
         protocol: "http",
@@ -18,33 +18,10 @@ export default {
       },
     ],
   },
-  // async rewrites() {
-  // 	return [
-  // 		{
-  // 			source: '/api/v1/:path*',
-  //     destination: 'https://echobe.fly.dev/api/v1/:path*'
-  // 		},
-  // 	]
-  // },
-  // output: "export",
+
+
 };
 
-// export async function rewrites() {
-//   return [
-//     {
-//       source: '/api/v1/:path*',
-//       destination: 'https://echobe.fly.dev/api/v1/:path*'
-//     },
-//   ]
-// }
 
-// module.exports = {
-//   async rewrites() {
-//     return [
-//       {
-//         source: '/api/:path*',
-//         destination: 'http://localhost:3001/api/:path*',
-//       },
-//     ];
-//   },
-// };
+export default nextConfig;
+
