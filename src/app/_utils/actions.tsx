@@ -8,6 +8,10 @@ export async function loginUser(formData: FormData) {
   const password = formData.get("password") as string;
   const user = await authUserLogin(email, password);
   if (user) {
+    console.log(user);
+    const userObj = JSON.stringify(user.user);
+    localStorage.setItem("user", userObj);
+    localStorage.setItem("token", user.token);
     // toast.success("Message posted successfully!");
     redirect("/home");
   }

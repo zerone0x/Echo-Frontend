@@ -1,3 +1,4 @@
+"use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import getCurrentUser from "./getCurrentUser";
 import { UserProps } from "../_config/type";
@@ -22,18 +23,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [authData, setAuthData] = useState<UserProps | null>(null);
   const currentUserId = authData?._id;
   const currentUserName = authData?.name;
-
   useEffect(() => {
     async function fetchUser() {
       try {
-        const userData = await getCurrentUser();
+        const userLocal = localStorage.getItem("user");
+        console.log("userLocal", userLocal);
+        // @ts-ignore
+        const userParsed = JSON.parse(userLocal);
+        console.log(userParsed);
+
+        console.log(userParsed.name);
+
+        const userData = await getCurrentUser(userParsed.name);
         setAuthData(userData);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
         setAuthData(null);
       }
     }
-
     fetchUser();
   }, []);
 

@@ -3,10 +3,9 @@ import type { NextRequest } from "next/server";
 import { verifyJwtToken } from "./app/_utils/auth";
 
 export async function middleware(request: NextRequest) {
-  console.log('request', request);
-  // let token = request.cookies.get("token")?.value;
-  let token = request.cookies.get("_vercel_jwt")?.value;
-  console.log('token',token);
+  console.log("request.cookies", request);
+  let token = request.cookies.get("token")?.value;
+  console.log("token", token);
 
   if (token) {
     if (token.startsWith("s:")) {
@@ -14,16 +13,14 @@ export async function middleware(request: NextRequest) {
     }
     token = token.split(".").slice(0, 3).join(".");
   }
-  console.log('after token', token);
-  
+  console.log("after token", token);
 
   const verifiedToken =
     token &&
     (await verifyJwtToken(token).catch((err) => {
       console.log(err);
     }));
-  console.log('verifiedToken',verifiedToken);
-  
+  console.log("verifiedToken", verifiedToken);
 
   if (verifiedToken) {
     const requestHeaders = new Headers(request.headers);
@@ -38,9 +35,9 @@ export async function middleware(request: NextRequest) {
 
     return response;
   }
-  if (request.nextUrl.pathname !== "/" && !verifiedToken) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+  // if (request.nextUrl.pathname !== "/" && !verifiedToken) {
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
   return NextResponse.next();
 }
 

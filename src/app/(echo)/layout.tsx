@@ -6,12 +6,25 @@ import { AuthProvider } from "../_utils/getLogin";
 import Header from "../_components/Header";
 import { SearchProvider } from "../_utils/SearchContext";
 import { PublishProvider } from "../_utils/getPublishType";
-
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 export default function EchoLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+    console.log(token);
+
+    if (token == null && pathname !== "/") {
+      router.push("/");
+    }
+  }, [router]);
   return (
     <ReactQueryProvider>
       <AuthProvider>

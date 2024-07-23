@@ -18,5 +18,33 @@ export default {
       },
     ],
   },
+  // async rewrites() {
+  // 	return [
+  // 		{
+  // 			source: '/api/v1/:path*',
+  //     destination: 'https://echobe.fly.dev/api/v1/:path*'
+  // 		},
+  // 	]
+  // },
   // output: "export",
 };
+
+// export async function rewrites() {
+//   return [
+//     {
+//       source: '/api/v1/:path*',
+//       destination: 'https://echobe.fly.dev/api/v1/:path*'
+//     },
+//   ]
+// }
+
+// module.exports = {
+//   async rewrites() {
+//     return [
+//       {
+//         source: '/api/:path*',
+//         destination: 'http://localhost:3001/api/:path*',
+//       },
+//     ];
+//   },
+// };

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from "next/font/google";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 const lato = Roboto({
   subsets: ["latin"],
   weight: "400",

@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   title: "Welcome Echo!",
 };
 
-export default async function App() {
+function App() {
   return (
     <div className="min-h-screen bg-[#FAF8F1]">
       <Welcome />
     </div>
   );
 }
+
+export default App;
