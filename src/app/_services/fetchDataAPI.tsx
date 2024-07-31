@@ -98,11 +98,9 @@ export const getAllBookMark = async () => {
 };
 
 export const getIsBooked = async (feedId: string, itemType: string) => {
-  const { data } = await client.get(`bookmark/getIsBooked/${feedId}`, {
-    params: {
-      itemType: itemType,
-    },
-  });
+  const { data } = await client.get(
+    `bookmark/getIsBooked/${feedId}/${itemType}`,
+  );
   return data.results;
 };
 
@@ -120,11 +118,7 @@ export const getAllLikes = async () => {
 };
 
 export const getIsLiked = async (feedId: string, itemType: string) => {
-  const { data } = await client.get(`like/getIsLiked/${feedId}`, {
-    params: {
-      itemType: itemType,
-    },
-  });
+  const { data } = await client.get(`like/getIsLiked/${feedId}/${itemType}`);
   return data.results;
 };
 

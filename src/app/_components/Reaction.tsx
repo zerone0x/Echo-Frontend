@@ -2,10 +2,8 @@
 import { useQueryClient } from "react-query";
 import { useAuth } from "../_utils/getLogin";
 import { FaBookmark, FaStar } from "react-icons/fa";
-import { BiRepost } from "react-icons/bi";
 import { IoIosMore } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
-import { LuReply } from "react-icons/lu";
 import {
   BookMarkFeed,
   DeleteFeedById,
@@ -20,6 +18,7 @@ import ConfirmDialog from "./ConfirmDialog";
 import { useRouter } from "next/navigation";
 import { usePublishType } from "../_utils/getPublishType";
 import { CommentProps, FeedProps, UserProps } from "../_config/type";
+import { FaReply, FaRetweet } from "react-icons/fa6";
 
 function Reaction({
   feed,
@@ -138,14 +137,14 @@ function Reaction({
   const reactItems = [
     {
       name: "Reply",
-      icon: <LuReply />,
+      icon: <FaReply />,
       number: commentCount,
       settings: false,
       action: ReplyClick,
     },
     {
       name: "Repost",
-      icon: <BiRepost />,
+      icon: <FaRetweet />,
       color: "text-green-500",
       settings: false,
     },
@@ -173,7 +172,7 @@ function Reaction({
   ];
 
   return (
-    <div className="flex w-full justify-evenly gap-10 space-x-2 px-4 py-2 text-xl">
+    <div className="flex w-full items-center justify-evenly gap-10 space-x-2 px-4 py-2 text-xl">
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <div className="relative" key={item.name}>
@@ -183,7 +182,10 @@ function Reaction({
             aria-label={item.name}
           >
             <span className={`${item.color} flex items-center gap-1 text-xl`}>
-              {item.icon} {item?.number && item?.number > 0 ? item?.number : ""}
+              <div className="flex items-center justify-center">
+                {item.icon}
+              </div>
+              {item?.number && item?.number > 0 ? item?.number : ""}
             </span>
           </button>
           {dotsDialog && item.name === "Others" && (

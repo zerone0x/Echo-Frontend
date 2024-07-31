@@ -27,7 +27,7 @@ function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
     feed && (
       <div className="border-b-2">
         <>
-          <div className="flex items-center justify-between p-4">
+          <div className="flex justify-between p-4">
             <UserCard user={user} isBtnDisplay={false} />
             <span className="text-sm text-gray-500">
               {FormatTime(createdAt)}
