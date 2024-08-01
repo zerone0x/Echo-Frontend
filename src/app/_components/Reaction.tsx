@@ -137,37 +137,46 @@ function Reaction({
   const reactItems = [
     {
       name: "Reply",
-      icon: <FaReply />,
+      icon: <FaReply className="h-5 w-5" />,
       number: commentCount,
       settings: false,
       action: ReplyClick,
+      disabled: type === "Comment" ? true : false,
     },
     {
       name: "Repost",
-      icon: <FaRetweet />,
-      color: "text-green-500",
+      icon: <FaRetweet className="h-5 w-5" />,
+      color: "text-gray-500",
       settings: false,
+      disabled: true,
     },
     {
       name: "Favorite",
-      icon: <FaStar />,
+      icon: <FaStar className="h-5 w-5" />,
       action: likeClick,
       color: likeStatus ? "text-yellow-500" : "text-gray-500",
       number: likedCount,
       settings: true,
+      disabled: false,
     },
     {
       name: "Bookmark",
-      icon: <FaBookmark />,
+      icon: <FaBookmark className="h-5 w-5" />,
       action: bookmarkClick,
       color: bookmarkStatus ? "text-red-500" : "text-gray-500",
       settings: true,
+      disabled: false,
     },
     {
       name: "Others",
-      icon: dotsDialog ? <IoIosClose /> : <IoIosMore />,
+      icon: dotsDialog ? (
+        <IoIosClose className="h-5 w-5" />
+      ) : (
+        <IoIosMore className="h-5 w-5" />
+      ),
       action: handleThreeDotsDialog,
       settings: false,
+      disabled: false,
     },
   ];
 
@@ -181,6 +190,7 @@ function Reaction({
               className={`${item.color} hover:bg-slate-200 focus:outline-none`}
               onClick={(e) => item.action && item.action(e)}
               aria-label={item.name}
+              disabled={item.disabled}
             >
               {item.icon}
             </button>

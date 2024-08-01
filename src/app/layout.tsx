@@ -28,7 +28,7 @@ export default function RootLayout({
         {children}
         <Link
           href={`/publish`}
-          className="fixed bottom-1/10 right-1/10 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 lg:hidden"
+          className="fixed bottom-1/10 right-1/10 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 lg:hidden"
         >
           <FaPen />
         </Link>

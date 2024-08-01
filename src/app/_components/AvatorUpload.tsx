@@ -31,26 +31,26 @@ const AvatarUploader = ({
   };
 
   return (
-    <div>
-      <label
-        htmlFor="avatar"
-        className="text-lg font-medium text-gray-700 sm:text-xl"
-      >
-        {labelName}
-      </label>
-      <div className="">
+    <div className="flex justify-between gap-4">
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="avatar"
+          className="text-lg font-medium text-gray-700 sm:text-xl"
+        >
+          {labelName}
+        </label>
         <div className="flex flex-row gap-2">
           {isBig ? (
             <div
               onClick={handleAvatarClick}
-              className="relative h-36 w-1/2 cursor-pointer overflow-hidden"
+              className="relative h-36 w-60 cursor-pointer overflow-hidden"
             >
               <Image
                 src={avatar}
-                alt="Avatar"
+                alt="Banner"
                 layout="fill"
                 objectFit="cover"
-                className=""
+                className="rounded-md"
               />
             </div>
           ) : (
@@ -68,20 +68,21 @@ const AvatarUploader = ({
             </div>
           )}
         </div>
-        <div className="relative h-36 w-1/2 cursor-pointer overflow-hidden">
-          <FilePond
-            files={file ? [file] : []}
-            allowReorder={false}
-            allowMultiple={false}
-            onupdatefiles={(fileItems) => {
-              const newFile = fileItems.length ? fileItems[0].file : null;
-              // @ts-ignore
-              setFile(newFile);
-              onUpdate(newFile);
-            }}
-            labelIdle="Drag & Drop your avatar or <span class='filepond--label-action'>Browse</span>"
-          />
-        </div>
+      </div>
+      <div className="relative flex h-36 w-1/2 cursor-pointer flex-col gap-2 overflow-hidden">
+        <span>Update {labelName}:</span>
+        <FilePond
+          files={file ? [file] : []}
+          allowReorder={false}
+          allowMultiple={false}
+          onupdatefiles={(fileItems) => {
+            const newFile = fileItems.length ? fileItems[0].file : null;
+            // @ts-ignore
+            setFile(newFile);
+            onUpdate(newFile);
+          }}
+          labelIdle="Drag & Drop your avatar or <span class='filepond--label-action'>Browse</span>"
+        />
       </div>
     </div>
   );

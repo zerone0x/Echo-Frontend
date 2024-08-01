@@ -46,71 +46,83 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
     setBannerFile(null);
   }
   return (
-    <dialog
-      open={isOpen}
-      className="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 w-full max-w-full overflow-scroll rounded-lg bg-white p-5 shadow-xl sm:max-w-lg"
-    >
-      <form
-        method="dialog"
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
+    <>
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black bg-opacity-50"
+          onClick={() => setOpenDialog(false)}
+        ></div>
+      )}
+      <dialog
+        open={isOpen}
+        className="fixed left-0 right-0 top-2 z-50 mx-auto mt-4 w-full max-w-full rounded-lg bg-white p-5 shadow-xl sm:max-w-lg"
       >
-        <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
-          <h2 className="mb-2 text-xl font-semibold text-gray-900 sm:mb-0 sm:text-2xl">
-            Update User Details
-          </h2>
-          <button
-            onClick={() => setOpenDialog(false)}
-            className="text-gray-500 hover:text-gray-700"
+        <form
+          method="dialog"
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4"
+        >
+          <div className="flex items-start justify-between">
+            <h2 className="mb-4 text-xl font-semibold text-gray-900 sm:mb-0 sm:text-2xl">
+              Update User Details
+            </h2>
+            <button
+              onClick={() => setOpenDialog(false)}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              <IoMdClose className="h-8 w-8" />
+            </button>
+          </div>
+
+          <AvatarUploader
+            // @ts-ignore
+            avatar={avatar}
+            // @ts-ignore
+            onUpdate={(newFile) => setFile(newFile)}
+            labelName="Avator"
+          />
+          <AvatarUploader
+            // @ts-ignore
+            avatar={banner}
+            // @ts-ignore
+            onUpdate={(bannerfile) => setBannerFile(bannerfile)}
+            labelName="Banner"
+            isBig={true}
+          />
+
+          <label
+            htmlFor="name"
+            className="text-lg font-medium text-gray-700 sm:text-xl"
           >
-            <IoMdClose />
-          </button>
-        </div>
-
-        <AvatarUploader
-          // @ts-ignore
-          avatar={avatar}
-          // @ts-ignore
-          onUpdate={(newFile) => setFile(newFile)}
-          labelName="Avator"
-        />
-        <AvatarUploader
-          // @ts-ignore
-          avatar={banner}
-          // @ts-ignore
-          onUpdate={(bannerfile) => setBannerFile(bannerfile)}
-          labelName="Banner"
-          isBig={true}
-        />
-
-        <label
-          htmlFor="name"
-          className="text-lg font-medium text-gray-700 sm:text-xl"
-        >
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          className="input rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label
-          htmlFor="bio"
-          className="text-lg font-medium text-gray-700 sm:text-xl"
-        >
-          Bio
-        </label>
-        <textarea
-          id="bio"
-          className="input rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        ></textarea>
-        <SubmitButton pendingLabel="Saving...">Save</SubmitButton>
-      </form>
-    </dialog>
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            className="input rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label
+            htmlFor="bio"
+            className="text-lg font-medium text-gray-700 sm:text-xl"
+          >
+            Bio
+          </label>
+          <textarea
+            id="bio"
+            className="input rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            style={{ resize: "none" }}
+            rows={4}
+          ></textarea>
+          <div className="text-right">
+            <SubmitButton pendingLabel="Saving...">Save</SubmitButton>
+          </div>
+        </form>
+      </dialog>
+    </>
   );
 }
 
