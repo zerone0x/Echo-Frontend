@@ -35,7 +35,7 @@ export default function EchoLayout({
                 <LeftBar />
               </div>
 
-              <main className="overflow-scroll border-l-2 border-r-2">
+              <main className="overflow-scroll border-l-2 border-r-2 lg:min-w-[500px]">
                 <Header />
                 <div className="min-h-screen">{children}</div>
               </main>

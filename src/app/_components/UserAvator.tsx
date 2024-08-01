@@ -1,15 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { UserProps } from "../_config/type";
 
-function UserAvator({
-  name,
-  ProfileImage,
-  size = 16,
-}: {
-  name: string;
-  ProfileImage: string;
-  size?: number;
-}) {
+function UserAvator({ user, size = 16 }: { user: UserProps; size?: number }) {
+  const ProfileImage = user?.ProfileImage;
+  const name = user?.name;
   return (
     <Link href={`/${name}`}>
       <div

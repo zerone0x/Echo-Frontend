@@ -10,41 +10,39 @@ import { useAuth } from "../_utils/getLogin";
 
 function Sidebar() {
   const pathname = usePathname();
-  const { authData, currentUserName } = useAuth();
-  const ProfileImage = authData?.ProfileImage;
+  const { authData } = useAuth();
   return (
-    <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:pt-0 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:pt-4">
+    <div className="flex sm:items-center sm:justify-center md:flex-col md:items-center md:justify-center lg:flex-col lg:items-start lg:justify-center">
       <Image
         src={logo}
         quality={100}
         alt="The Echo App Logo"
         width={70}
         height={70}
+        className="hidden sm:hidden md:inline-block md:text-center lg:inline-block"
       />
-      {navLinks.map((link, index) => (
-        <Link
-          key={`${link.name}-${index}`}
-          className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-blue-400" : "text-black"} `}
-          href={link.href}
-        >
-          {link.icon}
-          <span className="hidden lg:inline-block">{link.name}</span>
-        </Link>
-      ))}
-
-      <div className="inline-block">
+      <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:pt-0 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:pt-4">
+        {navLinks.map((link, index) => (
+          <Link
+            key={`${link.name}-${index}`}
+            className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-blue-400" : "text-black"} `}
+            href={link.href}
+          >
+            {link.icon}
+            <span className="hidden lg:inline-block">{link.name}</span>
+          </Link>
+        ))}
+      </nav>
+      <div className="inline-block md:pt-4 lg:pt-4">
         <SignOutButton />
       </div>
-      <div className="sm:inline-block md:inline-block lg:hidden">
-        {currentUserName && ProfileImage && (
-          <UserAvator
-            name={currentUserName}
-            ProfileImage={ProfileImage}
-            size={14}
-          />
-        )}
+      <div className="inline-block sm:inline-block sm:pl-1 md:inline-block md:pt-4 lg:hidden">
+        <UserAvator
+          // @ts-ignore
+          user={authData}
+        />
       </div>
-    </nav>
+    </div>
   );
 }
 
