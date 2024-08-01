@@ -231,11 +231,22 @@ function Reaction({
         </div>
       ))}
       {dialog.isOpen && dialog.feedId === feedId && (
-        <ConfirmDialog
-          dialog={dialog}
-          setDialog={setDialog}
-          dialogAction={delFeed}
-        />
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black bg-opacity-50"
+            onClick={() => setDialog({ isOpen: false, feedId: dialog.feedId })}
+          ></div>
+
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="mx-auto w-full max-w-full rounded-lg p-5 sm:max-w-lg">
+              <ConfirmDialog
+                dialog={dialog}
+                setDialog={setDialog}
+                dialogAction={delFeed}
+              />
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

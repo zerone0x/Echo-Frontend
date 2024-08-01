@@ -19,9 +19,9 @@ function ConfirmDialog({
   return (
     <dialog
       open={dialog.isOpen}
-      className="absolute inset-0 w-1/2 rounded-lg bg-white bg-opacity-50 p-5 shadow-xl sm:max-w-lg"
+      className="absolute inset-0 rounded-lg bg-white p-5 sm:max-w-lg"
     >
-      <form onSubmit={(e) => delFeed(e)} className="flex flex-col">
+      <form onSubmit={(e) => delFeed(e)} className="flex flex-col gap-4 px-4">
         <div className="space-y-4 text-center">
           <h2>Delete Echo?</h2>
           <span>It can't be undone.</span>

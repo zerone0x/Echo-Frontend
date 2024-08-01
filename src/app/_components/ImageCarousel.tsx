@@ -14,7 +14,7 @@ function ImageCarousel({
   initialIndex: number;
 }) {
   return (
-    <section className="m-auto flex h-full w-full max-w-6xl items-center p-4">
+    <section className="flex h-full w-full items-center justify-center">
       <Swiper
         slidesPerView={1}
         spaceBetween={40}
@@ -25,17 +25,21 @@ function ImageCarousel({
         navigation={true}
         modules={[Pagination, Navigation]}
         initialSlide={initialIndex}
+        className="flex h-full w-full items-center justify-center"
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <Image
-              src={image}
-              alt={`Image ${index}`}
-              width={1600}
-              height={900}
-              layout="responsive"
-              objectFit="contain"
-            />
+          <SwiperSlide key={index} className="flex items-center justify-center">
+            <div className="m-auto h-full w-full sm:max-h-[70vh] sm:max-w-[70vw] md:max-h-[70vh] md:max-w-[70vw] lg:max-w-[40vw]">
+              <Image
+                src={image}
+                alt={`Image ${index}`}
+                layout="responsive"
+                objectFit="cover"
+                width={500}
+                height={500}
+                className="h-full w-full"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

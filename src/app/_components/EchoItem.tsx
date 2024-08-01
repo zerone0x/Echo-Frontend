@@ -45,8 +45,8 @@ function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
             </div>
           </Link>
           {feedImages?.length > 0 && (
-            <div className="w-full">
-              <div className={`grid w-full grid-cols-2 gap-2 p-4`}>
+            <div className="w-full p-4">
+              <div className="grid grid-cols-2 gap-y-1 p-4">
                 {feedImages.map((imageUrl, index) => (
                   <div
                     onClick={() => handleImageClick(index)}
@@ -73,28 +73,32 @@ function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
           user={user}
         />
         {showCarousel && (
-          <div className="fixed inset-0 z-50 bg-black bg-opacity-80">
-            <div className="z-100 relative">
-              <div
-                onClick={(event: any) => {
-                  if (event.target === event.currentTarget) {
-                    setShowCarousel(false);
-                  }
-                }}
+          <>
+            <div className="fixed inset-0 z-40 bg-black bg-opacity-50"></div>
+            <div className="fixed inset-0 z-50 flex items-center justify-center">
+              <button
+                onClick={() => setShowCarousel(false)}
+                className="z-100 absolute right-4 top-4 rounded-full bg-gray-700 bg-opacity-70 p-2 text-xl text-white"
               >
-                <button
-                  onClick={() => setShowCarousel(false)}
-                  className="bg-grey-700 z-100 absolute right-4 top-4 rounded-full bg-opacity-70 p-2 text-xl text-white"
-                >
-                  <IoMdClose />
-                </button>
-                <ImageCarousel
-                  images={feedImages}
-                  initialIndex={currentImageIndex}
-                />
-              </div>
+                <IoMdClose className="h-6 w-6" />
+              </button>
+              <div
+                className="z-100 fixed inset-0"
+                onClick={() => setShowCarousel(false)}
+              ></div>
+              <dialog
+                open={showCarousel}
+                className="z-100 relative border-none bg-transparent"
+              >
+                <div className="h-full max-h-[50vh] w-full max-w-[70vw]">
+                  <ImageCarousel
+                    images={feedImages}
+                    initialIndex={currentImageIndex}
+                  />
+                </div>
+              </dialog>
             </div>
-          </div>
+          </>
         )}
       </div>
     )
