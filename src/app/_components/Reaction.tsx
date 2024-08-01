@@ -35,7 +35,7 @@ function Reaction({
 }) {
   const feedId = feed?._id;
   const { currentUserId } = useAuth();
-  const isDeletable = currentUserId === user._id;
+  const isDeletable = currentUserId === user?._id;
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
   const [likedCount, setLikedCount] = useState(likesCount);
