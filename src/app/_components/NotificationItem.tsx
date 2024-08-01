@@ -50,8 +50,9 @@ function NotificationItem({
           <Link
             href={
               type === "Feed"
-                ? `/${name}/status/${content._id}`
-                : `/${name}/status/${content?.feed}`
+                ? `/${receiver.name}/status/${content._id}`
+                : // @ts-ignore
+                  `/${receiver.name}/status/${content?.feed}`
             }
           >
             <div className="pointer-events-none block px-4 py-2">
@@ -78,8 +79,9 @@ function NotificationItem({
           <Link
             href={
               type === "Feed"
-                ? `/${name}/status/${content._id}`
-                : `/${name}/status/${content?.feed}`
+                ? `/${sender.name}/status/${content._id}`
+                : // @ts-ignore
+                  `/${sender.name}/status/${content?.feed}`
             }
           >
             <div className="pointer-events-none block px-4 py-2">

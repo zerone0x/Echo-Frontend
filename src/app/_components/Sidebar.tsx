@@ -10,8 +10,7 @@ import { useAuth } from "../_utils/getLogin";
 
 function Sidebar() {
   const pathname = usePathname();
-  const { authData } = useAuth();
-  const name = authData?.name;
+  const { authData, currentUserName } = useAuth();
   const ProfileImage = authData?.ProfileImage;
   return (
     <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:pt-0 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:pt-4">
@@ -37,7 +36,13 @@ function Sidebar() {
         <SignOutButton />
       </div>
       <div className="sm:inline-block md:inline-block lg:hidden">
-        <UserAvator name={name} ProfileImage={ProfileImage} size={14} />
+        {currentUserName && ProfileImage && (
+          <UserAvator
+            name={currentUserName}
+            ProfileImage={ProfileImage}
+            size={14}
+          />
+        )}
       </div>
     </nav>
   );

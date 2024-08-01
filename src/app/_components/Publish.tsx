@@ -112,7 +112,7 @@ function Publish({ isPage = true }) {
   }, [setPublishType]);
 
   return (
-    <div>
+    <div className="max-h-screen">
       {publishType?.type === "Comment" && isPage && (
         <div className="pointer-events-none">
           <EchoContent feed={publishType?.feed} />
