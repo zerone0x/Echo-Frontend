@@ -11,8 +11,8 @@ function Sidebar() {
 
   return (
     <nav>
-      <ul className="text-4xl sm:flex sm:items-center sm:justify-evenly md:flex-col md:items-start md:justify-start lg:flex-col lg:items-start lg:justify-start">
-        <li>
+      <ul className="flex text-4xl sm:flex sm:items-center sm:justify-evenly md:flex-col md:items-start md:justify-start lg:flex-col lg:items-start lg:justify-start">
+        <li className="hidden sm:hidden md:inline-block lg:inline-block">
           <Image
             src={logo}
             quality={100}

@@ -1,4 +1,5 @@
-import { FaHome, FaStar } from "react-icons/fa";
+import { FaHome, FaSearch, FaStar } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
 import { IoBookmarkSharp } from "react-icons/io5";
 
@@ -13,6 +14,11 @@ export const navLinks = [
     href: "/notification",
     icon: <IoIosNotifications />,
   },
+  {
+    name: "Search",
+    href: "/search",
+    icon: <FaSearch />,
+  },
   // {
   //   name: "Live feeds",
   //   href: "/public",
@@ -21,7 +27,7 @@ export const navLinks = [
   {
     name: "Bookmark",
     href: "/bookmark",
-    icon: <IoBookmarkSharp />,
+    icon: <FaBookmark />,
   },
   {
     name: "Favorites",

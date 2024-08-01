@@ -9,6 +9,7 @@ import { PublishProvider } from "../_utils/getPublishType";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import MobileHeader from "../_components/MobileHeader";
 export default function EchoLayout({
   children,
 }: {

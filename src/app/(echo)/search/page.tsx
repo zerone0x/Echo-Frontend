@@ -52,7 +52,10 @@ function Page() {
   return (
     <>
       <SearchBar />
-      {!users.length && !feedRes.length && !commentRes.length ? (
+      {!users.length &&
+      !feedRes.length &&
+      !commentRes.length &&
+      searchQuery.length ? (
         <NoResult content="Could not find anything for these search terms" />
       ) : (
         <>
