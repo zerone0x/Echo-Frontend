@@ -77,13 +77,17 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
                 </div>
 
                 <AvatarUploader
+                  // @ts-ignore
                   avatar={avatar}
-                  onUpdate={(newFile) => setAvatar(newFile)}
-                  labelName="Avatar"
+                  // @ts-ignore
+                  onUpdate={(newFile) => setFile(newFile)}
+                  labelName="Avator"
                 />
                 <AvatarUploader
+                  // @ts-ignore
                   avatar={banner}
-                  onUpdate={(bannerFile) => setBanner(bannerFile)}
+                  // @ts-ignore
+                  onUpdate={(bannerfile) => setBannerFile(bannerfile)}
                   labelName="Banner"
                   isBig={true}
                 />

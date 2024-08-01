@@ -197,9 +197,9 @@ function Reaction({
             <span>{item?.number && item?.number > 0 ? item.number : " "}</span>
           </div>
           {dotsDialog && item.name === "Others" && (
-            <div
+            <dialog
               ref={dialogRef}
-              className="fixed mt-1 flex flex-col gap-1 border border-gray-300 bg-white p-2 text-left"
+              className="absolute z-50 mt-1 flex flex-col gap-1 border border-gray-300 bg-white p-2 text-left"
             >
               {reactItems
                 .filter((item) => item.settings !== false)
@@ -226,31 +226,29 @@ function Reaction({
                   Delete
                 </button>
               )}
-            </div>
+            </dialog>
           )}
         </div>
       ))}
       {dialog.isOpen && dialog.feedId === feedId && (
         <>
-        <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50"
-          onClick={() => setDialog({ isOpen: false, feedId: dialog.feedId })}
-        ></div>
-      
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="mx-auto w-full max-w-full rounded-lg p-5 sm:max-w-lg ">
-            <ConfirmDialog
-              dialog={dialog}
-              setDialog={setDialog}
-              dialogAction={delFeed}
-            />
+          <div
+            className="fixed inset-0 z-40 bg-black bg-opacity-50"
+            onClick={() => setDialog({ isOpen: false, feedId: dialog.feedId })}
+          ></div>
+
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="mx-auto w-full max-w-full rounded-lg p-5 sm:max-w-lg">
+              <ConfirmDialog
+                dialog={dialog}
+                setDialog={setDialog}
+                dialogAction={delFeed}
+              />
+            </div>
           </div>
-        </div>
-      </>
-      
+        </>
       )}
     </div>
-    
   );
 }
 
