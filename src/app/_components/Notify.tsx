@@ -16,7 +16,7 @@ function Notify() {
   if (error instanceof Error)
     return <div>Error loading notifications: {error.message}</div>;
 
-  return <NotificationList notifications={data} />;
+  return <NotificationList notifications={data?.notifications} />;
 }
 
 export default Notify;

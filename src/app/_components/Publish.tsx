@@ -127,14 +127,15 @@ function Publish({ isPage = true }) {
             <UserCard user={authData} isBtnDisplay={false} />
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-4">
+          <form onSubmit={handleSubmit} className="mt-8">
             <textarea
-              className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
               placeholder={`${postType === "Comment" && isPage ? "Reply to" : "What's on your mind?"}`}
               value={content}
               onChange={(e) => setContent(e.target.value)}
               onKeyDown={handleKeyDown}
-              rows={4}
+              rows={7}
+              style={{ resize: "none" }}
               required
             />
 
@@ -174,7 +175,9 @@ function Publish({ isPage = true }) {
                 />
               </div>
             )}
-            <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
+            <div className="text-right">
+              <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
+            </div>
           </form>
         </div>
       </div>

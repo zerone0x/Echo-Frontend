@@ -14,37 +14,31 @@ function Sidebar() {
   const name = authData?.name;
   const ProfileImage = authData?.ProfileImage;
   return (
-    <nav className="pt-4">
-      <ul className="flex text-4xl sm:flex sm:items-center sm:justify-evenly md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start">
-        <li className="hidden sm:hidden md:inline-block lg:inline-block">
-          <Image
-            src={logo}
-            quality={100}
-            alt="The Echo App Logo"
-            width={70}
-            height={70}
-          />
-        </li>
+    <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:pt-0 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:pt-4">
+      <Image
+        src={logo}
+        quality={100}
+        alt="The Echo App Logo"
+        width={70}
+        height={70}
+      />
+      {navLinks.map((link, index) => (
+        <Link
+          key={`${link.name}-${index}`}
+          className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-blue-400" : "text-black"} `}
+          href={link.href}
+        >
+          {link.icon}
+          <span className="hidden lg:inline-block">{link.name}</span>
+        </Link>
+      ))}
 
-        {navLinks.map((link, index) => (
-          <li key={`${link.name}-${index}`}>
-            <Link
-              className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-blue-400" : "text-black"} `}
-              href={link.href}
-            >
-              {link.icon}
-              <span className="hidden lg:inline-block">{link.name}</span>
-            </Link>
-          </li>
-        ))}
-
-        <li className="inline-block">
-          <SignOutButton />
-        </li>
-        <li className="sm:inline-block md:inline-block lg:hidden">
-          <UserAvator name={name} ProfileImage={ProfileImage} size={14} />
-        </li>
-      </ul>
+      <div className="inline-block">
+        <SignOutButton />
+      </div>
+      <div className="sm:inline-block md:inline-block lg:hidden">
+        <UserAvator name={name} ProfileImage={ProfileImage} size={14} />
+      </div>
     </nav>
   );
 }

@@ -20,35 +20,33 @@ function NotificationItem({
     notification;
   if (action === "follow") {
     return (
-      <div className="border-b-2">
-        <p>
-          <Link href={`/${sender.name}`}>{sender.name} </Link>
-          followed you
-        </p>
-        <>
-          <div className="flex justify-between p-4">
-            <UserCard user={sender} isBtnDisplay={true} />
-            <span className="text-sm text-gray-500">
-              {FormatTime(createdAt)}
-            </span>
-          </div>
-        </>
+      <div className="flex flex-col gap-2 border-b-2 p-4">
+        <div className="flex justify-between">
+          <p>
+            <Link href={`/${sender.name}`} className="hover:underline">
+              {sender.name}{" "}
+            </Link>
+            followed you
+          </p>
+          <span className="text-sm text-gray-500">{FormatTime(createdAt)}</span>
+        </div>
+        <UserCard user={sender} isBtnDisplay={true} />
       </div>
     );
   } else if (action === "like") {
     return (
-      <div className="border-b-2">
-        <p>
-          <Link href={`/${sender.name}`}>{sender.name} </Link>
-          liked your post
-        </p>
+      <div className="flex flex-col gap-2 border-b-2 p-4">
+        <div className="flex justify-between">
+          <p>
+            <Link href={`/${sender.name}`} className="hover:underline">
+              {sender.name}{" "}
+            </Link>
+            liked your post
+          </p>
+          <span className="text-sm text-gray-500">{FormatTime(createdAt)}</span>
+        </div>
         <>
-          <div className="flex justify-between p-4">
-            <UserCard user={receiver} isBtnDisplay={false} />
-            <span className="text-sm text-gray-500">
-              {FormatTime(createdAt)}
-            </span>
-          </div>
+          <UserCard user={receiver} isBtnDisplay={false} />
           <Link
             href={
               type === "Feed"
@@ -65,18 +63,18 @@ function NotificationItem({
     );
   } else if (action === "comment") {
     return (
-      <div className="border-b-2">
-        <p>
-          <Link href={`/${sender.name}`}>{sender.name} </Link>
-          commented your post
-        </p>
+      <div className="flex flex-col gap-2 border-b-2 p-4">
+        <div className="flex justify-between">
+          <p>
+            <Link href={`/${sender.name}`} className="hover:underline">
+              {sender.name}{" "}
+            </Link>
+            commented your post
+          </p>
+          <span className="text-sm text-gray-500">{FormatTime(createdAt)}</span>
+        </div>
         <>
-          <div className="flex justify-between p-4">
-            <UserCard user={sender} isBtnDisplay={false} />
-            <span className="text-sm text-gray-500">
-              {FormatTime(createdAt)}
-            </span>
-          </div>
+          <UserCard user={sender} isBtnDisplay={false} />
           <Link
             href={
               type === "Feed"

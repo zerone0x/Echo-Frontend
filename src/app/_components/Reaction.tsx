@@ -176,18 +176,16 @@ function Reaction({
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <div className="relative" key={item.name}>
-          <button
-            className="flex flex-col items-center text-gray-500 hover:text-gray-700 focus:outline-none"
-            onClick={(e) => item.action && item.action(e)}
-            aria-label={item.name}
-          >
-            <span className={`${item.color} flex items-center gap-1 text-xl`}>
-              <div className="flex items-center justify-center">
-                {item.icon}
-              </div>
-              {item?.number && item?.number > 0 ? item?.number : ""}
-            </span>
-          </button>
+          <div className="flex items-center justify-center gap-2 text-gray-500">
+            <button
+              className={`${item.color} hover:bg-slate-200 focus:outline-none`}
+              onClick={(e) => item.action && item.action(e)}
+              aria-label={item.name}
+            >
+              {item.icon}
+            </button>
+            <span>{item?.number && item?.number > 0 ? item.number : " "}</span>
+          </div>
           {dotsDialog && item.name === "Others" && (
             <div
               ref={dialogRef}
