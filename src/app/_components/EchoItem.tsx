@@ -27,7 +27,7 @@ function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
     feed && (
       <div className="border-b-2">
         <>
-          <div className="flex justify-between p-4">
+          <div className="flex items-center justify-between p-4">
             <UserCard user={user} isBtnDisplay={false} />
             <span className="text-sm text-gray-500">
               {FormatTime(createdAt)}
@@ -45,19 +45,22 @@ function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
             </div>
           </Link>
           {feedImages?.length > 0 && (
-            <div className="w-full p-4">
-              <div className="grid grid-cols-2 gap-y-1 p-4">
+            <div className="w-full">
+              <div className={`grid w-full grid-cols-2 gap-2 p-4`}>
                 {feedImages.map((imageUrl, index) => (
                   <div
                     onClick={() => handleImageClick(index)}
                     key={index}
-                    className={`cursor-zoom-in ${feedImages.length < 3 ? "h-full" : "h-1/2"} relative h-64 w-64`}
+                    className={`cursor-zoom-in ${feedImages.length < 3 ? "h-full" : "h-1/2"} `}
                   >
                     <Image
                       src={imageUrl}
                       alt={`Echo ${index}`}
+                      layout="responsive"
                       objectFit="cover"
-                      layout="fill"
+                      width={500}
+                      height={500}
+                      className="h-full w-full"
                     />
                   </div>
                 ))}
