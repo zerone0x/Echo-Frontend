@@ -8,7 +8,6 @@ export async function loginUser(formData: FormData) {
   const password = formData.get("password") as string;
   const user = await authUserLogin(email, password);
   if (user) {
-    console.log(user);
     const userObj = JSON.stringify(user.user);
     localStorage.setItem("user", userObj);
     localStorage.setItem("token", user.token);
@@ -23,6 +22,22 @@ export async function registerUser(formData: FormData) {
   const name = formData.get("name") as string;
   const user = await authUserSignUp(email, password, name);
   if (user) {
+    const userObj = JSON.stringify(user.user);
+    localStorage.setItem("user", userObj);
+    localStorage.setItem("token", user.token);
+    redirect("/home");
+  }
+}
+
+export async function loginTestUser() {
+  const email = process.env.NEXT_PUBLIC_USER;
+  const password = process.env.NEXT_PUBLIC_PWD;
+  // @ts-ignore
+  const user = await authUserLogin(email, password);
+  if (user) {
+    const userObj = JSON.stringify(user.user);
+    localStorage.setItem("user", userObj);
+    localStorage.setItem("token", user.token);
     redirect("/home");
   }
 }

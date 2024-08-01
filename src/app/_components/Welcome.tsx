@@ -3,6 +3,8 @@ import { useState } from "react";
 import SignUpForm from "@/app/_components/SignUpForm";
 import LoginForm from "@/app/_components/LoginForm";
 import SignInButton from "./SignInButton";
+import { loginTestUser } from "../_utils/actions";
+import SubmitButton from "./SubmitButton";
 
 function Welcome() {
   const [activeTab, setActiveTab] = useState("login");
@@ -31,6 +33,9 @@ function Welcome() {
           </h1>
           <SignInButton />
           {activeTab === "login" ? <LoginForm /> : <SignUpForm />}
+          <form action={loginTestUser}>
+            <SubmitButton pendingLabel="Loading...">Test User</SubmitButton>
+          </form>
         </div>
       </div>
     </div>

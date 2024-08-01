@@ -19,7 +19,7 @@ export const authUserSignUp = async (
     password: password,
     name: name,
   });
-  return data.results.user;
+  return data.results;
 };
 
 export const logOut = async () => {
