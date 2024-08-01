@@ -27,8 +27,12 @@ async function page({ params }: ParamsProps) {
   const comments = feed?.comments;
   return (
     <>
-      {<EchoItem feed={feed} />}
-      {<FeedList feeds={comments} />}
+      <EchoItem feed={feed} />
+      <div className="p-4">
+        <div className="border-l-2">
+          <FeedList feeds={comments} />
+        </div>
+      </div>
     </>
   );
 }

@@ -5,13 +5,17 @@ import logo from "../../../public/logo.png";
 import { usePathname } from "next/navigation";
 import SignOutButton from "./SignOutButton";
 import { navLinks } from "../_config/data";
+import UserAvator from "./UserAvator";
+import { useAuth } from "../_utils/getLogin";
 
 function Sidebar() {
   const pathname = usePathname();
-
+  const { authData } = useAuth();
+  const name = authData?.name;
+  const ProfileImage = authData?.ProfileImage;
   return (
-    <nav>
-      <ul className="flex text-4xl sm:flex sm:items-center sm:justify-evenly md:flex-col md:items-start md:justify-start lg:flex-col lg:items-start lg:justify-start">
+    <nav className="pt-4">
+      <ul className="flex text-4xl sm:flex sm:items-center sm:justify-evenly md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start">
         <li className="hidden sm:hidden md:inline-block lg:inline-block">
           <Image
             src={logo}
@@ -21,6 +25,7 @@ function Sidebar() {
             height={70}
           />
         </li>
+
         {navLinks.map((link, index) => (
           <li key={`${link.name}-${index}`}>
             <Link
@@ -32,8 +37,12 @@ function Sidebar() {
             </Link>
           </li>
         ))}
-        <li>
+
+        <li className="inline-block">
           <SignOutButton />
+        </li>
+        <li className="sm:inline-block md:inline-block lg:hidden">
+          <UserAvator name={name} ProfileImage={ProfileImage} size={14} />
         </li>
       </ul>
     </nav>

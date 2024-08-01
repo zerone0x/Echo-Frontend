@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FollowBtn from "./FollowBtn";
 import { UserProps } from "../_config/type";
+import UserAvator from "./UserAvator";
 
 interface UserCardProps {
   user: UserProps;

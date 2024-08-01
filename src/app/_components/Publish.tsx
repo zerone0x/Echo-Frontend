@@ -66,7 +66,7 @@ function Publish({ isPage = true }) {
     await CreateFeed(formData);
     queryClient.invalidateQueries("feeds");
     setContent("");
-    // setPublishType({});
+    setPublishType({});
     handleFilesUpdate([]);
     setFiles([]);
     setShowPick(false);
@@ -105,6 +105,12 @@ function Publish({ isPage = true }) {
     };
   }, [emojiPickerRef, showPick]);
 
+  useEffect(() => {
+    if (!isPage) {
+      setPublishType({ type: "Feed" });
+    }
+  }, [setPublishType]);
+
   return (
     <div>
       {publishType?.type === "Comment" && isPage && (
@@ -112,62 +118,65 @@ function Publish({ isPage = true }) {
           <EchoContent feed={publishType?.feed} />
         </div>
       )}
-      <div className="pl-4">
-        <div className="line">
-          <div className="pl-4">
+      <div className="p-4">
+        <div>
+          <div
+            className={`${postType === "Comment" && isPage ? "border-l-2 p-4" : ""}`}
+          >
             {/* @ts-ignore */}
             <UserCard user={authData} isBtnDisplay={false} />
           </div>
-        </div>
-        <form onSubmit={handleSubmit} className="mt-4">
-          <textarea
-            className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            placeholder={`${postType === "Comment" ? "Reply to" : "What's on your mind?"}`}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            onKeyDown={handleKeyDown}
-            rows={4}
-            required
-          />
 
-          <div className="mt-3 flex items-center gap-6">
-            <button type="button" onClick={togglePicker} className=" ">
-              <MdEmojiEmotions size={24} />
-            </button>
-            <button type="button" onClick={handleAvatarClick} className=" ">
-              <GoPaperclip size={24} />
-            </button>
-          </div>
-          {showPick && (
-            <div
-              ref={emojiPickerRef}
-              className="absolute z-10 rounded-lg bg-white p-4 shadow-lg"
-            >
-              <EmojiPicker content={content} setContent={setContent} />
+          <form onSubmit={handleSubmit} className="mt-4">
+            <textarea
+              className="h-16 w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder={`${postType === "Comment" && isPage ? "Reply to" : "What's on your mind?"}`}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              onKeyDown={handleKeyDown}
+              rows={4}
+              required
+            />
+
+            <div className="mt-3 flex items-center gap-6">
+              <button type="button" onClick={togglePicker} className=" ">
+                <MdEmojiEmotions size={24} />
+              </button>
+              <button type="button" onClick={handleAvatarClick} className=" ">
+                <GoPaperclip size={24} />
+              </button>
             </div>
-          )}
-          {shouldShowFilePond && (
-            <div className="bg-red-30">
-              <FilePond
-                itemInsertLocation="before"
-                ref={fileInputRef}
-                files={files}
-                allowReorder={true}
-                allowMultiple={true}
-                maxFiles={4}
-                onupdatefiles={(fileItems) => {
-                  // Update the file array based on operation in FilePond
-                  const newFiles = fileItems.map((fileItem) => fileItem.file);
-                  // @ts-ignore
-                  setFiles(newFiles);
-                  handleFilesUpdate(newFiles);
-                }}
-                labelIdle=""
-              />
-            </div>
-          )}
-          <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
-        </form>
+            {showPick && (
+              <div
+                ref={emojiPickerRef}
+                className="absolute z-10 rounded-lg bg-white p-4 shadow-lg"
+              >
+                <EmojiPicker content={content} setContent={setContent} />
+              </div>
+            )}
+            {shouldShowFilePond && (
+              <div className="bg-red-30">
+                <FilePond
+                  itemInsertLocation="before"
+                  ref={fileInputRef}
+                  files={files}
+                  allowReorder={true}
+                  allowMultiple={true}
+                  maxFiles={4}
+                  onupdatefiles={(fileItems) => {
+                    // Update the file array based on operation in FilePond
+                    const newFiles = fileItems.map((fileItem) => fileItem.file);
+                    // @ts-ignore
+                    setFiles(newFiles);
+                    handleFilesUpdate(newFiles);
+                  }}
+                  labelIdle=""
+                />
+              </div>
+            )}
+            <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
+          </form>
+        </div>
       </div>
     </div>
   );

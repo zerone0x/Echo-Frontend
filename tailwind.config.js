@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,tsx}"],
   theme: {
     extend: {
+      spacing: {
+        "1/10": "10%", // 添加 1/10 的 spacing 值
+      },
       cursor: {
         "zoom-in": "zoom-in",
         "zoom-out": "zoom-out",
