@@ -25,7 +25,7 @@ export const client = axios.create({
 //       // console.log('client');
 //       // const token = config.headers["Authorization"];
 //       // console.log(token);
-      
+
 //     }
 //     return config;
 //   },

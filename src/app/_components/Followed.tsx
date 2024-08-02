@@ -1,3 +1,4 @@
+"use client";
 import AllUserList from "./AllUserList";
 import { getFollow } from "../_services/fetchDataAPI";
 import UserDetail from "./UserDetail";

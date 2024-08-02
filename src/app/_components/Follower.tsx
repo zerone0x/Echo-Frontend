@@ -1,3 +1,4 @@
+"use client";
 import { getFans } from "../_services/fetchDataAPI";
 import UserDetail from "./UserDetail";
 import AllUserList from "./AllUserList";

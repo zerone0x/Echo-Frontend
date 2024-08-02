@@ -1,3 +1,4 @@
+"use client";
 import { Suspense } from "react";
 import { getFeedByUsername, getUserByName } from "../_services/fetchDataAPI";
 import BackBtn from "./BackBtn";

@@ -1,5 +1,6 @@
 import FeedList from "@/app/_components/FeedList";
 import UserDetail from "@/app/_components/UserDetail";
+import UserProfile from "@/app/_components/UserProfile";
 import { ParamsProps } from "@/app/_config/type";
 import { getFeedByUsername } from "@/app/_services/fetchDataAPI";
 
@@ -7,16 +8,10 @@ export async function generateMetadata({ params }: ParamsProps) {
   return { title: `${params.username}` };
 }
 
-async function page({ params }: ParamsProps) {
+function page({ params }: ParamsProps) {
   const username = params.username;
-  const feeds = await getFeedByUsername(username);
 
-  return (
-    <div>
-      <UserDetail username={username} />
-      <FeedList feeds={feeds} />
-    </div>
-  );
+  return <UserProfile username={username} />;
 }
 
 export default page;
