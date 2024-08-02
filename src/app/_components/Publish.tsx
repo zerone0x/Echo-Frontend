@@ -134,7 +134,7 @@ function Publish({ isPage = true }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               onKeyDown={handleKeyDown}
-              rows={7}
+              rows={5}
               style={{ resize: "none" }}
               required
             />
