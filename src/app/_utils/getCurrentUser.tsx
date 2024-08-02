@@ -1,12 +1,10 @@
-"use server";
-import { headers } from "next/headers";
+"use client";
 import { getUserByName } from "../_services/fetchDataAPI";
 
-async function getCurrentUser() {
+async function getCurrentUser(userName: string) {
   try {
-    const headersList = headers();
-    const userName = headersList.get("x-user-name") as string;
     const user = await getUserByName(userName);
+    console.log(user);
     return user;
   } catch (error) {
     console.error("Failed to fetch user data:", error);
