@@ -35,9 +35,9 @@ export async function middleware(request: NextRequest) {
 
     return response;
   }
-  if (request.nextUrl.pathname !== "/" && !verifiedToken) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+  // if (request.nextUrl.pathname !== "/" && !verifiedToken) {
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
   return NextResponse.next();
 }
 

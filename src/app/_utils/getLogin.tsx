@@ -26,7 +26,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     async function fetchUser() {
       try {
-        const userData = await getCurrentUser();
+        const userLocal = localStorage.getItem("user");
+        console.log("userLocal", userLocal);
+        // @ts-ignore
+        const userParsed = JSON.parse(userLocal);
+        console.log(userParsed);
+
+        console.log(userParsed.name);
+
+        const userData = await getCurrentUser(userParsed.name);
         setAuthData(userData);
       } catch (error) {
         console.error("Failed to fetch user data:", error);

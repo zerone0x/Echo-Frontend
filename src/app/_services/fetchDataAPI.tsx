@@ -5,7 +5,7 @@ export const authUserLogin = async (email: string, password: string) => {
     email: email,
     password: password,
   });
-  return data.results.user;
+  return data.results;
 };
 
 export const authUserSignUp = async (
@@ -18,7 +18,7 @@ export const authUserSignUp = async (
     password: password,
     name: name,
   });
-  return data.results.user;
+  return data.results;
 };
 
 export const logOut = async () => {

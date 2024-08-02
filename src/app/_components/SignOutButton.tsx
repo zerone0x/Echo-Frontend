@@ -13,6 +13,7 @@ function SignOutButton() {
     setIsLoading(true);
     try {
       await logOut();
+      localStorage.removeItem("user");
       router.push("/");
     } catch (error) {
       console.error("Logout failed:", error);
