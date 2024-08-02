@@ -1,9 +1,0 @@
-{
-    "rewrites": [
-      {
-        "source": "/api/v1/:match",
-        "destination": "https://echobe.fly.dev/api/v1/:match"
-      }
-    ]
-  }
-  
