@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
         console.log(userParsed.name);
 
-        const userData = await getCurrentUser(userParsed.name);
+        const userData = await getCurrentUser();
         setAuthData(userData);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
