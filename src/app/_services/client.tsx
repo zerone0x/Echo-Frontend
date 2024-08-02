@@ -16,8 +16,16 @@ export const client = axios.create({
 });
 // client.interceptors.request.use(
 //   (config) => {
+//     if (typeof window !== 'undefined') {
+//       const token = localStorage.getItem('token');
 //     if (token) {
 //       config.headers["Authorization"] = `Bearer ${token}`;
+//     }
+//     }else{
+//       // console.log('client');
+//       // const token = config.headers["Authorization"];
+//       // console.log(token);
+      
 //     }
 //     return config;
 //   },
@@ -37,8 +45,13 @@ export const mediaClient = axios.create({
 
 // mediaClient.interceptors.request.use(
 //   (config) => {
+//     if (typeof window !== 'undefined') {
+//       const token = localStorage.getItem('token');
 //     if (token) {
 //       config.headers["Authorization"] = `Bearer ${token}`;
+//     }
+//     }else{
+//       console.log('client');
 //     }
 //     return config;
 //   },

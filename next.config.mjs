@@ -17,6 +17,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://echobe.fly.dev/api/:path*', 
+      },
+    ];
+  },
 };
 
 export default nextConfig;
