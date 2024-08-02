@@ -19,7 +19,6 @@ export default function EchoLayout({
 
   useEffect(() => {
     const token = localStorage.getItem("user");
-    console.log(token);
 
     if (token == null && pathname !== "/") {
       router.push("/");

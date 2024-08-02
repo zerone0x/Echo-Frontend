@@ -14,17 +14,19 @@ export const client = axios.create({
     "Content-Type": "application/json",
   },
 });
-// client.interceptors.request.use(
-//   (config) => {
-//     if (token) {
-//       config.headers["Authorization"] = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   },
-// );
+client.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 // image use non-text content-type, so created a new one
 export const mediaClient = axios.create({
@@ -35,14 +37,15 @@ export const mediaClient = axios.create({
   },
 });
 
-// mediaClient.interceptors.request.use(
-//   (config) => {
-//     if (token) {
-//       config.headers["Authorization"] = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   },
-// );
+mediaClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
