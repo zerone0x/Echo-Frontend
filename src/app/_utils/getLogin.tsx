@@ -30,7 +30,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         const response = await fetch("/api/getUserJwt");
         const userName = await response.json();
         const user = await getUserByName(userName);
-        // const userLocal = localStorage.getItem("user");
+        const userObj = JSON.stringify(userName);
+        localStorage.setItem("user", userObj);
         setAuthData(user);
       } catch (error) {
         console.error("Failed to fetch user data:", error);

@@ -8,12 +8,25 @@ import { SearchProvider } from "../_utils/SearchContext";
 import { PublishProvider } from "../_utils/getPublishType";
 import Link from "next/link";
 import { FaPen } from "react-icons/fa6";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function EchoLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+
+    if (token == null && pathname !== "/") {
+      router.push("/");
+    }
+  }, [router]);
+
   return (
     <ReactQueryProvider>
       <AuthProvider>
