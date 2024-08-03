@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import getCurrentUser from "./getCurrentUser";
 import { UserProps } from "../_config/type";
+import { getUserByName } from "../_services/fetchDataAPI";
 
 interface AuthContextType {
   authData: UserProps | null;
@@ -26,11 +27,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     async function fetchUser() {
       try {
-        const userLocal = localStorage.getItem("user");
-        // @ts-ignore
-        const userParsed = JSON.parse(userLocal);
-        const userData = await getCurrentUser(userParsed.name);
-        setAuthData(userData);
+        const response = await fetch("/api/getUserJwt");
+        const userName = await response.json();
+        const user = await getUserByName(userName);
+        // const userLocal = localStorage.getItem("user");
+        setAuthData(user);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
         setAuthData(null);
