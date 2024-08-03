@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useAuth } from "../_utils/getLogin";
 import { updateUser } from "../_services/fetchDataAPI";
 import { FilePond, registerPlugin } from "react-filepond";
+import { useRouter } from "next/navigation";
 import "filepond/dist/filepond.min.css";
 // import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 // import FilePondPluginImagePreview from "filepond-plugin-image-preview";
@@ -28,6 +29,7 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
   const [bio, setBio] = useState(default_bio);
   const [file, setFile] = useState<File | null>(null);
   const [bannerFile, setBannerFile] = useState<File | null>(null);
+  const router = useRouter();
 
   async function handleSubmit(event: any) {
     event.preventDefault();
@@ -44,6 +46,7 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
     setOpenDialog(false);
     setFile(null);
     setBannerFile(null);
+    router.refresh();
   }
   return (
     <>

@@ -20,8 +20,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://echobe.fly.dev/api/:path*', 
+        source: "/api/:path*",
+        destination:
+          process.env.NEXT_PUBLIC_ENV === "PRD"
+            ? "https://echobe.fly.dev/api/:path*"
+            : "http://localhost:8000/api/:path*",
       },
     ];
   },

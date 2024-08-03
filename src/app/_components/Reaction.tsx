@@ -8,6 +8,7 @@ import {
   BookMarkFeed,
   DeleteFeedById,
   LikeFeed,
+  deleteCommentById,
   getIsBooked,
   getIsLiked,
 } from "../_services/fetchDataAPI";
@@ -19,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { usePublishType } from "../_utils/getPublishType";
 import { CommentProps, FeedProps, UserProps } from "../_config/type";
 import { FaReply, FaRetweet } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
 
 function Reaction({
   feed,
@@ -46,6 +48,7 @@ function Reaction({
   const dialogRef = useRef(null);
   const router = useRouter();
   const { publishType, setPublishType } = usePublishType();
+  const pathname = usePathname();
 
   // NOTE: We need to close dialog when click outside the dropdown
 
@@ -122,7 +125,16 @@ function Reaction({
   }
 
   async function delFeed() {
-    await DeleteFeedById(dialog.feedId);
+    if (type === "Feed") {
+      await DeleteFeedById(dialog.feedId);
+      if (pathname !== "/home") {
+        router.push(`/home`);
+      }
+    }
+    if (type === "Comment") {
+      await deleteCommentById(dialog.feedId);
+      router.refresh();
+    }
     queryClient.invalidateQueries("feeds");
     queryClient.invalidateQueries("bookmark");
     queryClient.invalidateQueries("likes");

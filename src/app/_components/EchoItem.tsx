@@ -11,7 +11,13 @@ import ImageCarousel from "./ImageCarousel";
 import { IoMdClose } from "react-icons/io";
 import { CommentProps, FeedProps } from "../_config/type";
 
-function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
+function EchoItem({
+  feed,
+  isExpandText = true,
+}: {
+  feed: FeedProps | CommentProps;
+  isExpandText?: boolean;
+}) {
   const { type, user, content, createdAt, feedImages } = feed;
   const { likesCount, commentsCount } = feed;
   const name = user?.name;
@@ -40,8 +46,12 @@ function EchoItem({ feed }: { feed: FeedProps | CommentProps }) {
                 : `/${name}/status/${feed?.feed}`
             }
           >
-            <div className="pointer-events-none block px-4 py-2">
-              <TextExpander>{content}</TextExpander>
+            <div className="block px-4 py-2">
+              {isExpandText ? (
+                <TextExpander>{content}</TextExpander>
+              ) : (
+                <span>{content}</span>
+              )}
             </div>
           </Link>
           {feedImages?.length > 0 && (

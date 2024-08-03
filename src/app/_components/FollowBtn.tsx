@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { useAuth } from "../_utils/getLogin";
 import UpdateUserDetail from "./UpdateUserDetail";
+import { usePathname } from "next/navigation";
 
 function FollowBtn({ username }: { username: string }) {
+  const pathname = usePathname();
   const [follow, setFollow] = useState(false);
   const queryClient = useQueryClient();
   const { currentUserName } = useAuth();
@@ -32,7 +34,12 @@ function FollowBtn({ username }: { username: string }) {
   function handleUpdateDetail() {
     setOpenDialog(true);
   }
+  const isCurrentUserAndPathMismatch =
+    currentUserName === username && pathname !== `/${username}`;
 
+  if (isCurrentUserAndPathMismatch) {
+    return null;
+  }
   return currentUserName === username ? (
     <div className="flex justify-end">
       <button className="btn" onClick={handleUpdateDetail}>

@@ -4,6 +4,7 @@ import EchoItem from "./EchoItem";
 import FeedList from "./FeedList";
 
 async function FeedDetail({ feedId }: { feedId: string }) {
+  // TODO change to react query
   const feed = await GetFeedById(feedId);
   const comments = feed?.comments;
   return (

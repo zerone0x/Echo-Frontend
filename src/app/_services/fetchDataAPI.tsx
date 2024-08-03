@@ -45,13 +45,11 @@ export const getUserByName = async (username: string) => {
   return data.results;
 };
 
-// TODO
 export const updateUser = async (formData: FormData) => {
   const { data } = await mediaClient.post(`users/updateUser`, formData);
   return data.results;
 };
 
-// TODO
 export const CreateFeed = async (formData: FormData) => {
   const { data } = await mediaClient.post("feeds", formData);
   return data.results;
@@ -63,7 +61,6 @@ export const GetAllFeeds = async (cursor: string | null) => {
   return data.results;
 };
 
-// TODO
 export const DeleteFeedById = async (feedId: string) => {
   const { data } = await client.delete(`feeds/${feedId}`);
   return data.results;
@@ -85,7 +82,7 @@ export const searchFeeds = async (keyword: string) => {
   });
   return data.results;
 };
-// TODO
+
 export const BookMarkFeed = async (feedId: string, itemType: string) => {
   const { data } = await client.post(`bookmark/booked`, {
     feedId: feedId,
@@ -93,19 +90,19 @@ export const BookMarkFeed = async (feedId: string, itemType: string) => {
   });
   return data.results;
 };
-// TODO
+
 export const getAllBookMark = async () => {
   const { data } = await client.get(`bookmark/getAllBookMark`);
   return data.results;
 };
-// TODO
+
 export const getIsBooked = async (feedId: string, itemType: string) => {
   const { data } = await client.get(
     `bookmark/getIsBooked/${feedId}/${itemType}`,
   );
   return data.results;
 };
-// TODO
+
 export const LikeFeed = async (feedId: string, itemType: string) => {
   const { data } = await client.post(`like/likedfeed`, {
     feedId: feedId,
@@ -113,17 +110,17 @@ export const LikeFeed = async (feedId: string, itemType: string) => {
   });
   return data.results;
 };
-// TODO
+
 export const getAllLikes = async () => {
   const { data } = await client.get(`like/getAllLikes`);
   return data.results;
 };
-// TODO
+
 export const getIsLiked = async (feedId: string, itemType: string) => {
   const { data } = await client.get(`like/getIsLiked/${feedId}/${itemType}`);
   return data.results;
 };
-// TODO
+
 export const AddFollow = async (idolName: string) => {
   const { data } = await client.post(`follow/AddFollow`, {
     idolName: idolName,
@@ -150,7 +147,12 @@ export const getCommentsByFeedID = async (feedId: string) => {
   const { data } = await client.get(`comments/getCommentsByFeedID/${feedId}`);
   return data.results;
 };
-// TODO
+
+export const deleteCommentById = async (feedId: string) => {
+  const { data } = await client.delete(`comments/${feedId}`);
+  return data.results;
+};
+
 export const getAllNotifications = async () => {
   try {
     const { data } = await client.get("notification/GetAllNotifications");

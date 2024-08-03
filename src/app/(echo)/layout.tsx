@@ -6,6 +6,8 @@ import { AuthProvider } from "../_utils/getLogin";
 import Header from "../_components/Header";
 import { SearchProvider } from "../_utils/SearchContext";
 import { PublishProvider } from "../_utils/getPublishType";
+import Link from "next/link";
+import { FaPen } from "react-icons/fa6";
 
 export default function EchoLayout({
   children,
@@ -31,6 +33,12 @@ export default function EchoLayout({
                 <Sidebar />
               </div>
             </div>
+            <Link
+              href={`/publish`}
+              className="fixed bottom-1/10 right-1/10 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 lg:hidden"
+            >
+              <FaPen />
+            </Link>
           </PublishProvider>
         </SearchProvider>
       </AuthProvider>
