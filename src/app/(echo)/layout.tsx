@@ -16,16 +16,16 @@ export default function EchoLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
+  // const router = useRouter();
+  // const pathname = usePathname();
 
-  useEffect(() => {
-    const token = localStorage.getItem("user");
+  // useEffect(() => {
+  //   const token = localStorage.getItem("user");
 
-    if (token == null && pathname !== "/") {
-      router.push("/");
-    }
-  }, [router]);
+  //   if (token == null && pathname !== "/") {
+  //     router.push("/");
+  //   }
+  // }, [router]);
 
   return (
     <ReactQueryProvider>
