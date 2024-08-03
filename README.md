@@ -1,15 +1,4 @@
-<!-- vscode-markdown-toc -->
-* 1. [Echo Social App](#EchoSocialApp)
-* 2. [About Echo Social](#AboutEchoSocial)
-* 3. [Features](#Features)
-* 4. [Getting Started](#GettingStarted)
-* 5. [License](#License)
 
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
 # Echo Social Frontend
 
 ![Next.Js](https://img.shields.io/badge/next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
@@ -19,16 +8,29 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/zerone0x/Echo-Frontend) ![GitHub last commit](https://img.shields.io/github/last-commit/zerone0x/Echo-Frontend)
 ![GitHub](https://img.shields.io/github/license/zerone0x/Echo-Frontend)
 
+<!-- vscode-markdown-toc -->
+- [Echo Social Frontend](#echo-social-frontend)
+  - [Echo Social App](#echo-social-app)
+  - [About Echo Social](#about-echo-social)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [License](#license)
 
-##  1. <a name='EchoSocialApp'></a>Echo Social App
+<!-- vscode-markdown-toc-config
+	numbering=false
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+## <a name='EchoSocialApp'></a>Echo Social App
 
 Welcome to Echo Social Frontend, a Mastodon-like platform that amplifies your voice in the digital realm!
 
-##  2. <a name='AboutEchoSocial'></a>About Echo Social
+## <a name='AboutEchoSocial'></a>About Echo Social
 
 Echo Social is designed to be a social networking platform where users can freely express themselves, connect with others, and create vibrant communities. Inspired by Mastodon, it aims to provide a user-centric experience.
 
-##  3. <a name='Features'></a>Features
+## <a name='Features'></a>Features
 
 - 📝 Post Feeds: Share your thoughts with text and images.
 - 💬 Comments: Engage in discussions through post comments.
@@ -42,7 +44,7 @@ Echo Social is designed to be a social networking platform where users can freel
 - 📊 Feeds: View personalized content based on your interests and follows.
 - 🖼️ Image Sharing: Enhance your posts with images.
 
-##  4. <a name='GettingStarted'></a>Getting Started
+## <a name='GettingStarted'></a>Getting Started
 
 To get a local copy up and running follow these simple steps:
 
@@ -59,6 +61,6 @@ To get a local copy up and running follow these simple steps:
    bun run dev
    ```
 
-##  5. <a name='License'></a>License
+## <a name='License'></a>License
 
 Distributed under the MIT License. See `LICENSE` for more information.
