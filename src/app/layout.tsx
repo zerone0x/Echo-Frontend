@@ -27,6 +27,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lato.className} min-h-screen w-full text-stone-900`}>
         {children}
+        <Analytics/>
+        <SpeedInsights/>
       </body>
     </html>
   );
