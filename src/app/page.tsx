@@ -2,7 +2,7 @@ import Welcome from "./_components/Welcome";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Welcome Echo!",
+  title: "Welcome to Echo!",
 };
 
 function App() {
