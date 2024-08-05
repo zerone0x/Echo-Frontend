@@ -198,7 +198,7 @@ function Reaction({
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <div className="relative" key={item.name}>
-          <div className="flex min-h-4 min-w-9 items-center space-x-1 text-gray-500">
+          <div className="flex min-h-7 min-w-9 items-center space-x-1">
             <button
               className={`${item.color} hover:bg-slate-200 focus:outline-none`}
               onClick={(e) => item.action && item.action(e)}
@@ -207,7 +207,9 @@ function Reaction({
             >
               {item.icon}
             </button>
-            <span>{item?.number && item?.number > 0 ? item.number : " "}</span>
+            <span className="min-w-[20px] text-center">
+              {item?.number && item?.number > 0 ? item.number : " "}
+            </span>
           </div>
 
           {dotsDialog && item.name === "Others" && (
