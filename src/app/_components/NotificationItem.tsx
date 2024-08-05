@@ -3,6 +3,7 @@ import { NotificationProps } from "../_config/type";
 import { FormatTime } from "../_utils/FormatData";
 import UserCard from "./UserCard";
 import TextExpander from "./TextExpander";
+import Image from "next/image";
 // const ActionEnum = Object.freeze({
 //   LIKE: "like",
 //   COMMENT: "comment",
@@ -59,6 +60,24 @@ function NotificationItem({
               <TextExpander>{content.content}</TextExpander>
             </div>
           </Link>
+          {Array.isArray(content.feedImages) &&
+            content.feedImages.length > 0 && (
+              <div className="grid grid-cols-2 gap-2 p-4">
+                {content.feedImages.map((imageUrl, index) => (
+                  <div key={index}>
+                    <Image
+                      src={imageUrl}
+                      alt={`Echo ${index}`}
+                      layout="responsive"
+                      objectFit="cover"
+                      width={500}
+                      height={500}
+                      className="h-full w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
         </>
       </div>
     );
@@ -88,6 +107,24 @@ function NotificationItem({
               <TextExpander>{content.content}</TextExpander>
             </div>
           </Link>
+          {Array.isArray(content.feedImages) &&
+            content.feedImages.length > 0 && (
+              <div className="grid grid-cols-2 gap-2 p-4">
+                {content.feedImages.map((imageUrl, index) => (
+                  <div key={index}>
+                    <Image
+                      src={imageUrl}
+                      alt={`Echo ${index}`}
+                      layout="responsive"
+                      objectFit="cover"
+                      width={500}
+                      height={500}
+                      className="h-full w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
         </>
       </div>
     );
