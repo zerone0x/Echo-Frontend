@@ -72,7 +72,7 @@ function Publish({ isPage = true }) {
     setShowPick(false);
     // toast.success("Post published.")
     if (postType === "Comment") {
-      router.push(`/${name}/status/${feedId}`);
+      router.push(`/user/${name}/status/${feedId}`);
     } else {
       router.push(`/home`);
     }

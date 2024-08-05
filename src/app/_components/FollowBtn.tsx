@@ -35,7 +35,7 @@ function FollowBtn({ username }: { username: string }) {
     setOpenDialog(true);
   }
   const isCurrentUserAndPathMismatch =
-    currentUserName === username && pathname !== `/${username}`;
+    currentUserName === username && pathname !== `/user/${username}`;
 
   if (isCurrentUserAndPathMismatch) {
     return null;

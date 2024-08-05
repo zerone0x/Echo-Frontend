@@ -17,7 +17,7 @@ function UserCard({ user, isBtnDisplay = true }: UserCardProps) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex space-x-3 hover:cursor-pointer">
-        <Link href={`/${name}`}>
+        <Link href={`/user/${name}`}>
           <div className="z-3 relative h-16 w-16 cursor-pointer overflow-hidden rounded-full transition-all duration-300 hover:brightness-75">
             <Image
               src={ProfileImage}

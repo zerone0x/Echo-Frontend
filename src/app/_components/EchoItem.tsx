@@ -42,8 +42,8 @@ function EchoItem({
           <Link
             href={
               type === "Feed"
-                ? `/${name}/status/${feedId}`
-                : `/${name}/status/${feed?.feed}`
+                ? `/user/${name}/status/${feedId}`
+                : `/user/${name}/status/${feed?.feed}`
             }
           >
             <div className="block px-4 py-2">

@@ -39,19 +39,19 @@ function FollowDetail({
   return (
     <div className="border-b-2 p-4">
       <Link
-        href={`/${username}`}
+        href={`/user/${username}`}
         className="hover:text-[#675AF2] hover:underline"
       >
         <span>{feedLen} posts </span>
       </Link>
       <Link
-        href={`/${username}/following`}
+        href={`/user/${username}/following`}
         className="hover:text-[#675AF2] hover:underline"
       >
         <span>{followingData?.length} Following </span>
       </Link>
       <Link
-        href={`/${username}/followers`}
+        href={`/user/${username}/followers`}
         className="hover:text-[#675AF2] hover:underline"
       >
         <span>{followersData?.length} Followers</span>
