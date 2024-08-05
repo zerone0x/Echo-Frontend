@@ -213,7 +213,7 @@ function Reaction({
           </div>
 
           {dotsDialog && item.name === "Others" && (
-            <dialog
+            <div
               ref={dialogRef}
               className="absolute right-0 z-50 mt-1 flex flex-col gap-1 border border-gray-300 bg-white p-2"
             >
@@ -242,7 +242,7 @@ function Reaction({
                   Delete
                 </button>
               )}
-            </dialog>
+            </div>
           )}
         </div>
       ))}

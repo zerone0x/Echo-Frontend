@@ -4,7 +4,7 @@ import { useSearch } from "../_utils/SearchContext";
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
-function SearchBar() {
+function SearchBar({ isDisabled = false }: { isDisabled?: boolean }) {
   const router = useRouter();
   const { searchQuery, setSearchQuery } = useSearch();
   const [inputValue, setInputValue] = useState(searchQuery);
@@ -49,6 +49,7 @@ function SearchBar() {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             handleInputChange(event.target.value)
           }
+          disabled={isDisabled}
         />
         <button type="submit">
           <FaSearch className="h-6 w-6 text-gray-600" />
