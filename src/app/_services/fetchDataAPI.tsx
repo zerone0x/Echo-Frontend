@@ -121,6 +121,13 @@ export const getIsLiked = async (feedId: string, itemType: string) => {
   return data.results;
 };
 
+export const GetCountOfLikes = async (feedId: string, itemType: string) => {
+  const { data } = await client.get(
+    `like/GetCountOfLikes/${feedId}/${itemType}`,
+  );
+  return data.results;
+};
+
 export const AddFollow = async (idolName: string) => {
   const { data } = await client.post(`follow/AddFollow`, {
     idolName: idolName,

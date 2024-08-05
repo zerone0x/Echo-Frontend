@@ -7,6 +7,7 @@ import { IoIosClose } from "react-icons/io";
 import {
   BookMarkFeed,
   DeleteFeedById,
+  GetCountOfLikes,
   LikeFeed,
   deleteCommentById,
   getIsBooked,
@@ -25,13 +26,11 @@ import { usePathname } from "next/navigation";
 function Reaction({
   feed,
   type,
-  likesCount,
   commentsCount,
   user,
 }: {
   feed: FeedProps | CommentProps;
   type: string;
-  likesCount: number;
   commentsCount: number;
   user: UserProps;
 }) {
@@ -40,7 +39,7 @@ function Reaction({
   const isDeletable = currentUserId === user?._id;
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
-  const [likedCount, setLikedCount] = useState(likesCount);
+  const [likedCount, setLikedCount] = useState(0);
   const [commentCount, setCommentCount] = useState(commentsCount);
   const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const [dialog, setDialog] = useState({ isOpen: false, feedId: feedId });
@@ -78,6 +77,8 @@ function Reaction({
     async function fetchStatuses() {
       const liked = await getIsLiked(feedId, type);
       const bookmarked = await getIsBooked(feedId, type);
+      const likeCount = await GetCountOfLikes(feedId, type);
+      setLikedCount(likeCount);
       setLikeStatus(liked);
       setBookmarkStatus(bookmarked);
     }

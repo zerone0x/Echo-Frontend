@@ -8,7 +8,6 @@ export async function loginUser(formData: FormData) {
   const password = formData.get("password") as string;
   const user = await authUserLogin(email, password);
   if (user) {
-    const userObj = JSON.stringify(user.user);
     // toast.success("Message posted successfully!");
     redirect("/home");
   }
@@ -20,7 +19,6 @@ export async function registerUser(formData: FormData) {
   const name = formData.get("name") as string;
   const user = await authUserSignUp(email, password, name);
   if (user) {
-    const userObj = JSON.stringify(user.user);
     redirect("/home");
   }
 }
@@ -31,7 +29,6 @@ export async function loginTestUser() {
   // @ts-ignore
   const user = await authUserLogin(email, password);
   if (user) {
-    const userObj = JSON.stringify(user.user);
     redirect("/home");
   }
 }

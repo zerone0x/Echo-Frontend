@@ -81,7 +81,6 @@ function EchoItem({
         <Reaction
           feed={feed}
           type={type}
-          likesCount={likesCount}
           commentsCount={commentsCount}
           user={user}
         />
