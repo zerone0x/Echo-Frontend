@@ -26,16 +26,24 @@ function Welcome() {
             sign up
           </button>
         </div>
-
         <div className="mt-10 flex flex-col items-center justify-center gap-10">
           <h1 className="text-3xl font-semibold">
             {activeTab === "login" ? "Come on in!" : "Sign up for Echo"}
           </h1>
           <SignInButton />
           {activeTab === "login" ? <LoginForm /> : <SignUpForm />}
-          <form action={loginTestUser}>
-            <SubmitButton pendingLabel="Loading...">Test User</SubmitButton>
-          </form>
+          {activeTab !== "login" && (
+            <span className="max-w-1/4 block text-center text-gray-500">
+              Echo is Good Enough. We promise not to spam you or sell your
+              contact info. By signing up for Echo, you agree to our Terms of
+              Service and Privacy Policy.
+            </span>
+          )}
+          {activeTab === "login" && (
+            <form action={loginTestUser}>
+              <SubmitButton pendingLabel="Loading...">Test User</SubmitButton>
+            </form>
+          )}
         </div>
       </div>
     </div>
