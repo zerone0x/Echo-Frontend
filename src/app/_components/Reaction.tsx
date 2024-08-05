@@ -198,7 +198,7 @@ function Reaction({
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <div className="relative" key={item.name}>
-          <div className="flex min-h-4 min-w-9 items-center space-x-1">
+          <div className="flex min-h-4 min-w-9 items-center space-x-1 text-gray-500">
             <button
               className={`${item.color} hover:bg-slate-200 focus:outline-none`}
               onClick={(e) => item.action && item.action(e)}
