@@ -41,9 +41,8 @@ const AvatarUploader = ({
         </label>
         <div className="flex flex-row gap-2">
           {isBig ? (
-            <button
-              onClick={handleAvatarClick}
-              className="relative h-36 w-60 cursor-pointer overflow-hidden"
+            <div
+              className="relative h-36 w-60  overflow-hidden"
             >
               <Image
                 src={avatar}
@@ -52,11 +51,10 @@ const AvatarUploader = ({
                 objectFit="cover"
                 className="rounded-md"
               />
-            </button>
+            </div>
           ) : (
-            <button
-              onClick={handleAvatarClick}
-              className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-full"
+            <div
+              className="relative h-16 w-16 overflow-hidden rounded-full"
             >
               <Image
                 src={avatar}
@@ -65,7 +63,7 @@ const AvatarUploader = ({
                 objectFit="cover"
                 className="rounded-full"
               />
-            </button>
+            </div>
           )}
         </div>
       </div>
