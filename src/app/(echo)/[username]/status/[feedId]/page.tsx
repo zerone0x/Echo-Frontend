@@ -29,7 +29,12 @@ export async function generateMetadata({ params }: ParamsProps) {
 
 async function page({ params }: ParamsProps) {
   const feedId = params.feedId;
-  return <FeedDetail feedId={feedId} />;
+  return (
+    <>
+      <BackBtn />
+      <FeedDetail feedId={feedId} />
+    </>
+  );
 }
 
 export default page;

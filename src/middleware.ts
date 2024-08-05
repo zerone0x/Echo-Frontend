@@ -38,6 +38,15 @@ export async function middleware(request: NextRequest) {
   // if (request.nextUrl.pathname !== "/" && !verifiedToken) {
   //   return NextResponse.redirect(new URL("/", request.url));
   // }
+  // const {pathname} = request.nextUrl
+  // if (pathname.startsWith('/search')) {
+  //   return NextResponse.next();
+  // }
+
+  // if (pathname.startsWith('/@')) {
+  //   const username = pathname.slice(2);
+  //   return NextResponse.rewrite(new URL(`/${username}`, request.url));
+  // }
   return NextResponse.next();
 }
 

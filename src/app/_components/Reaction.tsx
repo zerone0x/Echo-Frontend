@@ -212,7 +212,7 @@ function Reaction({
           {dotsDialog && item.name === "Others" && (
             <dialog
               ref={dialogRef}
-              className="absolute z-50 mt-1 flex flex-col gap-1 border border-gray-300 bg-white p-2 text-left"
+              className="absolute right-0 z-50 mt-1 flex flex-col gap-1 border border-gray-300 bg-white p-2"
             >
               {reactItems
                 .filter((item) => item.settings !== false)
