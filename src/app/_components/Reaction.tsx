@@ -35,8 +35,8 @@ function Reaction({
   user: UserProps;
 }) {
   const feedId = feed?._id;
-  const { currentUserId } = useAuth();
-  const isDeletable = user.role === "admin" || currentUserId === user?._id;
+  const { currentUserId, currentUserName } = useAuth();
+  const isDeletable = currentUserName === "admin" || currentUserId === user?._id;
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
   const [likedCount, setLikedCount] = useState(0);
