@@ -39,21 +39,21 @@ function EchoItem({
               {FormatTime(createdAt)}
             </span>
           </div>
-          <Link
-            href={
-              type === "Feed"
-                ? `/user/${name}/status/${feedId}`
-                : `/user/${name}/status/${feed?.feed}`
-            }
-          >
+          {type === "Feed" ? (
+            <Link href={`/user/${name}/status/${feedId}`}>
+              <div className="block px-4 py-2">
+                {isExpandText ? (
+                  <TextExpander>{content}</TextExpander>
+                ) : (
+                  <span>{content}</span>
+                )}
+              </div>
+            </Link>
+          ) : (
             <div className="block px-4 py-2">
-              {isExpandText ? (
-                <TextExpander>{content}</TextExpander>
-              ) : (
                 <span>{content}</span>
-              )}
             </div>
-          </Link>
+          )}
           {feedImages?.length > 0 && (
             <div className="w-full">
               <div className={`grid w-full grid-cols-2 gap-2 p-4`}>

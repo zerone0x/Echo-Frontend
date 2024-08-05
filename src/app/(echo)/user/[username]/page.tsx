@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: ParamsProps) {
 
 function page({ params }: ParamsProps) {
   const username = params.username;
-  
+
   return <UserProfile username={username} />;
 }
 
