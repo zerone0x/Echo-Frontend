@@ -29,7 +29,7 @@ function ImageCarousel({
       >
         {images.map((image, index) => (
           <SwiperSlide key={index} className="flex items-center justify-center">
-            <div className="m-auto h-full w-full sm:max-h-[70vh] sm:max-w-[70vw] md:max-h-[70vh] md:max-w-[70vw] lg:max-w-[40vw]">
+            <div className="m-auto h-full w-full sm:max-h-[70vh] sm:max-w-[70vw] md:max-h-[70vh] md:max-w-[70vw] lg:max-w-[20vw]">
               <Image
                 src={image}
                 alt={`Image ${index}`}
