@@ -28,9 +28,11 @@ function UserCard({ user, isBtnDisplay = true }: UserCardProps) {
           </div>
         </Link>
         <div className="flex flex-col">
-          <span className="block text-lg font-medium text-black hover:underline">
-            {username}
-          </span>
+          <Link href={`/user/${name}`}>
+            <span className="block text-lg font-medium text-black hover:underline">
+              {username}
+            </span>
+          </Link>
           <span className="block font-medium text-gray-700">@{name}</span>
         </div>
       </div>

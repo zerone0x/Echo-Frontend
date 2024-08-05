@@ -23,7 +23,7 @@ function NotificationItem({
       <div className="flex flex-col gap-2 border-b-2 p-4">
         <div className="flex justify-between">
           <p>
-            <Link href={`/${sender.name}`} className="hover:underline">
+            <Link href={`/user/${sender.name}`} className="hover:underline">
               {sender.name}{" "}
             </Link>
             followed you
@@ -38,7 +38,7 @@ function NotificationItem({
       <div className="flex flex-col gap-2 border-b-2 p-4">
         <div className="flex justify-between">
           <p>
-            <Link href={`/${sender.name}`} className="hover:underline">
+            <Link href={`/user/${sender.name}`} className="hover:underline">
               {sender.name}{" "}
             </Link>
             liked your post
@@ -50,9 +50,9 @@ function NotificationItem({
           <Link
             href={
               type === "Feed"
-                ? `/${receiver.name}/status/${content._id}`
+                ? `/user/${receiver.name}/status/${content._id}`
                 : // @ts-ignore
-                  `/${receiver.name}/status/${content?.feed}`
+                  `/user/${receiver.name}/status/${content?.feed}`
             }
           >
             <div className="pointer-events-none block px-4 py-2">
@@ -67,7 +67,7 @@ function NotificationItem({
       <div className="flex flex-col gap-2 border-b-2 p-4">
         <div className="flex justify-between">
           <p>
-            <Link href={`/${sender.name}`} className="hover:underline">
+            <Link href={`/user/${sender.name}`} className="hover:underline">
               {sender.name}{" "}
             </Link>
             commented your post
@@ -79,9 +79,9 @@ function NotificationItem({
           <Link
             href={
               type === "Feed"
-                ? `/${sender.name}/status/${content._id}`
+                ? `/user/${sender.name}/status/${content._id}`
                 : // @ts-ignore
-                  `/${sender.name}/status/${content?.feed}`
+                  `/user/${sender.name}/status/${content?.feed}`
             }
           >
             <div className="pointer-events-none block px-4 py-2">

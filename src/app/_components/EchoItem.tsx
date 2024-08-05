@@ -19,7 +19,7 @@ function EchoItem({
   isExpandText?: boolean;
 }) {
   const { type, user, content, createdAt, feedImages } = feed;
-  const { likesCount, commentsCount } = feed;
+  const { commentsCount } = feed;
   const name = user?.name;
   const [showCarousel, setShowCarousel] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -51,7 +51,7 @@ function EchoItem({
             </Link>
           ) : (
             <div className="block px-4 py-2">
-                <span>{content}</span>
+              <span>{content}</span>
             </div>
           )}
           {feedImages?.length > 0 && (
@@ -102,7 +102,7 @@ function EchoItem({
                 open={showCarousel}
                 className="z-100 relative border-none bg-transparent"
               >
-                <div className="h-full max-h-[50vh] w-full max-w-[70vw]">
+                <div className="h-full max-h-[70vh] w-full max-w-[70vw]">
                   <ImageCarousel
                     images={feedImages}
                     initialIndex={currentImageIndex}
