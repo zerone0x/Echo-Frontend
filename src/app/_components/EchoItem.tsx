@@ -10,6 +10,7 @@ import { useState } from "react";
 import ImageCarousel from "./ImageCarousel";
 import { IoMdClose } from "react-icons/io";
 import { CommentProps, FeedProps } from "../_config/type";
+import { usePathname } from "next/navigation";
 
 function EchoItem({
   feed,
@@ -19,6 +20,7 @@ function EchoItem({
   isExpandText?: boolean;
 }) {
   const { type, user, content, createdAt, feedImages } = feed;
+  const pathName = usePathname()
   const { commentsCount } = feed;
   const name = user?.name;
   const [showCarousel, setShowCarousel] = useState(false);
@@ -39,7 +41,7 @@ function EchoItem({
               {FormatTime(createdAt)}
             </span>
           </div>
-          {type === "Feed" ? (
+          {type === "Feed" && !pathName.startsWith(`/user/${name}/status/`) ? (
             <Link href={`/user/${name}/status/${feedId}`}>
               <div className="block px-4 py-2">
                 {isExpandText ? (
