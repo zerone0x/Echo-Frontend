@@ -14,6 +14,7 @@ export interface UserProps {
   ProfileImage: string;
   Banner: string;
   Bio: string;
+  role: string;
 }
 
 export interface FeedProps {

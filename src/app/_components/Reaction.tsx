@@ -36,7 +36,7 @@ function Reaction({
 }) {
   const feedId = feed?._id;
   const { currentUserId } = useAuth();
-  const isDeletable = currentUserId === user?._id;
+  const isDeletable = user.role=== 'admin' || currentUserId === user?._id;
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
   const [likedCount, setLikedCount] = useState(0);
@@ -243,7 +243,7 @@ function Reaction({
           )}
         </div>
       ))}
-      {dialog.isOpen && dialog.feedId === feedId && (
+      {(dialog.isOpen && dialog.feedId === feedId) && (
         <>
           <div
             className="fixed inset-0 z-40 bg-black bg-opacity-50"
