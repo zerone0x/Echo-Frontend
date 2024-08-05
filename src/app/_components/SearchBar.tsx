@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSearch } from "../_utils/SearchContext";
 import { useState, useEffect } from "react";
 
@@ -7,6 +7,7 @@ function SearchBar() {
   const router = useRouter();
   const { searchQuery, setSearchQuery } = useSearch();
   const [inputValue, setInputValue] = useState(searchQuery);
+  const pathName = usePathname();
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -32,7 +33,6 @@ function SearchBar() {
       }, delay);
     };
   }
-
   // Create a debounced version of setSearchQuery
   const debounceSearch = debounce((value: string) => {
     setSearchQuery(value);
@@ -40,7 +40,9 @@ function SearchBar() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    router.push(`/search`);
+    if (pathName !== `/search`) {
+      router.push(`/search`);
+    }
   }
 
   useEffect(() => {

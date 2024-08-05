@@ -20,7 +20,7 @@ function EchoItem({
   isExpandText?: boolean;
 }) {
   const { type, user, content, createdAt, feedImages } = feed;
-  const pathName = usePathname()
+  const pathName = usePathname();
   const { commentsCount } = feed;
   const name = user?.name;
   const [showCarousel, setShowCarousel] = useState(false);

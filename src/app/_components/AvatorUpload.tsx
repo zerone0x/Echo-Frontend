@@ -41,9 +41,7 @@ const AvatarUploader = ({
         </label>
         <div className="flex flex-row gap-2">
           {isBig ? (
-            <div
-              className="relative h-36 w-60  overflow-hidden"
-            >
+            <div className="relative h-36 w-60 overflow-hidden">
               <Image
                 src={avatar}
                 alt="Banner"
@@ -53,9 +51,7 @@ const AvatarUploader = ({
               />
             </div>
           ) : (
-            <div
-              className="relative h-16 w-16 overflow-hidden rounded-full"
-            >
+            <div className="relative h-16 w-16 overflow-hidden rounded-full">
               <Image
                 src={avatar}
                 alt="Avatar"
