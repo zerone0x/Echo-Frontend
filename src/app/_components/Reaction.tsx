@@ -36,7 +36,8 @@ function Reaction({
 }) {
   const feedId = feed?._id;
   const { currentUserId, currentUserName } = useAuth();
-  const isDeletable = currentUserName === "admin" || currentUserId === user?._id;
+  const isDeletable =
+    currentUserName === "admin" || currentUserId === user?._id;
   const queryClient = useQueryClient();
   const [likeStatus, setLikeStatus] = useState(false);
   const [likedCount, setLikedCount] = useState(0);
@@ -194,7 +195,7 @@ function Reaction({
   ];
 
   return (
-    <div className="flex w-full items-center justify-evenly  py-2 text-xl sm:gap-2 md:gap-8 lg:gap-10 lg:space-x-2 sm:px-1 md:px-3 lg:px-4">
+    <div className="flex w-full items-center justify-evenly py-2 text-xl sm:gap-2 sm:px-1 md:gap-8 md:px-3 lg:gap-10 lg:space-x-2 lg:px-4">
       {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <div className="relative" key={item.name}>

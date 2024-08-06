@@ -31,6 +31,7 @@ function Publish({ isPage = true }) {
   const [showPick, setShowPick] = useState(false);
   const [shouldShowFilePond, setShouldShowFilePond] = useState(false);
   const [files, setFiles] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { authData } = useAuth();
   const queryClient = useQueryClient();
   const emojiPickerRef = useRef(null);
@@ -54,6 +55,7 @@ function Publish({ isPage = true }) {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData();
     uploadedFiles.forEach((file) => {
       formData.append("image", file);
@@ -70,6 +72,7 @@ function Publish({ isPage = true }) {
     handleFilesUpdate([]);
     setFiles([]);
     setShowPick(false);
+    setIsSubmitting(false);
     // toast.success("Post published.")
     if (postType === "Comment") {
       router.push(`/user/${name}/status/${feedId}`);
@@ -176,7 +179,9 @@ function Publish({ isPage = true }) {
               </div>
             )}
             <div className="text-right">
-              <SubmitButton pendingLabel="Posting...">Echo!</SubmitButton>
+              <button className="btn" disabled={isSubmitting}>
+                {isSubmitting ? "Loading..." : "Echo!"}
+              </button>
             </div>
           </form>
         </div>
