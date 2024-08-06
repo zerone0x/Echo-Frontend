@@ -3,15 +3,17 @@ import { useState } from "react";
 
 function TextExpander({ children }: { children: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
-
-  if (children.length <= 100) {
+  
+  if (children.length <= 300) {
     return <span>{children}</span>;
   }
+  
   const displayText = isExpanded
     ? children
-    : children.split(" ").slice(0, 100).join(" ") + "...";
+    : children.substring(0, 300) + "...";
+
   return (
-    children.length > 100 && (
+    children.length > 300 && (
       <span>
         {displayText}{" "}
         <button
