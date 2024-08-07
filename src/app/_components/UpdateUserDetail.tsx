@@ -46,7 +46,6 @@ function UpdateUserDetail({ isOpen, setOpenDialog }: UpdateUserDetailProps) {
     setOpenDialog(false);
     setFile(null);
     setBannerFile(null);
-    router.refresh();
   }
   return (
     <>
