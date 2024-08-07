@@ -1,14 +1,17 @@
 import { useQueryClient } from "react-query";
 import { DeleteFeedById } from "../_services/fetchDataAPI";
+import { useState } from "react";
 
 function ConfirmDialog({
   dialog,
   setDialog,
   dialogAction,
+  loading,
 }: {
   dialog: any;
   setDialog: any;
   dialogAction: any;
+  loading: boolean;
 }) {
   const queryClient = useQueryClient();
   async function delFeed(e: any) {
@@ -34,8 +37,8 @@ function ConfirmDialog({
           >
             Cancel
           </button>
-          <button type="submit" className="btn">
-            Delete
+          <button type="submit" className="btn" disabled={loading}>
+            {loading ? "Loading..." : "Delete"}
           </button>
         </div>
       </form>

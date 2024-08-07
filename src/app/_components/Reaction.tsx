@@ -49,6 +49,7 @@ function Reaction({
   const router = useRouter();
   const { publishType, setPublishType } = usePublishType();
   const pathname = usePathname();
+  const [loading, setLoading] = useState(false);
 
   // NOTE: We need to close dialog when click outside the dropdown
 
@@ -127,6 +128,7 @@ function Reaction({
   }
 
   async function delFeed() {
+    setLoading(true);
     if (type === "Feed") {
       await DeleteFeedById(dialog.feedId);
       if (pathname !== "/home") {
@@ -145,6 +147,7 @@ function Reaction({
         // @ts-ignore
         ["feeds", "bookmark", "likes"].includes(query.queryKey[0]),
     });
+    setLoading(false);
     setDialog({ isOpen: false, feedId: dialog.feedId });
   }
 
@@ -259,6 +262,7 @@ function Reaction({
                 dialog={dialog}
                 setDialog={setDialog}
                 dialogAction={delFeed}
+                loading={loading}
               />
             </div>
           </div>

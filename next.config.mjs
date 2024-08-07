@@ -19,7 +19,7 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: "authjs.dev",
-      }
+      },
     ],
   },
   async rewrites() {
