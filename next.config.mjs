@@ -8,16 +8,17 @@ const nextConfig = {
         pathname: "**",
       },
       {
+        protocol: "https",
+        hostname: "cdn2.thecatapi.com",
+        pathname: "**",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },
       {
         protocol: "http",
         hostname: "authjs.dev",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn2.thecatapi.com",
       }
     ],
   },
