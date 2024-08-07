@@ -196,7 +196,6 @@ function Reaction({
 
   return (
     <div className="flex w-full items-center justify-evenly py-2 text-xl sm:gap-2 sm:px-1 md:gap-8 md:px-3 lg:gap-10 lg:space-x-2 lg:px-4">
-      {/* <ToastContainer /> */}
       {reactItems.map((item) => (
         <div className="relative" key={item.name}>
           <div className="flex min-h-7 min-w-9 items-center space-x-1">

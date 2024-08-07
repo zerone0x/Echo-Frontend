@@ -73,7 +73,7 @@ function Publish({ isPage = true }) {
     setFiles([]);
     setShowPick(false);
     setIsSubmitting(false);
-    // toast.success("Post published.")
+    toast.success("Post published.");
     if (postType === "Comment") {
       router.push(`/user/${name}/status/${feedId}`);
     } else {

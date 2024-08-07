@@ -1,5 +1,4 @@
 import { registerUser } from "../_utils/actions";
-import SignInButton from "./SignInButton";
 import SubmitButton from "./SubmitButton";
 
 function SignUpForm() {
@@ -10,7 +9,15 @@ function SignUpForm() {
     >
       <label htmlFor="name" className="text-xl">
         Your full name
-        <input type="text" id="name" name="name" className="input" required />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          className="input"
+          required
+          pattern="^[a-zA-Z0-9_-]{1,12}$"
+          title="Only letters, numbers, _, - are allowed. Maximum length is 12 characters"
+        />
       </label>
       <label htmlFor="email" className="text-xl">
         Your email address
@@ -29,6 +36,8 @@ function SignUpForm() {
           id="password"
           name="password"
           className="input"
+          minLength={8}
+          title="Password must be at least 8 characters long"
           required
         />
       </label>

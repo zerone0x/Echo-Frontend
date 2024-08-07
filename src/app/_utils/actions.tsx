@@ -7,8 +7,8 @@ export async function loginUser(formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const user = await authUserLogin(email, password);
-  if (user) {
-    // toast.success("Message posted successfully!");
+  if (user && user != null) {
+    toast.success("Login successfully");
     redirect("/home");
   }
 }
@@ -18,7 +18,8 @@ export async function registerUser(formData: FormData) {
   const password = formData.get("password") as string;
   const name = formData.get("name") as string;
   const user = await authUserSignUp(email, password, name);
-  if (user) {
+  if (user && user != null) {
+    toast.success("SignUp successfully");
     redirect("/home");
   }
 }
@@ -28,7 +29,8 @@ export async function loginTestUser() {
   const password = process.env.NEXT_PUBLIC_PWD;
   // @ts-ignore
   const user = await authUserLogin(email, password);
-  if (user) {
+  if (user && user != null) {
+    toast.success("Login testUser successfully");
     redirect("/home");
   }
 }

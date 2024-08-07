@@ -6,10 +6,7 @@ export async function GET() {
     const headersList = headers();
     const userName = headersList.get("x-user-name");
     if (!userName) {
-      return NextResponse.json(
-        { error: "User name header is missing" },
-        { status: 400 },
-      );
+      return NextResponse.json(null, { status: 400 });
     }
 
     return NextResponse.json(userName, { status: 200 });

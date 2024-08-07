@@ -9,23 +9,45 @@ import { PublishProvider } from "../_utils/getPublishType";
 import Link from "next/link";
 import { FaPen } from "react-icons/fa6";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Loading from "../loading";
+import { toast } from "react-toastify";
 
 export default function EchoLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // const router = useRouter();
-  // const pathname = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [loading, setLoading] = useState(true);
+  // const [toastShown, setToastShown] = useState(false);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("user");
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const response = await fetch("/api/getUserJwt");
+        const userName = await response.json();
 
-  //   if (token == null && pathname !== "/") {
-  //     router.push("/");
-  //   }
-  // }, [router]);
+        if (!userName) {
+          // console.log(pathname);
+          // setToastShown(true)
+          // console.log('================================');
+          // toast.error('Please sign up or login first')
+          router.push("/");
+        } else {
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    }
+    fetchUser();
+  }, [router, pathname]);
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <ReactQueryProvider>

@@ -3,6 +3,7 @@ import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { logOut } from "../_services/fetchDataAPI";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 function SignOutButton() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,7 @@ function SignOutButton() {
       await logOut();
       localStorage.removeItem("user");
       router.push("/");
+      toast.success("Logout successfully");
     } catch (error) {
       console.error("Logout failed:", error);
     } finally {
