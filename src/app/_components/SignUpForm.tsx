@@ -15,8 +15,8 @@ function SignUpForm() {
           name="name"
           className="input"
           required
-          pattern="^[a-zA-Z0-9_-]{1,12}$"
-          title="Only letters, numbers, _, - are allowed. Maximum length is 12 characters"
+          pattern="^[a-zA-Z0-9_]{1,12}$"
+          title="Only letters, numbers, _ are allowed. Maximum length is 12 characters"
         />
       </label>
       <label htmlFor="email" className="text-xl">
