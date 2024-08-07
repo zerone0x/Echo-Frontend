@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: "http",
         hostname: "authjs.dev",
       },
+      {
+        protocol: "https",
+        hostname: "cdn2.thecatapi.com",
+      }
     ],
   },
   async rewrites() {
