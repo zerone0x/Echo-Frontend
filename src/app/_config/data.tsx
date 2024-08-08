@@ -1,7 +1,6 @@
 import { FaHome, FaSearch, FaStar } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
-import { IoBookmarkSharp } from "react-icons/io5";
 
 export const navLinks = [
   {
