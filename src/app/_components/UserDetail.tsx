@@ -17,25 +17,22 @@ async function UserDetail({ username }: { username: string }) {
   const feedLen = feeds?.length;
   return (
     <>
-      <BackBtn />
-      <Suspense fallback={<Spinner />}>
-        <div className="h-screen-10 w-full overflow-hidden">
-          <Image
-            src={user.Banner}
-            alt={`${username} Banner`}
-            layout="responsive"
-            width={100}
-            height={10}
-            objectFit="cover"
-            className="imageFullHeight"
-          />
-        </div>
-        <div className="p-4">
-          <UserCard user={user} />
-        </div>
-        <span className="p-4 font-medium text-gray-700">{user?.Bio}</span>
-        <FollowDetail username={username} feedLen={feedLen} />
-      </Suspense>
+      <div className="h-screen-10 w-full overflow-hidden">
+        <Image
+          src={user.Banner}
+          alt={`${username} Banner`}
+          layout="responsive"
+          width={100}
+          height={10}
+          objectFit="cover"
+          className="imageFullHeight"
+        />
+      </div>
+      <div className="p-4">
+        <UserCard user={user} />
+      </div>
+      <span className="p-4 font-medium text-gray-700">{user?.Bio}</span>
+      <FollowDetail username={username} feedLen={feedLen} />
     </>
   );
 }

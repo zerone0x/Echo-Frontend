@@ -137,7 +137,7 @@ function Reaction({
     }
     if (type === "Comment") {
       await deleteCommentById(dialog.feedId);
-      //TODO need to put comment into query so that I can use query to update it 
+      //TODO need to put comment into query so that I can use query to update it
     }
     queryClient.invalidateQueries("feeds");
     queryClient.invalidateQueries("bookmark");

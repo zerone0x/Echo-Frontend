@@ -33,7 +33,7 @@ async function page({ params }: ParamsProps) {
     <>
       <BackBtn />
       <Suspense fallback={<Spinner />}>
-      <FeedDetail feedId={feedId} />
+        <FeedDetail feedId={feedId} />
       </Suspense>
     </>
   );

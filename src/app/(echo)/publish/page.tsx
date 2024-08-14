@@ -13,7 +13,7 @@ function page() {
     <>
       <BackBtn />
       <Suspense fallback={<Spinner />}>
-      <Publish />
+        <Publish />
       </Suspense>
     </>
   );

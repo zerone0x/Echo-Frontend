@@ -12,7 +12,7 @@ function Sidebar() {
   const pathname = usePathname();
   const { authData } = useAuth();
   return (
-    <div className="flex sm:touch-pan-x sm:items-center sm:justify-center sm:overflow-x-auto sm:whitespace-nowrap md:flex-col md:items-center md:justify-center lg:flex-col lg:items-start lg:justify-center md:pt-4 lg:pt-6">
+    <div className="flex sm:touch-pan-x sm:items-center sm:justify-center sm:overflow-x-auto sm:whitespace-nowrap md:flex-col md:items-center md:justify-center md:pt-4 lg:flex-col lg:items-start lg:justify-center lg:pt-6">
       <Image
         src={logo}
         quality={100}

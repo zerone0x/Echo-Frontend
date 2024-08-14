@@ -19,10 +19,10 @@
     @apply grid grid-cols-2 gap-10;
   }
   .image-swiper-button-next,
-.image-swiper-button-prev {
-  color: red !important;
-  fill: red !important;
-}
+  .image-swiper-button-prev {
+    color: red !important;
+    fill: red !important;
+  }
 
   /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
   .no-underline-hover:hover {

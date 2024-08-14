@@ -7,7 +7,7 @@ function NotificationList({
 }: {
   notifications: NotificationProps[];
 }) {
-  return notifications.length > 0 ? (
+  return notifications?.length > 0 ? (
     notifications.map((notification, index) => {
       return <NotificationItem key={index} notification={notification} />;
     })
