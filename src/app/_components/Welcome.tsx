@@ -39,11 +39,11 @@ function Welcome() {
               Service and Privacy Policy.
             </span>
           )}
-          {activeTab === "login" && (
+          {/* {activeTab === "login" && (
             <form action={loginTestUser}>
               <SubmitButton pendingLabel="Loading...">Test User</SubmitButton>
             </form>
-          )}
+          )} */}
         </div>
       </div>
     </div>
