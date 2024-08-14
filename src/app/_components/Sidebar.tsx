@@ -12,13 +12,13 @@ function Sidebar() {
   const pathname = usePathname();
   const { authData } = useAuth();
   return (
-    <div className="flex sm:touch-pan-x sm:items-center sm:justify-center sm:overflow-x-auto sm:whitespace-nowrap md:flex-col md:items-center md:justify-center lg:flex-col lg:items-start lg:justify-center">
+    <div className="flex sm:touch-pan-x sm:items-center sm:justify-center sm:overflow-x-auto sm:whitespace-nowrap md:flex-col md:items-center md:justify-center lg:flex-col lg:items-start lg:justify-center md:pt-4 lg:pt-6">
       <Image
         src={logo}
         quality={100}
         alt="The Echo App Logo"
-        width={70}
-        height={70}
+        width={60}
+        height={60}
         className="hidden sm:hidden md:inline-block md:text-center lg:inline-block"
       />
       <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:pt-0 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:pt-4">
