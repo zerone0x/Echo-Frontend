@@ -38,7 +38,7 @@ function SearchBar({ isDisabled = false }: { isDisabled?: boolean }) {
   }, [searchQuery]);
 
   return (
-    <div className="w-full bg-[#F3FFF9] p-4">
+    <div className="w-full bg-[#FAF8F1] p-4">
       <form onSubmit={handleSubmit} className="flex h-12">
         <input
           type="text"

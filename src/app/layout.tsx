@@ -68,10 +68,10 @@ export default function RootLayout({
   );
 }
 // - #445566
-// - #FFFEF8
+// - #FAF8F1
 // - #FEDCO
 // - #BEFAF8
-// - #F3FFF9
+// - #FAF8F1
 // - #FAF8F1
 // - #CC3355
 // - #EF7F31

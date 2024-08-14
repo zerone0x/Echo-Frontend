@@ -13,11 +13,16 @@
     @apply top-0 flex items-center gap-4 text-xl font-semibold text-black transition-colors;
   }
   .header {
-    @apply sticky top-0 z-10 w-full border-b-2 bg-[#F3FFF9] p-4;
+    @apply sticky top-0 z-10 w-full border-b-2 bg-[#FAF8F1] p-4;
   }
   .filepond--list {
     @apply grid grid-cols-2 gap-10;
   }
+  .image-swiper-button-next,
+.image-swiper-button-prev {
+  color: red !important;
+  fill: red !important;
+}
 
   /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
   .no-underline-hover:hover {
