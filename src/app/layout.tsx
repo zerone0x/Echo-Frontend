@@ -73,5 +73,5 @@ export default function RootLayout({
 // - #BEFAF8
 // - #FAF8F1
 // - #FAF8F1
-// - #CC3355
-// - #EF7F31
+// - #CC3=355
+// - #EF=7F31

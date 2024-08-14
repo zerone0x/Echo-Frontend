@@ -132,7 +132,7 @@ function Publish({ isPage = true }) {
 
           <form onSubmit={handleSubmit} className="mt-8">
             <textarea
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-[#CC3355] focus:outline-none focus:ring-1 focus:ring-[#CC3355]"
               placeholder={`${postType === "Comment" && isPage ? "Reply to" : "What's on your mind?"}`}
               value={content}
               onChange={(e) => setContent(e.target.value)}

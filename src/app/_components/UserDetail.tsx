@@ -6,6 +6,7 @@ import Image from "next/image";
 import UserCard from "./UserCard";
 import FollowDetail from "./FollowDetail";
 import Loading from "../loading";
+import Spinner from "./Spinner";
 
 async function UserDetail({ username }: { username: string }) {
   // TODO change to react query for triger after updating
@@ -17,7 +18,7 @@ async function UserDetail({ username }: { username: string }) {
   return (
     <>
       <BackBtn />
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Spinner />}>
         <div className="h-screen-10 w-full overflow-hidden">
           <Image
             src={user.Banner}

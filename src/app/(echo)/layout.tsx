@@ -70,7 +70,7 @@ export default function EchoLayout({
             </div>
             <Link
               href={`/publish`}
-              className="fixed bottom-1/10 right-1/10 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 lg:hidden"
+              className="fixed bottom-1/10 right-1/10 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-[#CC3355] text-white shadow-lg hover:bg-[#CC3355] focus:outline-none focus:ring-2 focus:ring-[#CC3355] lg:hidden"
             >
               <FaPen />
             </Link>

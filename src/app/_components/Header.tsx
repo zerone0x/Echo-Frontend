@@ -17,7 +17,7 @@ function Header() {
     <div className="sticky top-0 z-10 w-full border-b-2 bg-[#FAF8F1] pb-4 pl-4 md:pt-4 lg:pt-4">
       <Link
         className={`top-mid-header ${
-          pathname === item[0].href ? "text-blue-400" : "text-primary-800"
+          pathname === item[0].href ? "text-[#CC3355]" : "text-primary-800"
         }`}
         href={item[0].href}
       >

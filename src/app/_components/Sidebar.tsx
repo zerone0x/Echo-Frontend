@@ -25,7 +25,7 @@ function Sidebar() {
         {navLinks.map((link, index) => (
           <Link
             key={`${link.name}-${index}`}
-            className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-blue-400" : "text-black"} `}
+            className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-[#CC3355]" : "text-black"} `}
             href={link.href}
           >
             {link.icon}
