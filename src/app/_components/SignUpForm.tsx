@@ -8,7 +8,7 @@ function SignUpForm() {
       action={registerUser}
     >
       <label htmlFor="name" className="text-xl">
-        Your full name
+        Your user name
         <input
           type="text"
           id="name"
@@ -19,6 +19,19 @@ function SignUpForm() {
           title="Only letters, numbers, _ are allowed. Maximum length is 12 characters"
         />
       </label>
+      {/* TODO add new input  */}
+      {/* <label htmlFor="displayName" className="text-xl">
+        Your display name
+        <input
+          type="text"
+          id="name"
+          name="name"
+          className="input"
+          required
+          pattern=""
+          title=""
+        />
+      </label> */}
       <label htmlFor="email" className="text-xl">
         Your email address
         <input
