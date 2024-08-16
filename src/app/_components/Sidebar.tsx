@@ -19,13 +19,13 @@ function Sidebar() {
         alt="The Echo App Logo"
         width={60}
         height={60}
-        className="hidden sm:hidden md:inline-block md:text-center lg:inline-block"
+        className="hidden pb-4 sm:hidden md:inline-block md:text-center lg:inline-block"
       />
-      <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:pt-0 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:pt-4">
+      <nav className="flex text-4xl sm:flex sm:items-center sm:justify-evenly sm:p-1 md:flex-col md:items-center md:justify-start md:gap-3 lg:flex-col lg:items-start lg:justify-start lg:border-t-2 lg:border-t-[#445566] lg:pt-4">
         {navLinks.map((link, index) => (
           <Link
             key={`${link.name}-${index}`}
-            className={`flex items-center gap-4 px-5 py-3 text-3xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-[#CC3355]" : "text-black"} `}
+            className={`flex items-center gap-4 px-5 text-2xl font-semibold transition-colors hover:cursor-pointer ${pathname === link.href ? "text-[#CC3355]" : "text-black"} `}
             href={link.href}
           >
             {link.icon}

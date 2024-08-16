@@ -41,7 +41,7 @@ function Welcome() {
           )}
           {/* {activeTab === "login" && (
             <form action={loginTestUser}>
-              <SubmitButton pendingLabel="Loading...">Test User</SubmitButton>
+              <SubmitButton pendingLabel="Loading...">Login as guest</SubmitButton>
             </form>
           )} */}
         </div>

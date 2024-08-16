@@ -28,7 +28,7 @@ function SignOutButton() {
     <form onSubmit={handleSignOut}>
       <button
         type="submit"
-        className="flex w-full items-center gap-4 px-5 py-3 text-3xl font-semibold text-primary-800 transition-colors"
+        className="flex w-full items-center gap-4 px-5 text-2xl font-semibold text-primary-800 transition-colors"
         disabled={isLoading}
       >
         <FaArrowRightFromBracket />
