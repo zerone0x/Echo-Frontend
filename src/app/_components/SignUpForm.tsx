@@ -19,19 +19,18 @@ function SignUpForm() {
           title="Only letters, numbers, _ are allowed. Maximum length is 12 characters"
         />
       </label>
-      {/* TODO add new input  */}
-      {/* <label htmlFor="displayName" className="text-xl">
+      <label htmlFor="displayName" className="text-xl">
         Your display name
         <input
           type="text"
-          id="name"
-          name="name"
+          id="username"
+          name="username"
           className="input"
           required
-          pattern=""
-          title=""
+          pattern=".{1,12}"
+          title="Display name must be between 1 and 12 characters long"
         />
-      </label> */}
+      </label>
       <label htmlFor="email" className="text-xl">
         Your email address
         <input

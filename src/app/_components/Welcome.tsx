@@ -3,7 +3,8 @@ import { useState } from "react";
 import SignUpForm from "@/app/_components/SignUpForm";
 import LoginForm from "@/app/_components/LoginForm";
 import SignInButton from "./SignInButton";
-
+import SubmitButton from "./SubmitButton";
+import { loginTestUser } from "../_utils/actions";
 
 function Welcome() {
   const [activeTab, setActiveTab] = useState("login");
@@ -38,11 +39,13 @@ function Welcome() {
               Service and Privacy Policy.
             </span>
           )}
-          {/* {activeTab === "login" && (
+          {activeTab === "login" && (
             <form action={loginTestUser}>
-              <SubmitButton pendingLabel="Loading...">Login as guest</SubmitButton>
+              <SubmitButton pendingLabel="Loading...">
+                Login as guest
+              </SubmitButton>
             </form>
-          )} */}
+          )}
         </div>
       </div>
     </div>

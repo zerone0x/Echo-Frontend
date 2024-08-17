@@ -12,11 +12,13 @@ export const authUserSignUp = async (
   email: string,
   password: string,
   name: string,
+  username: string,
 ) => {
   const { data } = await client.post("auth/register", {
     email: email,
     password: password,
     name: name,
+    username: username,
   });
   return data.results;
 };

@@ -17,7 +17,8 @@ export async function registerUser(formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const name = formData.get("name") as string;
-  const user = await authUserSignUp(email, password, name);
+  const username = formData.get("username") as string;
+  const user = await authUserSignUp(email, password, name, username);
   if (user && user != null) {
     toast.success("SignUp successfully");
     redirect("/home");
