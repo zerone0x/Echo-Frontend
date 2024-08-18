@@ -28,7 +28,7 @@ function Welcome() {
         </div>
         <div className="mt-10 flex flex-col items-center justify-center gap-10">
           <h1 className="text-3xl font-semibold">
-            {activeTab === "login" ? "Come on in!" : "Sign up for Echo"}
+            {activeTab === "login" ? "Come on in!" : "Sign up!"}
           </h1>
           <SignInButton />
           {activeTab === "login" ? <LoginForm /> : <SignUpForm />}
