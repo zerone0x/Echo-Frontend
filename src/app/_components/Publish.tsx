@@ -14,16 +14,8 @@ import SubmitButton from "./SubmitButton";
 import { useRouter } from "next/navigation";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
-// import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
-// import FilePondPluginImageTransform from "filepond-plugin-image-transform";
-// import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-// import FilePondPluginImageResize from "filepond-plugin-image-resize";
-// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { usePublishType } from "../_utils/getPublishType";
 import EchoContent from "./EchoContent";
-
-// Register the plugins
-// registerPlugin(FilePondPluginImageTransform, FilePondPluginImageResize);
 
 function Publish({ isPage = true }) {
   const { publishType, setPublishType } = usePublishType();
@@ -134,6 +126,7 @@ function Publish({ isPage = true }) {
             <textarea
               className="w-full rounded-lg border border-gray-300 px-4 py-2 text-base focus:border-[#CC3355] focus:outline-none focus:ring-1 focus:ring-[#CC3355]"
               placeholder={`${postType === "Comment" && isPage ? "Reply to" : "What's on your mind?"}`}
+              maxLength={700}
               value={content}
               onChange={(e) => setContent(e.target.value)}
               onKeyDown={handleKeyDown}
