@@ -12,7 +12,7 @@
 - [Echo Social Frontend](#echo-social-frontend)
   - [Echo Social App](#echo-social-app)
   - [About Echo Social](#about-echo-social)
-  - [ScreenShot](#screenshot)
+  - [Preview](#preview)
   - [Features](#features)
   - [Getting Started](#getting-started)
   - [License](#license)
@@ -31,7 +31,9 @@ Welcome to Echo Social Frontend, a Mastodon-like platform that amplifies your vo
 
 Echo Social is designed to be a social networking platform where users can freely express themselves, connect with others, and create vibrant communities. Inspired by Mastodon, it aims to provide a user-centric experience.
 
-## <a name='ScreenShot'></a>ScreenShot
+## <a name='Preview'></a>Preview
+
+https://github.com/user-attachments/assets/6da25318-0206-4ab4-b19e-b8394457404c
 
 ![rdFLsZtest](https://cdn.jsdelivr.net/gh/h3x311/upic@main/LC3/2024/rdFLsZtest.png)
 ![1bnhzitest](https://cdn.jsdelivr.net/gh/h3x311/upic@main/LC3/2024/1bnhzitest.jpg)
