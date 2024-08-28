@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Echo Social App",
     description:
       "Stay updated with news from your friends! Create a profile, bookmark favorites, and receive notifications. Interact with others and share your own updates!",
-    url: "https://echoloop.netlify.app/",
+    url: "https://echoloop.vercel.app/",
     siteName: "Echo your thoughts",
     images: [
       {
