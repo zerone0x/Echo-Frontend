@@ -9,11 +9,11 @@ export const navLinks = [
     href: "/home",
     icon: <FaHome />,
   },
-  {
-    name: "Chat",
-    href: "/chat",
-    icon: <IoChatbubblesOutline />,
-  },
+  // {
+  //   name: "Chat",
+  //   href: "/chat",
+  //   icon: <IoChatbubblesOutline />,
+  // },
   {
     name: "Notification",
     href: "/notification",
