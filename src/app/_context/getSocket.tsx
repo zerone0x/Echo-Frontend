@@ -23,7 +23,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     if (authData) {
       const socket = io(
         process.env.NEXT_PUBLIC_ENV === "PRD"
-          ? "https://echobe.fly.dev"
+          ? "https://echoloop.vercel.app"
           : "http://localhost:8000",
         {
           query: {

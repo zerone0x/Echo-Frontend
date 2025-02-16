@@ -78,8 +78,7 @@ export default function ChatWindow({ chatUser }: ChatWindowProps) {
   const avatar =
     ConversationData?.participants.filter(
       (participant: Participant) => participant.name == chatUser,
-    )[0]?.ProfileImage || "/default-avatar.png";
-
+    )[0]?.ProfileImage || "";
   return (
     <div className="flex h-full flex-col">
       {/* Chat header */}
