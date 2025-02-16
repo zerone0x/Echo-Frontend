@@ -54,7 +54,7 @@ export default function ChatList({
       ) : (
         <ScrollArea className="flex-1">
           <div className="space-y-2 p-4">
-            {filteredChats.map((chat) => (
+            {filteredChats.map((chat: any) => (
               <div
                 key={chat.conversationId}
                 className={`flex cursor-pointer items-center space-x-4 rounded-lg p-3 transition-colors hover:bg-gray-100 ${
