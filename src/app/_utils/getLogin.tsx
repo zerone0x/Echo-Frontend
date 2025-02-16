@@ -1,6 +1,5 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import getCurrentUser from "./getCurrentUser";
 import { UserProps } from "../_config/type";
 import { getUserByName } from "../_services/fetchDataAPI";
 

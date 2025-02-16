@@ -3,6 +3,7 @@ import Link from "next/link";
 import FollowBtn from "./FollowBtn";
 import { UserProps } from "../_config/type";
 import UserAvator from "./UserAvator";
+import ChatBtn from "./ChatBtn";
 
 interface UserCardProps {
   user: UserProps;
@@ -36,7 +37,11 @@ function UserCard({ user, isBtnDisplay = true }: UserCardProps) {
           <span className="block font-medium text-gray-700">@{name}</span>
         </div>
       </div>
-      {isBtnDisplay && <FollowBtn username={name} />}
+      {isBtnDisplay && (
+        <>
+          <FollowBtn username={name} />
+        </>
+      )}
     </div>
   );
 }

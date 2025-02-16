@@ -5,6 +5,7 @@ import { useQueryClient } from "react-query";
 import { useAuth } from "../_utils/getLogin";
 import UpdateUserDetail from "./UpdateUserDetail";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function FollowBtn({ username }: { username: string }) {
   const pathname = usePathname();
@@ -12,6 +13,7 @@ function FollowBtn({ username }: { username: string }) {
   const queryClient = useQueryClient();
   const { currentUserName } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     async function fetchStatuses() {
       const followed = await getIsFollowed(username);
@@ -29,6 +31,9 @@ function FollowBtn({ username }: { username: string }) {
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleChat = () => {
+    router.push(`/chat/${username}`);
   };
 
   function handleUpdateDetail() {
@@ -48,9 +53,14 @@ function FollowBtn({ username }: { username: string }) {
       <UpdateUserDetail isOpen={openDialog} setOpenDialog={setOpenDialog} />
     </div>
   ) : (
-    <button className="btn" onClick={handleFollow}>
-      {follow ? "Unfollow" : "Follow"}
-    </button>
+    <div className="flex items-center justify-end gap-2">
+      {/* <button className="btn" onClick={handleChat}>
+        Chat
+      </button> */}
+      <button className="btn" onClick={handleFollow}>
+        {follow ? "Unfollow" : "Follow"}
+      </button>
+    </div>
   );
 }
 

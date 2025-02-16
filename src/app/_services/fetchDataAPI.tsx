@@ -170,3 +170,21 @@ export const getAllNotifications = async () => {
     console.log(error);
   }
 };
+
+export const getConversationDetails = async () => {
+  const { data } = await client.get(`conversation/details`);
+  return data.results;
+};
+
+export const getMessagesOfConversation = async (receiverName: string) => {
+  const { data } = await client.get(`message/receive/${receiverName}`);
+  return data.results;
+};
+
+export const SendMessage = async (receiverName: string, message: string) => {
+  const { data } = await client.post(`message/send`, {
+    receiverName: receiverName,
+    message: message,
+  });
+  return data.results;
+};

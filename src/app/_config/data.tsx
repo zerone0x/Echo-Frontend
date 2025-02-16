@@ -1,12 +1,18 @@
 import { FaHome, FaSearch, FaStar } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa6";
 import { IoIosNotifications } from "react-icons/io";
+import { IoChatbubblesOutline } from "react-icons/io5";
 
 export const navLinks = [
   {
     name: "Home",
     href: "/home",
     icon: <FaHome />,
+  },
+  {
+    name: "Chat",
+    href: "/chat",
+    icon: <IoChatbubblesOutline />,
   },
   {
     name: "Notification",
@@ -18,11 +24,7 @@ export const navLinks = [
     href: "/search",
     icon: <FaSearch />,
   },
-  // {
-  //   name: "Live feeds",
-  //   href: "/public",
-  //   icon: <IoEarth />,
-  // },
+
   {
     name: "Bookmark",
     href: "/bookmark",

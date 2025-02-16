@@ -10,7 +10,7 @@ import { useQuery } from "react-query";
 import NoResult from "@/app/_components/NoResult";
 import { LuUsers2 } from "react-icons/lu";
 import SearchHeader from "@/app/_components/SearchHeader";
-import { MdArticle, MdOutlineArticle } from "react-icons/md";
+import { MdOutlineArticle } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 
 function Page() {
@@ -26,11 +26,13 @@ function Page() {
   } = useQuery(["Search", searchQuery], () => searchFeeds(searchQuery), {
     enabled: !!searchQuery,
   });
+
   useEffect(() => {
     return () => {
       setSearchQuery("");
     };
   }, [setSearchQuery]);
+
   useEffect(() => {
     if (searchData) {
       const { feeds, user, comments } = searchData;
