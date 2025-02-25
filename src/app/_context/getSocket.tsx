@@ -21,37 +21,61 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   const { authData } = useAuth();
   useEffect(() => {
     if (authData) {
-      const socketUrl = process.env.NEXT_PUBLIC_ENV === "PRD"
+      const isProd = process.env.NEXT_PUBLIC_ENV === "PRD";
+      const socketUrl = isProd
         ? "https://echobe.fly.dev"
         : "http://localhost:8000";
         
-      const socket = io(socketUrl, {
+      console.log("Connecting to socket at:", socketUrl);
+      console.log("Current origin:", window.location.origin);
+      console.log("Environment:", isProd ? "Production" : "Development");
+        
+      // Configure Socket.IO options
+      const socketOptions = {
         query: {
           userId: authData._id,
         },
-        transports: ['websocket', 'polling'], // Try both WebSocket and polling
-        reconnectionAttempts: 5, // Attempt to reconnect 5 times
-        reconnectionDelay: 1000, // Start with a 1-second delay
-        timeout: 20000, // Increase connection timeout
-        forceNew: true, // Force a new connection
-        withCredentials: true, // Include credentials
-      });
+        // Use both transports in both environments, but try WebSocket first
+        transports: ['websocket', 'polling'],
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+        timeout: 20000,
+        forceNew: true,
+        path: '/socket.io/',
+      };
+      
+      console.log("Socket options:", JSON.stringify(socketOptions));
+      
+      // Create socket connection
+      const socket = io(socketUrl, socketOptions);
       
       setSocket(socket);
       
+      // Connection events
       socket.on("connect", () => {
         console.log("Socket connected successfully");
+        console.log("Socket ID:", socket.id);
+        console.log("Transport used:", socket.io.engine.transport.name);
       });
       
       socket.on("connect_error", (error) => {
         console.error("Socket connection error:", error);
+        console.error("Error details:", error.message);
+        
+        // If WebSocket fails, try reconnecting (the library will try polling automatically)
+        if (socket.io.engine.transport.name === 'websocket') {
+          console.log("WebSocket connection failed, Socket.IO will try polling automatically");
+          // No need to manually change transport - Socket.IO handles this automatically
+        }
       });
       
       socket.on("getOnlineUsers", (userIds: string[]) => {
+        console.log("Received online users:", userIds.length);
         setOnlineUsers(userIds);
       });
       
       return () => {
+        console.log("Closing socket connection");
         socket.close();
       };
     } else {
