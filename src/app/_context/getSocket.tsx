@@ -23,12 +23,12 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     if (authData) {
       const isProd = process.env.NEXT_PUBLIC_ENV === "PRD";
       const socketUrl = isProd
-        ? "https://echobe.fly.dev"
+        ? process.env.NEXT_PUBLIC_ROOT_URL || "https://echobe.fly.dev"
         : "http://localhost:8000";
         
       console.log("Connecting to socket at:", socketUrl);
       console.log("Current origin:", window.location.origin);
-      console.log("Environment:", isProd ? "Production" : "Development");
+      console.log("Environment:", process.env.NEXT_PUBLIC_ENV);
         
       // Configure Socket.IO options
       const socketOptions = {
